@@ -36,6 +36,7 @@ fi
 PACMAN_PACKAGES=(
     # Core Terminal Tools
     "kitty"
+    "wezterm"
     "tmux"
     "neovim"
     "fish"
@@ -140,6 +141,7 @@ echo "-> Creating symlinks with GNU Stow..."
 if [ -d "$HOME/dotfiles" ]; then
     cd "$HOME/dotfiles" || exit 1
     stow kitty
+    stow wezterm
     stow tmux
     stow nvim
     stow hyprland
