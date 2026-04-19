@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on error
-set -e
+# set -e
 
 echo "=========================================="
 echo "🚀 Starting System Setup for Dotfiles..."
@@ -69,7 +69,6 @@ PACMAN_PACKAGES=(
     # App Store & Sandboxing
     "flatpak"
     "gnome-software"
-    "gnome-software-plugin-flatpak"
 
     # CLI Utilities & Media
     "vlc"
@@ -140,23 +139,18 @@ fish "$HOME/.local/share/caelestia/install.fish" --noconfirm --aur-helper yay
 echo "-> Creating symlinks with GNU Stow..."
 if [ -d "$HOME/dotfiles" ]; then
     cd "$HOME/dotfiles" || exit 1
-    stow kitty
-    stow wezterm
-    stow tmux
-    stow nvim
-    stow hyprland
-    stow btop
-    stow fastfetch
-    stow fish
-    stow foot
-    stow starship.toml
-    stow cava
-    stow lazygit
-    stow lazydocker
-    stow mpv
-    stow imv
-    stow alacritty
-    stow vlc
+    packages=(kitty wezterm tmux nvim hyprland btop fastfetch fish foot starship.toml cava lazygit lazydocker mpv imv alacritty vlc)
+    for pkg in "${packages[@]}"; do
+        echo "   Stowing $pkg..."
+        conflicts=$(stow --no --verbose=1 "$pkg" 2>&1 | awk '/existing target is not owned by stow: /{print $NF}' | sort -u)
+        for conflict in $conflicts; do
+            if [ -e "$HOME/$conflict" ]; then
+                echo "   Backing up $HOME/$conflict to $HOME/${conflict}_bak"
+                mv "$HOME/$conflict" "$HOME/${conflict}_bak"
+            fi
+        done
+        stow "$pkg"
+    done
 else
     echo "Warning: ~/dotfiles directory not found. Skipping Stow."
 fi
