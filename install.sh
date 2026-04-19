@@ -59,8 +59,16 @@ PACMAN_PACKAGES=(
     # General Software & Tools
     "python"
     "python-pip"
+    "uv"
     "lazygit"
     "lazydocker"
+
+    # Fonts
+    "ttf-victor-mono-nerd"
+    "ttf-jetbrains-mono-nerd"
+    "ttf-fira-code-nerd"
+    "noto-fonts"
+    "noto-fonts-emoji"
 
     # Containerization
     "docker"
