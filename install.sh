@@ -45,6 +45,7 @@ PACMAN_PACKAGES=(
   "wl-clipboard"
   "unzip"
   "eza"
+  "loupe"
   "fzf"
   "zoxide"
   "git"
