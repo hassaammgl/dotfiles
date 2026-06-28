@@ -1,5 +1,5 @@
 # Main background, empty for terminal default, need to be empty if you want transparent background
-theme[main_bg]=#1E1E24
+theme[main_bg]=#050505
 
 # Main text color
 theme[main_fg]=#F5F5F6
@@ -11,19 +11,19 @@ theme[title]=#F5F5F6
 theme[hi_fg]=#24BD5C
 
 # Background color of selected item in processes box
-theme[selected_bg]=#23262C
+theme[selected_bg]=#0a0a0b
 
 # Foreground color of selected item in processes box
 theme[selected_fg]=#24BD5C
 
 # Color of inactive/disabled text
-theme[inactive_fg]=#979797
+theme[inactive_fg]=#838383
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
 theme[graph_text]=#32653E
 
 # Background color of the percentage meters
-theme[meter_bg]=#979797
+theme[meter_bg]=#838383
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
 theme[proc_misc]=#32653E
