@@ -1,0 +1,85 @@
+󰘴  General
+SUPER + Space           Launcher (rofi)
+SUPER + Return          Terminal (kitty)
+SUPER + B               Browser (brave)
+SUPER + C               Editor (code)
+SUPER + E               File explorer (nautilus)
+SUPER + G               GitHub Desktop
+SUPER + M               Music workspace toggle
+SUPER + D               Communication workspace toggle
+SUPER + R               Todo workspace toggle
+CTRL + SHIFT + Escape   System monitor workspace toggle
+
+󰐥  Windows
+SUPER + W               Close window
+SUPER + F               Fullscreen
+SUPER + ALT + F         Fullscreen with borders
+SUPER + ALT + Space     Toggle floating
+SUPER + P               Pin window
+SUPER + Comma           Toggle window group
+SUPER + U               Ungroup window
+SUPER + V               Clipboard history
+SUPER + ALT + V         Clipboard delete
+ALT + Tab               Cycle window group
+SHIFT + ALT + Tab       Cycle window group (back)
+
+󰶐  Focus & Move
+SUPER + arrows          Focus window
+SUPER + SHIFT + arrows  Move window
+SUPER + ALT + arrows    Resize window
+SUPER + ALT + PgUp/Dn   Move window to next/prev workspace
+
+󰓥  Workspaces
+SUPER + 0-9             Switch to workspace
+SUPER + SHIFT + 0-9     Move window to workspace
+CTRL + SUPER + 0-9      Switch to workspace group
+CTRL + SUPER + ALT + 0-9 Move window to workspace group
+SUPER + scroll          Switch workspace
+CTRL + SUPER + scroll   Switch workspace group
+SUPER + S               Toggle special workspace
+
+󰔄  Layout
+SUPER + Minus           Resize active left
+SUPER + Equal           Resize active right
+SUPER + SHIFT + Minus   Resize active up
+SUPER + SHIFT + Equal   Resize active down
+
+󰍽  Multimedia
+XF86AudioRaiseVolume    Volume up
+XF86AudioLowerVolume    Volume down
+XF86AudioMute           Mute
+XF86AudioMicMute        Mic mute
+XF86AudioPlay/Pause     Play/Pause
+XF86AudioNext           Next track
+XF86AudioPrev           Previous track
+SUPER + F1/F2/F3       Mute / Vol down / Vol up
+SUPER + F6/F7           Brightness down/up
+CTRL + SUPER + Space    Play/Pause (playerctl)
+CTRL + SUPER + +/-      Next/Previous track
+
+󰹑  Screenshot & Recording
+Print                   Screenshot full (clipboard)
+SUPER + SHIFT + S       Screenshot region (freeze)
+SUPER + SHIFT + ALT + S Screenshot region
+SUPER + ALT + R         Record screen with audio
+CTRL + ALT + R          Record screen
+SUPER + SHIFT + ALT + R Record region
+SUPER + SHIFT + C       Color picker
+
+󰤄  Session
+SUPER + L               Lock (hyprlock)
+SUPER + SHIFT + L       Suspend
+CTRL + ALT + Delete     Session (wlogout)
+SUPER + Period          Emoji picker
+
+󰟸  Wallpaper
+ALT + W                 Wallpaper picker (fzf + preview)
+SHIFT + ALT + W         Random wallpaper (fade transition)
+
+󰟸  Utilities
+SUPER + Q               Close window
+ALT + H                 This help
+SUPER + ALT + E         Nemo file manager
+CTRL + ALT + Escape     QPS process manager
+CTRL + ALT + V          Pavucontrol audio
+SUPER + SHIFT + M       Toggle mute

@@ -1,0 +1,23 @@
+hl.config({
+    gestures = {
+        workspace_swipe_distance = 700,
+        workspace_swipe_cancel_ratio = 0.15,
+        workspace_swipe_min_speed_to_force = 5,
+        workspace_swipe_direction_lock = true,
+        workspace_swipe_direction_lock_threshold = 10,
+        workspace_swipe_create_new = true,
+    },
+})
+
+hl.gesture({
+    fingers = workspaceSwipeFingers,
+    direction = "horizontal",
+    action = "workspace",
+})
+
+hl.gesture({
+    fingers = gestureFingers,
+    direction = "down",
+    action = "workspace",
+    payload = "e-1",
+})

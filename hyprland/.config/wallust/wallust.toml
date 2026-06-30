@@ -1,0 +1,11 @@
+[wallust]
+wallpaper = "~/Pictures/Wallpapers/current"
+backend = "material"
+palette = 16
+
+[scheme]
+split = true
+
+[file]
+rofi = { path = "~/.config/rofi/config.rasi", template = "~/.config/wallust/templates/rofi.rasi" }
+waybar = { path = "~/.config/waybar/style.css", template = "~/.config/wallust/templates/waybar.css" }

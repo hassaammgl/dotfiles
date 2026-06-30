@@ -1,0 +1,101 @@
+configuration {
+  icon-theme: "Papirus";
+  display-drun: " ";
+  drun-display-format: "{icon} {name}";
+  font: "JetBrainsMono Nerd Font 12";
+  show-icons: true;
+}
+
+@theme "glue_pro_blue"
+
+* {
+  background:     #131317;
+  background-color: #131317;
+  foreground:     #e5e1e7;
+  text-color:     #e5e1e7;
+  lightbg:        #1c1b1f;
+  border-color:   #201f23;
+  spacing:        2;
+}
+
+window {
+  background-color: #131317;
+  border: 1px;
+  border-color: #201f23;
+  border-radius: 10;
+  padding: 6px;
+  width: 40%;
+}
+
+inputbar {
+  background-color: #1c1b1f;
+  border-radius: 8;
+  padding: 6px 12px;
+  spacing: 8px;
+  children: [ prompt, entry ];
+}
+
+prompt {
+  text-color: #c2c1ff;
+  font: "JetBrainsMono Nerd Font 14";
+}
+
+entry {
+  text-color: #e5e1e7;
+  font: "JetBrainsMono Nerd Font 14";
+  placeholder: "Search...";
+  placeholder-color: #c8c5d1;
+}
+
+listview {
+  background-color: #131317;
+  border-radius: 8;
+  spacing: 2px;
+  padding: 4px 0;
+}
+
+element {
+  background-color: transparent;
+  text-color: #e5e1e7;
+  border-radius: 6;
+  padding: 8px 12px;
+}
+
+element selected {
+  background-color: #2a292e;
+  text-color: #c2c1ff;
+}
+
+element-icon {
+  size: 24px;
+}
+
+element-text {
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.0;
+}
+
+element alternate {
+  background-color: transparent;
+}
+
+element urgent {
+  text-color: #ffb4ab;
+}
+
+scrollbar {
+  width: 4px;
+  handle-width: 4px;
+  handle-color: #2a292e;
+}
+
+message {
+  background-color: #1c1b1f;
+  border-radius: 8;
+  padding: 6px;
+}
+
+textbox {
+  text-color: #c8c5d1;
+}

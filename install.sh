@@ -58,16 +58,28 @@ PACMAN_PACKAGES=(
   "hyprland"
   "waybar"
   "mako"
-  "fuzzel"
+  "rofi"
   "uwsm"
-  "hyprpaper"
+  "awww"
+  "wallust"
   "xdg-desktop-portal"
   "xdg-desktop-portal-hyprland"
-  "polkit-kde-agent"
+  "polkit-gnome"
   "qt5-wayland"
   "qt6-wayland"
   "grim"
   "slurp"
+  "hyprlock"
+  "brightnessctl"
+  "wf-recorder"
+  "hyprpicker"
+  "cliphist"
+  "ydotool"
+  "gnome-keyring"
+  "gammastep"
+  "trash-cli"
+  "chafa"
+  "jq"
 
   # Audio
   "pipewire"
@@ -84,6 +96,7 @@ PACMAN_PACKAGES=(
   "uv"
   "lazygit"
   "lazydocker"
+  "less"
 
   # Fonts
   "ttf-victor-mono-nerd"
@@ -113,8 +126,7 @@ AUR_PACKAGES=(
   "brave-bin"
   "visual-studio-code-bin"
   "antigravity"
-  # "caelestia-shell"
-  # "caelestia-cli"
+  "wlogout"
 )
 
 sudo mkdir -p /mnt/codes
@@ -202,12 +214,7 @@ if ! docker ps -a --format '{{.Names}}' | grep -q '^searxng$'; then
     searxng/searxng:latest
 fi
 
-# 7. Install Caelestia Core Dots
-# echo "-> Installing Caelestia Dots from Git..."
-# if [ ! -d "$HOME/.local/share/caelestia" ]; then
-#   git clone https://github.com/caelestia-dots/caelestia.git "$HOME/.local/share/caelestia"
-# fi
-# fish "$HOME/.local/share/caelestia/install.fish" --noconfirm --aur-helper yay
+# (Caelestia removed — using standalone config)
 
 # 8. Stow Dotfiles
 # echo "-> Creating symlinks with GNU Stow..."
