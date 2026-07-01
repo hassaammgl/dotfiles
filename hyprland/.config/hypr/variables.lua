@@ -31,7 +31,7 @@ windowRounding     = 15
 windowBorderSize   = 1
 
 volumeStep         = 10
-cursorTheme        = "sweet-cursors"
+cursorTheme        = "Bibata-Modern-Classic"
 cursorSize         = 24
 
 kbMoveWinToWs        = "SUPER + SHIFT"

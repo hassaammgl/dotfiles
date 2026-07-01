@@ -10,15 +10,19 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprctl setcursor " .. cursorTheme .. " " .. cursorSize)
     hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme '" .. cursorTheme .. "'")
     hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size " .. cursorSize)
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Adwaita")
 
     hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
     hl.exec_cmd("sleep 1 && gammastep")
 
     hl.exec_cmd("mpris-proxy")
 
+    hl.exec_cmd("mako")
     hl.exec_cmd("waybar")
 
     -- wallpaper daemon + set initial wallpaper
     hl.exec_cmd("awww-daemon")
-    hl.exec_cmd("~/.config/hypr/scripts/wallpaper.sh")
+    -- reuse last wallpaper if current symlink exists, otherwise random
+    hl.exec_cmd("bash -c 'img=~/Pictures/Wallpapers/current; [[ -f \"$img\" ]] && ~/.config/hypr/scripts/wallpaper.sh file \"$img\" || ~/.config/hypr/scripts/wallpaper.sh'")
 end)

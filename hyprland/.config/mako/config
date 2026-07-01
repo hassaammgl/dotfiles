@@ -1,1 +1,41 @@
-/home/mrroot/.config/omarchy/current/theme/mako.ini
+# Mako Notification Daemon Config
+# Matches waybar theme colors
+
+font=JetBrainsMono Nerd Font 11
+background-color=#1c1b1f
+text-color=#e5e1e7
+border-color=#c2c1ff
+border-radius=10
+border-size=2
+default-timeout=3000
+width=400
+height=200
+max-icon-size=48
+icons=1
+sort=-time
+padding=12,16
+margin=8,16
+group-by=summary
+max-visible=8
+layer=overlay
+anchor=top-right
+markup=1
+actions=1
+
+[urgency=low]
+background-color=#1c1b1f
+text-color=#e5e1e7
+border-color=#2a292e
+default-timeout=3000
+
+[urgency=normal]
+background-color=#1c1b1f
+text-color=#e5e1e7
+border-color=#c2c1ff
+default-timeout=3000
+
+[urgency=critical]
+background-color=#1c1b1f
+text-color=#f38ba8
+border-color=#f38ba8
+default-timeout=5000
