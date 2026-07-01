@@ -12,7 +12,7 @@ kitty --title "wallpaper-picker" -e bash -c '
     preview_cmd="ls -la {}"
   fi
 
-  find "$wall_dir" -maxdepth 1 -type f \( -iname '\''*.jpg'\'' -o -iname '\''*.png'\'' -o -iname '\''*.jpeg'\'' -o -iname '\''*.webp'\'' \) \
+  find "$wall_dir" -maxdepth 1 -type f \( -iname '\''*.jpg'\'' -o -iname '\''*.png'\'' -o -iname '\''*.jpeg'\'' -o -iname '\''*.webp'\'' -o -iname '\''*.gif'\'' \) \
     | fzf --preview "$preview_cmd" \
           --preview-window right:40% \
           --prompt "Wallpaper > " \

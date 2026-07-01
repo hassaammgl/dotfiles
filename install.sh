@@ -118,6 +118,26 @@ PACMAN_PACKAGES=(
   "mpv"
   "imv"
   "cava"
+
+  # Missing tools from configs
+  "playerctl"
+  "pavucontrol"
+  "nautilus"
+  "foot"
+  "direnv"
+  "feh"
+  "imagemagick"
+  "swappy"
+  "wev"
+  "yad"
+  "zenity"
+  "geoclue"
+  "papirus-icon-theme"
+  "libnotify"
+  "network-manager-applet"
+  "bluez-utils"
+  "xdg-utils"
+  "cups"
 )
 
 AUR_PACKAGES=(
@@ -127,6 +147,9 @@ AUR_PACKAGES=(
   "visual-studio-code-bin"
   "antigravity"
   "wlogout"
+  "nwg-look"
+  "ueberzugpp"
+  "qps"
 )
 
 sudo mkdir -p /mnt/codes
@@ -217,38 +240,38 @@ fi
 # (Caelestia removed — using standalone config)
 
 # 8. Stow Dotfiles
-# echo "-> Creating symlinks with GNU Stow..."
-# if [ -d "$HOME/dotfiles" ]; then
-#   cd "$HOME/dotfiles" || exit 1
-#   packages=(kitty wezterm tmux nvim hyprland btop fastfetch fish foot starship.toml cava lazygit lazydocker mpv imv alacritty vlc)
-#   for pkg in "${packages[@]}"; do
-#     echo "   Stowing $pkg..."
-#     stow --restow "$pkg" 2>/dev/null || {
-#       echo "   Conflict detected in $pkg — attempting backup and retry..."
-#       stow --no --verbose=2 "$pkg" 2>&1 | grep 'existing target' | awk '{print $NF}' | while read -r conflict; do
-#         [ -e "$HOME/$conflict" ] && mv "$HOME/$conflict" "$HOME/${conflict}.bak"
-#       done
-#       stow "$pkg"
-#     }
-#   done
-#
-#   # Clone Wallpapers from GitHub instead of stowing
-#   echo "   Cloning Wallpapers to ~/Pictures/Wallpapers..."
-#   WALLPAPER_REPO="https://github.com/hassaammgl/Wallpapers.git"
-#
-#   if [ -d "$HOME/Pictures/Wallpapers/.git" ]; then
-#     echo "   Wallpapers repo already exists. Pulling latest changes..."
-#     git -C "$HOME/Pictures/Wallpapers" pull
-#   else
-#     if [ -d "$HOME/Pictures/Wallpapers" ] && [ "$(ls -A "$HOME/Pictures/Wallpapers")" ]; then
-#       echo "   ~/Pictures/Wallpapers exists and is not empty. Backing up..."
-#       mv "$HOME/Pictures/Wallpapers" "$HOME/Pictures/Wallpapers.bak_$(date +%s)"
-#     fi
-#     git clone "$WALLPAPER_REPO" "$HOME/Pictures/Wallpapers"
-#   fi
-# else
-#   echo "Warning: ~/dotfiles directory not found. Skipping Stow."
-# fi
+echo "-> Creating symlinks with GNU Stow..."
+if [ -d "$HOME/dotfiles" ]; then
+  cd "$HOME/dotfiles" || exit 1
+  packages=(kitty wezterm tmux nvim hyprland btop fastfetch fish foot starship.toml cava lazygit lazydocker mpv imv alacritty vlc)
+  for pkg in "${packages[@]}"; do
+    echo "   Stowing $pkg..."
+    stow --restow "$pkg" 2>/dev/null || {
+      echo "   Conflict detected in $pkg — attempting backup and retry..."
+      stow --no --verbose=2 "$pkg" 2>&1 | grep 'existing target' | awk '{print $NF}' | while read -r conflict; do
+        [ -e "$HOME/$conflict" ] && mv "$HOME/$conflict" "$HOME/${conflict}.bak"
+      done
+      stow "$pkg"
+    }
+  done
+
+  # Clone Wallpapers from GitHub instead of stowing
+  echo "   Cloning Wallpapers to ~/Pictures/Wallpapers..."
+  WALLPAPER_REPO="https://github.com/hassaammgl/Wallpapers.git"
+
+  if [ -d "$HOME/Pictures/Wallpapers/.git" ]; then
+    echo "   Wallpapers repo already exists. Pulling latest changes..."
+    git -C "$HOME/Pictures/Wallpapers" pull
+  else
+    if [ -d "$HOME/Pictures/Wallpapers" ] && [ "$(ls -A "$HOME/Pictures/Wallpapers")" ]; then
+      echo "   ~/Pictures/Wallpapers exists and is not empty. Backing up..."
+      mv "$HOME/Pictures/Wallpapers" "$HOME/Pictures/Wallpapers.bak_$(date +%s)"
+    fi
+    git clone "$WALLPAPER_REPO" "$HOME/Pictures/Wallpapers"
+  fi
+else
+  echo "Warning: ~/dotfiles directory not found. Skipping Stow."
+fi
 
 # Copy aliases and fix bad fzf paths inside it
 mkdir -p ~/.config

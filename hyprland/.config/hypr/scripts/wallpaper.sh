@@ -9,7 +9,7 @@ mkdir -p "$cache_dir" "$conf_dir" "$wall_dir"
 
 pick_random() {
     local img
-    img=$(find "$wall_dir" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' -o -iname '*.webp' \) | shuf -n 1)
+    img=$(find "$wall_dir" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.gif' \) | shuf -n 1)
     if [[ -z "$img" ]]; then
         notify-send -u critical "Wallpaper" "No images found in $wall_dir"
         exit 1
@@ -45,8 +45,10 @@ set_wallpaper() {
         exit 1
     }
 
-    # wallust colors
-    wallust run "$img" -p 2>/dev/null &
+    # wallust colors (skip gifs)
+    if [[ ! "$img" =~ \.gif$ ]]; then
+        wallust run "$img" -p 2>/dev/null &
+    fi
 
     # reload waybar
     sleep 0.5
