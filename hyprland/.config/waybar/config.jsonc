@@ -79,7 +79,7 @@
       "brave": "",
       "mpv": ""
     },
-    "ignored-players": ["firefox"]
+    "ignored-players": ["firefox", "chromium", "brave", "chrome"]
   },
   "custom/brightness": {
     "exec": "brightnessctl | grep -oP '\\d+%'",
