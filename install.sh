@@ -53,7 +53,6 @@ PACMAN_PACKAGES=(
   "ripgrep"
   "fd"
   "ntfs-3g"
-
   # Hyprland & Wayland Ecosystem
   "hyprland"
   "waybar"
@@ -150,6 +149,7 @@ AUR_PACKAGES=(
   "nwg-look"
   "ueberzugpp"
   "qps"
+  "ani-cli"
 )
 
 sudo mkdir -p /mnt/codes
