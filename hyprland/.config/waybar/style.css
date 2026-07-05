@@ -26,6 +26,18 @@ window#waybar > box {
   margin: 3px 4px;
 }
 
+#custom-menu {
+  background: transparent;
+  padding: 2px 10px;
+  margin: 0 1px;
+  font-size: 13px;
+  color: #c2c1ff;
+}
+
+#custom-menu:hover {
+  color: #e5e1e7;
+}
+
 #workspaces {
   background: transparent;
   padding: 0 2px;
