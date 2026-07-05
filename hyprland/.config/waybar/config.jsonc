@@ -64,7 +64,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "nm-connection-editor",
+    "on-click": "nmtui",
   },
   "custom/brightness": {
     "exec": "brightnessctl | grep -oP '\\d+%'",
