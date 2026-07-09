@@ -95,6 +95,7 @@ hl.bind(kbEditor,   hl.dsp.exec_cmd(editor))
 hl.bind("SUPER + G", hl.dsp.exec_cmd("github-desktop"))
 hl.bind(kbFileExplorer,   hl.dsp.exec_cmd(fileExplorer))
 hl.bind("SUPER + ALT + E",   hl.dsp.exec_cmd("nemo"))
+hl.bind("ALT + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-waybar.sh"))
 hl.bind("CTRL + ALT + Escape", hl.dsp.exec_cmd("qps"))
 hl.bind("CTRL + ALT + V",      hl.dsp.exec_cmd("pavucontrol"))
 
