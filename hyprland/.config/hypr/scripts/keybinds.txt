@@ -76,8 +76,11 @@ SUPER + Period          Emoji picker
 ALT + W                 Wallpaper picker (fzf + preview)
 SHIFT + ALT + W         Random wallpaper (fade transition)
 
+󰟸  Waybar
+ALT + T                 Toggle waybar
+ALT + SHIFT + T         Cycle waybar position (top/bottom/left/right)
+
 󰟸  Utilities
-SUPER + Q               Close window
 ALT + H                 This help
 SUPER + ALT + E         Nemo file manager
 CTRL + ALT + Escape     QPS process manager
