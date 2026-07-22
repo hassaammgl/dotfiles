@@ -26,4 +26,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("awww-daemon")
     -- reuse last wallpaper if current symlink exists, otherwise random
     hl.exec_cmd("bash -c 'img=~/Pictures/Wallpapers/current; [[ -f \"$img\" || -L \"$img\" ]] && ~/.config/hypr/scripts/wallpaper.sh file \"$img\" || ~/.config/hypr/scripts/wallpaper.sh'")
+    -- ensure OSD is up after wallpaper script (in case it was not yet)
+    hl.exec_cmd("bash -c 'pgrep -x swayosd-server >/dev/null || swayosd-server &'")
 end)

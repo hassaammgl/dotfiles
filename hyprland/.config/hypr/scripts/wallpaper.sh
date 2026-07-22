@@ -44,11 +44,8 @@ reload_themed_apps() {
         disown
     fi
 
-    if command -v swayosd-server &>/dev/null; then
-        killall swayosd-server 2>/dev/null || true
-        swayosd-server >/dev/null 2>&1 &
-        disown
-    fi
+    # Do not restart swayosd-server here — killing it breaks volume keys
+    # until the next login. colors.css is picked up on the next OSD show.
 }
 
 apply_wallust() {
