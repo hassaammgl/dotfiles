@@ -1,99 +1,152 @@
 configuration {
-  icon-theme: "Papirus";
-  display-drun: " ";
-  drun-display-format: "{icon} {name}";
-  font: "JetBrainsMono Nerd Font 12";
+  modi: "drun,run,window";
   show-icons: true;
+  icon-theme: "Papirus-Dark";
+  font: "JetBrainsMono Nerd Font 13";
+  display-drun: "󰣇 ";
+  display-run: "󰆍 ";
+  display-window: "󰖯 ";
+  drun-display-format: "{icon}\t{name}";
+  window-format: "{w}\t{c}\t{t}";
+  hover-select: true;
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
 }
 
 * {
-  background:     #261C1B;
-  background-color: #261C1B;
-  foreground:     #F8ECE7;
-  text-color:     #F8ECE7;
-  lightbg:        #544746;
-  border-color:   #A59994;
-  spacing:        2;
+  bg:      #14141B;
+  bg-alt:  #3F3E49;
+  fg:      #F7EEEF;
+  fg-dim:  #A49B9C;
+  accent:  #50898D;
+  urgent:  #3A4560;
+  border:  #A49B9C;
+
+  background-color: transparent;
+  text-color: @fg;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
 }
 
 window {
-  background-color: #261C1B;
-  border: 1px;
-  border-color: #A59994;
-  border-radius: 10;
-  padding: 6px;
-  width: 40%;
+  location: center;
+  anchor: center;
+  fullscreen: false;
+  width: 520px;
+  x-offset: 0;
+  y-offset: -40px;
+  background-color: @bg;
+  border: 2px solid;
+  border-color: @accent;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+mainbox {
+  children: [ inputbar, listview, mode-switcher ];
+  spacing: 12px;
+  background-color: transparent;
 }
 
 inputbar {
-  background-color: #544746;
-  border-radius: 8;
-  padding: 6px 12px;
-  spacing: 8px;
+  background-color: @bg-alt;
+  border-radius: 12px;
+  padding: 12px 16px;
+  spacing: 12px;
   children: [ prompt, entry ];
 }
 
 prompt {
-  text-color: #94827E;
-  font: "JetBrainsMono Nerd Font 14";
+  text-color: @accent;
+  font: "JetBrainsMono Nerd Font 16";
+  vertical-align: 0.5;
 }
 
 entry {
-  text-color: #F8ECE7;
+  placeholder: "Search apps, commands…";
+  placeholder-color: @fg-dim;
+  text-color: @fg;
   font: "JetBrainsMono Nerd Font 14";
-  placeholder: "Search...";
-  placeholder-color: #A59994;
+  cursor: text;
+  vertical-align: 0.5;
 }
 
 listview {
-  background-color: #261C1B;
-  border-radius: 8;
-  spacing: 2px;
-  padding: 4px 0;
+  lines: 8;
+  columns: 1;
+  fixed-height: true;
+  dynamic: true;
+  scrollbar: false;
+  spacing: 4px;
+  background-color: transparent;
 }
 
 element {
+  padding: 10px 14px;
+  spacing: 14px;
+  border-radius: 12px;
   background-color: transparent;
-  text-color: #F8ECE7;
-  border-radius: 6;
-  padding: 8px 12px;
+  text-color: @fg;
+  children: [ element-icon, element-text ];
 }
 
-element selected {
-  background-color: #544746;
-  text-color: #94827E;
+element normal.normal,
+element alternate.normal {
+  background-color: transparent;
+  text-color: @fg;
+}
+
+element selected.normal,
+element selected.active {
+  background-color: @accent;
+  text-color: @bg;
+}
+
+element selected.urgent {
+  background-color: @urgent;
+  text-color: @bg;
 }
 
 element-icon {
-  size: 24px;
-}
-
-element-text {
-  text-color: inherit;
-  vertical-align: 0.5;
-  horizontal-align: 0.0;
-}
-
-element alternate {
+  size: 28px;
+  cursor: inherit;
   background-color: transparent;
 }
 
-element urgent {
-  text-color: #644244;
+element-text {
+  vertical-align: 0.5;
+  horizontal-align: 0.0;
+  text-color: inherit;
+  cursor: inherit;
+  background-color: transparent;
 }
 
-scrollbar {
-  width: 4px;
-  handle-width: 4px;
-  handle-color: #544746;
+mode-switcher {
+  spacing: 8px;
+  background-color: transparent;
+}
+
+button {
+  padding: 8px 0;
+  border-radius: 10px;
+  background-color: @bg-alt;
+  text-color: @fg-dim;
+  horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @accent;
+  text-color: @bg;
 }
 
 message {
-  background-color: #544746;
-  border-radius: 8;
-  padding: 6px;
+  background-color: @bg-alt;
+  border-radius: 12px;
+  padding: 10px 14px;
 }
 
 textbox {
-  text-color: #A59994;
+  text-color: @fg-dim;
+  background-color: transparent;
 }
