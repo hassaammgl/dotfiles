@@ -237,8 +237,6 @@ if ! docker ps -a --format '{{.Names}}' | grep -q '^searxng$'; then
     searxng/searxng:latest
 fi
 
-# (Caelestia removed — using standalone config)
-
 # 8. Stow Dotfiles
 echo "-> Creating symlinks with GNU Stow..."
 if [ -d "$HOME/dotfiles" ]; then

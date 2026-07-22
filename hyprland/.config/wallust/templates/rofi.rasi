@@ -7,26 +7,26 @@ configuration {
 }
 
 * {
-  background:     {background};
-  background-color: {background};
-  foreground:     {foreground};
-  text-color:     {foreground};
-  lightbg:        {color0};
-  border-color:   {color8};
+  background:     {{background}};
+  background-color: {{background}};
+  foreground:     {{foreground}};
+  text-color:     {{foreground}};
+  lightbg:        {{color0}};
+  border-color:   {{color8}};
   spacing:        2;
 }
 
 window {
-  background-color: {background};
+  background-color: {{background}};
   border: 1px;
-  border-color: {color8};
+  border-color: {{color8}};
   border-radius: 10;
   padding: 6px;
   width: 40%;
 }
 
 inputbar {
-  background-color: {color0};
+  background-color: {{color0}};
   border-radius: 8;
   padding: 6px 12px;
   spacing: 8px;
@@ -34,19 +34,19 @@ inputbar {
 }
 
 prompt {
-  text-color: {color4};
+  text-color: {{color4}};
   font: "JetBrainsMono Nerd Font 14";
 }
 
 entry {
-  text-color: {foreground};
+  text-color: {{foreground}};
   font: "JetBrainsMono Nerd Font 14";
   placeholder: "Search...";
-  placeholder-color: {color8};
+  placeholder-color: {{color8}};
 }
 
 listview {
-  background-color: {background};
+  background-color: {{background}};
   border-radius: 8;
   spacing: 2px;
   padding: 4px 0;
@@ -54,14 +54,14 @@ listview {
 
 element {
   background-color: transparent;
-  text-color: {foreground};
+  text-color: {{foreground}};
   border-radius: 6;
   padding: 8px 12px;
 }
 
 element selected {
-  background-color: {color0};
-  text-color: {color4};
+  background-color: {{color0}};
+  text-color: {{color4}};
 }
 
 element-icon {
@@ -79,21 +79,21 @@ element alternate {
 }
 
 element urgent {
-  text-color: {color1};
+  text-color: {{color1}};
 }
 
 scrollbar {
   width: 4px;
   handle-width: 4px;
-  handle-color: {color0};
+  handle-color: {{color0}};
 }
 
 message {
-  background-color: {color0};
+  background-color: {{color0}};
   border-radius: 8;
   padding: 6px;
 }
 
 textbox {
-  text-color: {color8};
+  text-color: {{color8}};
 }

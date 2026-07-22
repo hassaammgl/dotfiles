@@ -1,3 +1,5 @@
+@import "colors.css";
+
 * {
   border: none;
   border-radius: 0;
@@ -20,7 +22,7 @@ window#waybar > box {
 .modules-left,
 .modules-center,
 .modules-right {
-  background: #1c1b1f;
+  background: @color0;
   border-radius: 12px;
   padding: 2px 4px;
   margin: 3px 4px;
@@ -31,11 +33,11 @@ window#waybar > box {
   padding: 2px 10px;
   margin: 0 1px;
   font-size: 13px;
-  color: #c2c1ff;
+  color: @color4;
 }
 
 #custom-menu:hover {
-  color: #e5e1e7;
+  color: @foreground;
 }
 
 #workspaces {
@@ -46,7 +48,7 @@ window#waybar > box {
 #workspaces button {
   all: initial;
   background: transparent;
-  color: #c8c5d1;
+  color: @color8;
   padding: 2px 8px;
   margin: 0 1px;
   min-width: 12px;
@@ -55,8 +57,8 @@ window#waybar > box {
 }
 
 #workspaces button.active {
-  background: #c2c1ff;
-  color: #131317;
+  background: @color4;
+  color: @background;
 }
 
 #workspaces button.empty {
@@ -64,19 +66,19 @@ window#waybar > box {
 }
 
 #workspaces button:hover {
-  background: #2a292e;
+  background: @color15;
 }
 
 #mpris {
   background: transparent;
-  color: #c2c1ff;
+  color: @color4;
   padding: 2px 8px;
   font-size: 11px;
 }
 
 #clock {
   background: transparent;
-  color: #e5e1e7;
+  color: @foreground;
   padding: 2px 10px;
   font-size: 11px;
 }
@@ -94,7 +96,7 @@ window#waybar > box {
   margin: 0 1px;
   min-width: 8px;
   font-size: 11px;
-  color: #e5e1e7;
+  color: @foreground;
 }
 
 #custom-power {
@@ -102,7 +104,7 @@ window#waybar > box {
   padding: 2px 10px;
   margin: 0 1px;
   font-size: 11px;
-  color: #f38ba8;
+  color: @color1;
 }
 
 #custom-expand-icon {
@@ -111,14 +113,14 @@ window#waybar > box {
 }
 
 tooltip {
-  background: #1c1b1f;
-  border: 1px solid #2a292e;
+  background: @color0;
+  border: 1px solid @color15;
   border-radius: 8px;
   padding: 6px;
 }
 
 tooltip label {
-  color: #e5e1e7;
+  color: @foreground;
 }
 
 .hidden {

@@ -19,10 +19,11 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("mpris-proxy")
 
     hl.exec_cmd("mako")
+    hl.exec_cmd("swayosd-server")
     hl.exec_cmd("waybar")
 
-    -- wallpaper daemon + set initial wallpaper
+    -- wallpaper daemon + set initial wallpaper (also runs wallust)
     hl.exec_cmd("awww-daemon")
     -- reuse last wallpaper if current symlink exists, otherwise random
-    hl.exec_cmd("bash -c 'img=~/Pictures/Wallpapers/current; [[ -f \"$img\" ]] && ~/.config/hypr/scripts/wallpaper.sh file \"$img\" || ~/.config/hypr/scripts/wallpaper.sh'")
+    hl.exec_cmd("bash -c 'img=~/Pictures/Wallpapers/current; [[ -f \"$img\" || -L \"$img\" ]] && ~/.config/hypr/scripts/wallpaper.sh file \"$img\" || ~/.config/hypr/scripts/wallpaper.sh'")
 end)

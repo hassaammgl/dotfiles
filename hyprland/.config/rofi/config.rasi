@@ -6,29 +6,27 @@ configuration {
   show-icons: true;
 }
 
-@theme "glue_pro_blue"
-
 * {
-  background:     #131317;
-  background-color: #131317;
-  foreground:     #e5e1e7;
-  text-color:     #e5e1e7;
-  lightbg:        #1c1b1f;
-  border-color:   #201f23;
+  background:     #261C1B;
+  background-color: #261C1B;
+  foreground:     #F8ECE7;
+  text-color:     #F8ECE7;
+  lightbg:        #544746;
+  border-color:   #A59994;
   spacing:        2;
 }
 
 window {
-  background-color: #131317;
+  background-color: #261C1B;
   border: 1px;
-  border-color: #201f23;
+  border-color: #A59994;
   border-radius: 10;
   padding: 6px;
   width: 40%;
 }
 
 inputbar {
-  background-color: #1c1b1f;
+  background-color: #544746;
   border-radius: 8;
   padding: 6px 12px;
   spacing: 8px;
@@ -36,19 +34,19 @@ inputbar {
 }
 
 prompt {
-  text-color: #c2c1ff;
+  text-color: #94827E;
   font: "JetBrainsMono Nerd Font 14";
 }
 
 entry {
-  text-color: #e5e1e7;
+  text-color: #F8ECE7;
   font: "JetBrainsMono Nerd Font 14";
   placeholder: "Search...";
-  placeholder-color: #c8c5d1;
+  placeholder-color: #A59994;
 }
 
 listview {
-  background-color: #131317;
+  background-color: #261C1B;
   border-radius: 8;
   spacing: 2px;
   padding: 4px 0;
@@ -56,14 +54,14 @@ listview {
 
 element {
   background-color: transparent;
-  text-color: #e5e1e7;
+  text-color: #F8ECE7;
   border-radius: 6;
   padding: 8px 12px;
 }
 
 element selected {
-  background-color: #2a292e;
-  text-color: #c2c1ff;
+  background-color: #544746;
+  text-color: #94827E;
 }
 
 element-icon {
@@ -81,21 +79,21 @@ element alternate {
 }
 
 element urgent {
-  text-color: #ffb4ab;
+  text-color: #644244;
 }
 
 scrollbar {
   width: 4px;
   handle-width: 4px;
-  handle-color: #2a292e;
+  handle-color: #544746;
 }
 
 message {
-  background-color: #1c1b1f;
+  background-color: #544746;
   border-radius: 8;
   padding: 6px;
 }
 
 textbox {
-  text-color: #c8c5d1;
+  text-color: #A59994;
 }

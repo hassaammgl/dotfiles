@@ -9,6 +9,18 @@ CSS_ACTIVE="$HOME/.config/waybar/style.css"
 
 current=$(grep -oP '"position":\s*"\K[^"]+' "$CONFIG")
 
+# Persist live edits into the matching template before switching
+case "$current" in
+    left|right)
+        cp "$CONFIG" "$CONFIG_VERTICAL"
+        cp "$CSS_ACTIVE" "$CSS_VERTICAL"
+        ;;
+    top|bottom)
+        cp "$CONFIG" "$CONFIG_HORIZONTAL"
+        cp "$CSS_ACTIVE" "$CSS_HORIZONTAL"
+        ;;
+esac
+
 case "$current" in
     top)    next="bottom" ;;
     bottom) next="left"   ;;

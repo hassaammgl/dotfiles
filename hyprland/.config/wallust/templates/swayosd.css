@@ -1,0 +1,5 @@
+@define-color background-color {color0};
+@define-color border-color {color4};
+@define-color label {foreground};
+@define-color image {color4};
+@define-color progress {color4};

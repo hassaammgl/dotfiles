@@ -1,11 +1,11 @@
-[wallust]
-wallpaper = "~/Pictures/Wallpapers/current"
-backend = "material"
-palette = 16
+# wallust v3 — colors from wallpaper
+backend = "fastresize"
+color_space = "lch"
+palette = "dark16"
+check_contrast = true
 
-[scheme]
-split = true
-
-[file]
-rofi = { path = "~/.config/rofi/config.rasi", template = "~/.config/wallust/templates/rofi.rasi" }
-waybar = { path = "~/.config/waybar/style.css", template = "~/.config/wallust/templates/waybar.css" }
+[templates]
+waybar = { src = 'colors-waybar.css', dst = '~/.config/waybar/colors.css', pywal = true }
+rofi   = { src = 'rofi.rasi',         dst = '~/.config/rofi/config.rasi',  pywal = false }
+mako   = { src = 'mako',              dst = '~/.config/mako/config',       pywal = true }
+swayosd = { src = 'swayosd.css',      dst = '~/.config/swayosd/colors.css', pywal = true }
