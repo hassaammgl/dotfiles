@@ -117,6 +117,7 @@ PACMAN_PACKAGES=(
   "zenity"
   "pavucontrol"
   "network-manager-applet"
+  "webapp-manager"
 
   # Network / Bluetooth
   "networkmanager"
