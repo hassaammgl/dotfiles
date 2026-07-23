@@ -2,7 +2,7 @@
   "reload_style_on_change": true,
   "name": "waybar",
   "layer": "top",
-  "position": "left",
+  "position": "right",
   "spacing": 0,
   "width": 40,
   "modules-left": ["custom/menu", "hyprland/workspaces"],

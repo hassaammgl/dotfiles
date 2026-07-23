@@ -1,8 +1,14 @@
 #!/bin/bash
 
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="${DOTFILES_DIR:-$SCRIPT_DIR}"
+
 echo "=========================================="
 echo "🚀 Starting System Setup for Dotfiles..."
 echo "=========================================="
+echo "   Dotfiles: $DOTFILES_DIR"
 
 # 1. Ask for sudo password upfront
 sudo -v
@@ -18,7 +24,7 @@ echo "-> Updating system repositories..."
 sudo pacman -Syu --noconfirm
 
 echo "-> Installing base dependencies..."
-sudo pacman -S --needed --noconfirm base-devel git stow curl wget unzip
+sudo pacman -S --needed --noconfirm base-devel git stow curl wget unzip openssl
 
 # 2. Install YAY (AUR Helper)
 if ! command -v yay &>/dev/null; then
@@ -35,112 +41,133 @@ fi
 # 3. Define packages to install
 
 PACMAN_PACKAGES=(
+  # Terminals & shells
   "kitty"
+  "wezterm"
+  "alacritty"
+  "foot"
   "tmux"
-  "neovim"
   "fish"
   "starship"
+
+  # Editors & CLI
+  "neovim"
   "fastfetch"
   "btop"
-  "wl-clipboard"
-  "unzip"
   "eza"
-  "loupe"
   "fzf"
   "zoxide"
-  "git"
   "bat"
   "ripgrep"
   "fd"
-  "ntfs-3g"
+  "jq"
+  "less"
+  "direnv"
+  "lazygit"
+  "lazydocker"
+  "chafa"
+  "imagemagick"
+
   # Hyprland & Wayland Ecosystem
   "hyprland"
   "waybar"
   "mako"
   "rofi"
+  "rofi-emoji"
+  "fuzzel"
   "uwsm"
   "awww"
-  "wallust"
   "xdg-desktop-portal"
   "xdg-desktop-portal-hyprland"
+  "xdg-desktop-portal-gtk"
+  "xorg-xwayland"
   "polkit-gnome"
   "qt5-wayland"
   "qt6-wayland"
+  "qt6ct"
+  "kvantum"
   "grim"
   "slurp"
+  "swappy"
   "hyprlock"
+  "hyprpicker"
   "brightnessctl"
   "wf-recorder"
-  "hyprpicker"
   "cliphist"
   "ydotool"
+  "wev"
   "gnome-keyring"
   "gammastep"
+  "geoclue"
   "trash-cli"
-  "chafa"
-  "jq"
+  "libnotify"
+  "wl-clipboard"
+
+  # Theming / icons (Bibata cursor is AUR — see AUR_PACKAGES)
+  "papirus-icon-theme"
+  "adwaita-icon-theme"
+  "gsettings-desktop-schemas"
+  "dconf"
+
+  # File managers & GUI helpers
+  "nautilus"
+  "nemo"
+  "loupe"
+  "yad"
+  "zenity"
+  "pavucontrol"
+  "network-manager-applet"
+
+  # Network / Bluetooth
+  "networkmanager"
+  "bluez"
+  "bluez-utils"
 
   # Audio
   "pipewire"
   "pipewire-pulse"
   "pipewire-alsa"
+  "pipewire-jack"
   "wireplumber"
+  "playerctl"
 
-  # Browsers
+  # Browsers & media
   "firefox"
+  "vlc"
+  "vlc-plugins-all"
+  "mpv"
+  "imv"
+  "cava"
+  "feh"
 
-  # General Software & Tools
+  # Dev / runtime
   "python"
   "python-pip"
   "uv"
-  "lazygit"
-  "lazydocker"
-  "less"
+  "git"
+  "unzip"
+  "ntfs-3g"
 
   # Fonts
   "ttf-victor-mono-nerd"
   "ttf-jetbrains-mono-nerd"
   "noto-fonts"
   "noto-fonts-emoji"
+  "noto-fonts-cjk"
 
-  # Containerization
+  # Containers & desktop extras
   "docker"
   "docker-compose"
-
-  # App Store & Sandboxing
   "flatpak"
   "gnome-software"
-
-  # CLI Utilities & Media
-  "vlc"
-  "vlc-plugins-all"
-  "mpv"
-  "imv"
-  "cava"
-
-  # Missing tools from configs
-  "playerctl"
-  "pavucontrol"
-  "nautilus"
-  "foot"
-  "direnv"
-  "feh"
-  "imagemagick"
-  "swappy"
-  "wev"
-  "yad"
-  "zenity"
-  "geoclue"
-  "papirus-icon-theme"
-  "libnotify"
-  "network-manager-applet"
-  "bluez-utils"
-  "xdg-utils"
   "cups"
+  "xdg-utils"
 )
 
 AUR_PACKAGES=(
   "swayosd-git"
+  "wallust"
+  "bibata-cursor-theme"
   "google-chrome"
   "brave-bin"
   "visual-studio-code-bin"
@@ -175,7 +202,8 @@ if [ ! -d "$HOME/.nvm" ]; then
   echo "Installing NVM & Node.js..."
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  # shellcheck disable=SC1091
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   nvm install node
   nvm use node
 fi
@@ -190,24 +218,36 @@ fi
 if ! command -v rustc &>/dev/null; then
   echo "Installing Rust & Cargo..."
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  # shellcheck disable=SC1091
   source "$HOME/.cargo/env"
 fi
+
+# Ensure cargo is on PATH for this session
+# shellcheck disable=SC1091
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # installing tree-sitter
 cargo install tree-sitter-cli
 
 # 5. Enable System Services
 echo "-> Enabling System Services..."
+sudo systemctl enable --now NetworkManager.service
+sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now docker.service
+sudo systemctl enable --now cups.service
 sudo usermod -aG docker "$USER"
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
+# Ensure common media dirs exist (wf-recorder, wallpapers, etc.)
+mkdir -p "$HOME/Videos" "$HOME/Pictures/Wallpapers" "$HOME/Downloads"
+
 # pulling images (will not auto-start dbs)
+# Use sudo — docker group only applies after re-login
 echo "-> Pulling Docker images..."
-docker pull mysql:8
-docker pull redis:7
-docker pull postgres:16
-docker pull searxng/searxng:latest
+sudo docker pull mysql:8
+sudo docker pull redis:7
+sudo docker pull postgres:16
+sudo docker pull searxng/searxng:latest
 
 # Setup Flatpak flathub repo
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -227,9 +267,9 @@ EOF
 fi
 
 # Start SearXNG with auto-restart on boot
-if ! docker ps -a --format '{{.Names}}' | grep -q '^searxng$'; then
+if ! sudo docker ps -a --format '{{.Names}}' | grep -q '^searxng$'; then
   echo "   Starting SearXNG container..."
-  docker run -d \
+  sudo docker run -d \
     --name searxng \
     --restart always \
     -p 8080:8080 \
@@ -239,10 +279,14 @@ fi
 
 # 8. Stow Dotfiles
 echo "-> Creating symlinks with GNU Stow..."
-if [ -d "$HOME/dotfiles" ]; then
-  cd "$HOME/dotfiles" || exit 1
-  packages=(kitty wezterm tmux nvim hyprland btop fastfetch fish foot starship.toml cava lazygit lazydocker mpv imv alacritty vlc)
+if [ -d "$DOTFILES_DIR" ]; then
+  cd "$DOTFILES_DIR" || exit 1
+  packages=(kitty wezterm tmux nvim hyprland btop fastfetch fish foot starship.toml cava lazygit lazydocker imv alacritty)
   for pkg in "${packages[@]}"; do
+    if [ ! -d "$DOTFILES_DIR/$pkg" ]; then
+      echo "   Skipping $pkg (no package directory)"
+      continue
+    fi
     echo "   Stowing $pkg..."
     stow --restow "$pkg" 2>/dev/null || {
       echo "   Conflict detected in $pkg — attempting backup and retry..."
@@ -252,6 +296,11 @@ if [ -d "$HOME/dotfiles" ]; then
       stow "$pkg"
     }
   done
+
+  # Hypr scripts must be executable after stow
+  if [ -d "$HOME/.config/hypr/scripts" ]; then
+    chmod +x "$HOME/.config/hypr/scripts"/*.sh 2>/dev/null || true
+  fi
 
   # Clone Wallpapers from GitHub instead of stowing
   echo "   Cloning Wallpapers to ~/Pictures/Wallpapers..."
@@ -268,12 +317,12 @@ if [ -d "$HOME/dotfiles" ]; then
     git clone "$WALLPAPER_REPO" "$HOME/Pictures/Wallpapers"
   fi
 else
-  echo "Warning: ~/dotfiles directory not found. Skipping Stow."
+  echo "Warning: $DOTFILES_DIR directory not found. Skipping Stow."
 fi
 
 # Copy aliases and fix bad fzf paths inside it
 mkdir -p ~/.config
-cp ./aliasis.bash ~/.config/aliasis.bash
+cp "$DOTFILES_DIR/aliasis.bash" ~/.config/aliasis.bash
 sed -i 's|source /usr/share/fzf/key-bindings.bash||' ~/.config/aliasis.bash
 sed -i 's|source /usr/share/fzf/completion.bash||' ~/.config/aliasis.bash
 

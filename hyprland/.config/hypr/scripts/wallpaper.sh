@@ -29,6 +29,33 @@ set_with_awww() {
     awww img "$img" --transition-type fade --transition-duration 2
 }
 
+# Apply wallust palette to Hyprland window/group borders (live, no reload).
+# Reads color4 (accent) + color8 (muted) from the waybar colors.css wallust writes.
+reload_hypr_borders() {
+    local css="$HOME/.config/waybar/colors.css"
+    [[ -f "$css" ]] || return 0
+
+    local active inactive
+    active=$(sed -n 's/.*@define-color color4 #\([0-9A-Fa-f]\{6\}\).*/\1/p' "$css" | head -1)
+    inactive=$(sed -n 's/.*@define-color color8 #\([0-9A-Fa-f]\{6\}\).*/\1/p' "$css" | head -1)
+    [[ -n "$active" && -n "$inactive" ]] || return 0
+
+    # hyprland-lua rejects `hyprctl keyword` — must use eval + hl.config
+    # Match previous alpha: active ~90%, inactive very soft
+    hyprctl eval "hl.config({
+        general = { col = {
+            active_border = \"rgba(${active}e6)\",
+            inactive_border = \"rgba(${inactive}11)\",
+        }},
+        group = { col = {
+            border_active = \"rgba(${active}e6)\",
+            border_inactive = \"rgba(${inactive}11)\",
+            border_locked_active = \"rgba(${active}e6)\",
+            border_locked_inactive = \"rgba(${inactive}11)\",
+        }},
+    })" >/dev/null
+}
+
 reload_themed_apps() {
     killall -SIGUSR2 waybar 2>/dev/null || true
 
@@ -46,6 +73,8 @@ reload_themed_apps() {
 
     # Do not restart swayosd-server here — killing it breaks volume keys
     # until the next login. colors.css is picked up on the next OSD show.
+
+    reload_hypr_borders
 }
 
 apply_wallust() {
