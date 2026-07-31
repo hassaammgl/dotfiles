@@ -37,3 +37,17 @@ if status is-interactive
         echo -en "\e]133;A\e\\"
     end
 end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/ratx86/miniconda3/bin/conda
+    eval /home/ratx86/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/ratx86/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/home/ratx86/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/ratx86/miniconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+
