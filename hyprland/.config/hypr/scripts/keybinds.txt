@@ -1,6 +1,7 @@
 󰘴  General
 SUPER + Space           Launcher (rofi)
 SUPER + Return          Terminal (kitty)
+CTRL + T                Terminal + tmux sessions (kitty)
 SUPER + B               Browser (brave)
 SUPER + C               Editor (code)
 SUPER + E               File explorer (nautilus)

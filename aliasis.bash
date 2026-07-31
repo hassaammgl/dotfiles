@@ -22,6 +22,15 @@ alias f='fzf'
 alias ff='fzf --preview "bat --color=always {}"'
 
 ###########
+# TMUX
+###########
+
+alias t='tmux'
+alias tn='tmux new -s'
+alias ta='tmux attach -t'
+alias tl='tmux ls'
+
+###########
 # ZOXIDE (smart cd)
 ###########
 

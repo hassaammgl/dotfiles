@@ -1,19 +1,10 @@
-vim.keymap.set("n", "<leader>ih", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { desc = "Toggle inlay hints" })
+vim.keymap.set("n", "<leader>um", function()
+  require("utils.moods").pick()
+end, { desc = "Switch mood theme" })
 
-vim.keymap.set("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "open neotree" })
-vim.keymap.set("i", "<C-o>", "<Esc><cmd>Neotree focus<cr>", { desc = "open neotree" })
+vim.keymap.set("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus Neo-tree" })
 
-local float_term = nil
-vim.keymap.set("n", "<leader>tf", function()
-  if not float_term then
-    float_term = require("toggleterm.terminal").Terminal:new({
-      direction = "float",
-      close_on_exit = true,
-    })
-  end
-  float_term:toggle()
-end, {
-  desc = "Floating terminal",
-})
+vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })

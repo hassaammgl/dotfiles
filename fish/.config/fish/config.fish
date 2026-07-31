@@ -32,6 +32,12 @@ if status is-interactive
     abbr la 'ls -a'
     abbr lla 'ls -la'
 
+    # tmux
+    abbr t 'tmux'
+    abbr tn 'tmux new -s'
+    abbr ta 'tmux attach -t'
+    abbr tl 'tmux ls'
+
     # For jumping between prompts in foot terminal
     function mark_prompt_start --on-event fish_prompt
         echo -en "\e]133;A\e\\"

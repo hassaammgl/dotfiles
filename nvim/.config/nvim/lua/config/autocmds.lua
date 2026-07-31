@@ -1,8 +1,15 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
--- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+-- Soften huge files before plugins pile on
+vim.api.nvim_create_autocmd("BufReadPre", {
+  group = vim.api.nvim_create_augroup("bigfile_guard", { clear = true }),
+  callback = function(ev)
+    local ok, size = pcall(vim.fn.getfsize, ev.file)
+    if ok and size > 300 * 1024 then
+      vim.b[ev.buf].completion = false
+      vim.opt_local.swapfile = false
+      vim.opt_local.undofile = false
+    end
+  end,
+})
+
+-- Keep tmux bar colors in sync with nvim moods
+require("utils.moods").setup()

@@ -1,8 +1,9 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Prefer Neo-tree over Snacks explorer
+vim.g.lazyvim_explorer = "neo-tree"
 
--- Add any additional options here
-vim.g.root_spec = { "cwd" }
-
--- Set the default colorscheme
-vim.cmd.colorscheme("catppuccin")
+-- Kickstart-ish performance defaults
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.synmaxcol = 240 -- don't highlight mega-long lines
