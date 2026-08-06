@@ -25,6 +25,30 @@ local function theme_path()
   return vim.fn.expand("~/.tmux-theme.conf")
 end
 
+local function state_path()
+  return vim.fn.stdpath("state") .. "/colors_mood"
+end
+
+function M.save(mood)
+  vim.fn.writefile({ mood.id }, state_path())
+end
+
+-- Returns the persisted mood, or nil
+function M.current()
+  local f = io.open(state_path(), "r")
+  if not f then
+    return nil
+  end
+  local id = f:read("*l")
+  f:close()
+  for _, m in ipairs(M.moods) do
+    if m.id == id then
+      return m
+    end
+  end
+  return nil
+end
+
 local function hl_hex(name, key)
   local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
   if not ok or not hl or not hl[key] then
@@ -57,8 +81,10 @@ function M.write_tmux_theme(t)
   local lines = {
     string.format("set -g status-style \"bg=%s,fg=%s\"", t.bg, t.fg),
     string.format(
-      'set -g status-left "#[bg=%s,fg=%s,bold] tmux #S #[default] "',
+      'set -g status-left "#[bg=%s,fg=%s,bold] tmux #S #[default]#{?client_prefix, #[bg=%s,fg=%s,bold] CTRL-f #[default],} "',
       t.accent,
+      t.accent_fg,
+      t.muted,
       t.accent_fg
     ),
     string.format('set -g status-right "#[fg=%s]%%H:%%M "', t.muted),
@@ -94,6 +120,7 @@ end
 function M.apply(mood)
   vim.cmd.colorscheme(mood.colorscheme)
   vim.g.colors_mood = mood.id
+  M.save(mood)
   M.sync_tmux()
   vim.notify(mood.label .. " · " .. mood.desc, vim.log.levels.INFO, { title = "Mood" })
 end

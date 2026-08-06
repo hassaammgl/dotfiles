@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = (require("utils.moods").current() or { colorscheme = "kanagawa" }).colorscheme,
     },
   },
 
