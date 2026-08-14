@@ -1,11 +1,13 @@
 # wallust v3 — colors from wallpaper
-backend = "fastresize"
+backend = "resized"
 color_space = "lch"
 palette = "dark16"
 check_contrast = true
 
 [templates]
-waybar = { src = 'colors-waybar.css', dst = '~/.config/waybar/colors.css', pywal = true }
-rofi   = { src = 'rofi.rasi',         dst = '~/.config/rofi/config.rasi',  pywal = false }
-mako   = { src = 'mako',              dst = '~/.config/mako/config',       pywal = true }
-swayosd = { src = 'swayosd.css',      dst = '~/.config/swayosd/colors.css', pywal = true }
+waybar  = { src = 'colors-waybar.css', dst = '~/.config/waybar/colors.css',   pywal = true }
+rofi    = { src = 'rofi.rasi',         dst = '~/.config/rofi/config.rasi',    pywal = false }
+mako    = { src = 'mako',              dst = '~/.config/mako/config',         pywal = true }
+swayosd = { src = 'swayosd.css',       dst = '~/.config/swayosd/colors.css',  pywal = true }
+hyprlock = { src = 'hyprlock.conf',    dst = '~/.config/hypr/hyprlock.conf',  pywal = false }
+kitty   = { src = 'kitty-colors.conf', dst = '~/.config/kitty/colors.conf',   pywal = true }

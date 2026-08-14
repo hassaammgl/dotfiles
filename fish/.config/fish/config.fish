@@ -44,16 +44,13 @@ if status is-interactive
     end
 end
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if test -f /home/ratx86/miniconda3/bin/conda
-    eval /home/ratx86/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/home/ratx86/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/home/ratx86/miniconda3/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "/home/ratx86/miniconda3/bin" $PATH
+# Lazy conda — eager hook+activate was ~2s on every shell
+function conda
+    functions --erase conda
+    if test -f /home/ratx86/miniconda3/bin/conda
+        eval /home/ratx86/miniconda3/bin/conda "shell.fish" "hook" | source
     end
+    conda $argv
 end
-# <<< conda initialize <<<
+
 

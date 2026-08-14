@@ -92,6 +92,7 @@ SUPER + Period          Emoji picker
 󰟸  Wallpaper
 ALT + W                 Wallpaper picker (fzf + preview)
 SHIFT + ALT + W         Next random wallpaper
+ALT + G                 Video → GIF picker (~/Pictures/WallpaperVideos)
 
 󰟸  Waybar
 ALT + T                 Toggle waybar

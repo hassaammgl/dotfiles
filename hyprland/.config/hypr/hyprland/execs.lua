@@ -21,11 +21,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("mako")
     hl.exec_cmd("swayosd-server")
     hl.exec_cmd("waybar")
-
-    -- wallpaper daemon + set initial wallpaper (also runs wallust)
     hl.exec_cmd("awww-daemon")
-    -- reuse last wallpaper if current symlink exists, otherwise random
-    hl.exec_cmd("bash -c 'img=~/Pictures/Wallpapers/current; [[ -f \"$img\" || -L \"$img\" ]] && ~/.config/hypr/scripts/wallpaper.sh file \"$img\" || ~/.config/hypr/scripts/wallpaper.sh'")
-    -- ensure OSD is up after wallpaper script (in case it was not yet)
-    hl.exec_cmd("bash -c 'pgrep -x swayosd-server >/dev/null || swayosd-server &'")
+
+    -- resolve last wallpaper, run wallust, then reload bars/OSD/borders
+    hl.exec_cmd("~/.config/hypr/scripts/wallpaper.sh restore")
 end)

@@ -93,6 +93,8 @@ PACMAN_PACKAGES=(
   "hyprpicker"
   "brightnessctl"
   "wf-recorder"
+  "ffmpeg"
+  "gifsicle"
   "cliphist"
   "ydotool"
   "wev"
@@ -240,7 +242,7 @@ sudo usermod -aG docker "$USER"
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 # Ensure common media dirs exist (wf-recorder, wallpapers, etc.)
-mkdir -p "$HOME/Videos" "$HOME/Pictures/Wallpapers" "$HOME/Downloads"
+mkdir -p "$HOME/Videos" "$HOME/Pictures/Wallpapers" "$HOME/Pictures/WallpaperVideos" "$HOME/Downloads"
 
 # pulling images (will not auto-start dbs)
 # Use sudo — docker group only applies after re-login

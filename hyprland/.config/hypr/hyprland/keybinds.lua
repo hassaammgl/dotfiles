@@ -110,7 +110,8 @@ hl.bind("CTRL + ALT + R",          hl.dsp.exec_cmd("wf-recorder -f ~/Videos/reco
 hl.bind("SUPER + SHIFT + ALT + R", hl.dsp.exec_cmd("wf-recorder -g \"$(slurp)\" -f ~/Videos/recording_$(date +%s).mp4"))
 hl.bind("SUPER + SHIFT + C",       hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind("ALT + W",          hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-picker.sh"))
-hl.bind("SHIFT + ALT + W",  hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper.sh next"))
+hl.bind("ALT + SHIFT + W",  hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper.sh next"))
+hl.bind("ALT + G",          hl.dsp.exec_cmd("~/.config/hypr/scripts/video-to-gif-picker.sh"))
 
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh mic"), { locked = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh mute"), { locked = true })

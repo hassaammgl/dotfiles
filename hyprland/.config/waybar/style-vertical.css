@@ -9,12 +9,12 @@
 }
 
 window#waybar {
-  background: @color0;
+  background: transparent;
 }
 
 window#waybar > box {
-  background: @color0;
-  /* border-radius: 14px; */
+  background: @background;
+  border-radius: 14px;
   margin: 10px 2px;
   padding: 6px 0;
 }
@@ -22,7 +22,7 @@ window#waybar > box {
 .modules-left,
 .modules-center,
 .modules-right {
-  background: @color0;
+  background: @background;
   border-radius: 12px;
   padding: 4px 2px;
   margin: 4px 3px;
@@ -113,7 +113,7 @@ window#waybar > box {
 }
 
 tooltip {
-  background: @color0;
+  background: @background;
   border: 1px solid @color15;
   border-radius: 8px;
   padding: 6px;
