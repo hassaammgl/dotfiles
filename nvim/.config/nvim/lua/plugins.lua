@@ -93,17 +93,28 @@ require("lazy").setup({
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    -- New main API setup
-    local configs = require("nvim-treesitter")
-    configs.setup({
-      ensure_installed = { "c", "cpp", "java", "python", "lua", "vim", "vimdoc", "bash", "json" },
-      auto_install = true,
-    })
+    local ts = require("nvim-treesitter")
+    pcall(ts.setup)
+    pcall(function()
+      ts.install({
+        "c",
+        "cpp",
+        "java",
+        "javascript",
+        "typescript",
+        "tsx",
+        "python",
+        "lua",
+        "vim",
+        "vimdoc",
+        "bash",
+        "json",
+      })
+    end)
 
-    -- Enable Treesitter highlighting per filetype
     vim.api.nvim_create_autocmd("FileType", {
-      callback = function()
-        pcall(vim.treesitter.start)
+      callback = function(ev)
+        pcall(vim.treesitter.start, ev.buf)
       end,
     })
   end,
@@ -142,46 +153,115 @@ require("lazy").setup({
     },
   },
 
-  -- 5. Native LSP Configuration (Neovim 0.11+)
+  -- 5. LSP — system binaries only (no Mason)
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- Common Keymaps when LSP attaches to a buffer
+      vim.diagnostic.config({
+        virtual_text = { spacing = 2, source = "if_many" },
+        severity_sort = true,
+        signs = true,
+        underline = true,
+      })
+
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(event)
           local opts = { buffer = event.buf }
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
         end,
       })
 
-      -- Clangd fix for unknown c.doxygen/cpp.doxygen filetypes from checkhealth
       vim.lsp.config("clangd", {
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
       })
 
-      -- Lua LSP Setup
-      vim.lsp.config("lua_ls", {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
-          },
-        },
-      })
+      local function enable_if(bins, server)
+        for _, bin in ipairs(bins) do
+          if vim.fn.executable(bin) == 1 then
+            vim.lsp.enable(server)
+            return
+          end
+        end
+      end
 
-      -- Enable Language Servers
-      vim.lsp.enable("clangd")   -- C / C++
-      vim.lsp.enable("pyright")  -- Python (use "basedpyright" if installed)
-      vim.lsp.enable("jdtls")    -- Java
-      vim.lsp.enable("jsonls")   -- JSON
-      vim.lsp.enable("lua_ls")   -- Lua
+      enable_if({ "clangd" }, "clangd")
+      if vim.fn.executable("basedpyright") == 1 then
+        vim.lsp.enable("basedpyright")
+      else
+        enable_if({ "pyright", "pyright-langserver" }, "pyright")
+      end
+      enable_if({ "typescript-language-server" }, "ts_ls")
+      enable_if({ "jdtls" }, "jdtls")
     end,
+  },
+
+  -- 6. Completion (LSP / path / buffer / snippets)
+  {
+    "saghen/blink.cmp",
+    version = "1.*",
+    event = "InsertEnter",
+    opts = {
+      keymap = { preset = "enter" },
+      appearance = { nerd_font_variant = "mono" },
+      completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+    },
+  },
+
+  -- 7. Format on save — uses tools already on PATH
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>F",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        desc = "Format buffer",
+      },
+    },
+    opts = {
+      format_on_save = {
+        timeout_ms = 800,
+        lsp_fallback = true,
+      },
+      formatters_by_ft = {
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        java = { "google-java-format" },
+        python = { "ruff_format", "black", stop_after_first = true },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+      },
+    },
+  },
+
+  -- 8. Editing extras
+  { "echasnovski/mini.pairs", version = "*", opts = {} },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    opts = {},
   },
 })

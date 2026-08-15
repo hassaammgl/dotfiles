@@ -167,8 +167,8 @@ reload_hypr_colors() {
 }
 
 reload_themed_apps() {
-    wait_for_proc waybar || true
     killall -SIGUSR2 waybar 2>/dev/null || true
+    # Quickshell Colors.qml watches ~/.cache/wallust/quickshell.json
 
     if pgrep -x mako >/dev/null 2>&1; then
         timeout 2 makoctl reload >/dev/null 2>&1 || true

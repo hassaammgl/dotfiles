@@ -243,3 +243,9 @@ hl.layer_rule({
     animation = "popin 80%",
     blur = true,
 })
+
+hl.layer_rule({
+    name = "quickshell-blur",
+    match = { namespace = "quickshell" },
+    blur = true,
+})

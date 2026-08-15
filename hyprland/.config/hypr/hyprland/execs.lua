@@ -20,7 +20,7 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("mako")
     hl.exec_cmd("swayosd-server")
-    hl.exec_cmd("waybar")
+    hl.exec_cmd("qs -n")
     hl.exec_cmd("awww-daemon")
 
     -- resolve last wallpaper, run wallust, then reload bars/OSD/borders

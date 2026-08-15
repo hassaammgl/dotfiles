@@ -14,13 +14,13 @@ configuration {
 }
 
 * {
-  bg:      #1B1C1D;
-  bg-alt:  #454749;
-  fg:      #F5EFD2;
-  fg-dim:  #A39C7F;
-  accent:  #9A7573;
-  urgent:  #494D53;
-  border:  #A39C7F;
+  bg:      #141414;
+  bg-alt:  #3F3F3F;
+  fg:      #FBF9F5;
+  fg-dim:  #A8A7A3;
+  accent:  #967772;
+  urgent:  #484848;
+  border:  #A8A7A3;
 
   background-color: transparent;
   text-color: @fg;

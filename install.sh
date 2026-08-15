@@ -71,6 +71,7 @@ PACMAN_PACKAGES=(
   # Hyprland & Wayland Ecosystem
   "hyprland"
   "waybar"
+  "quickshell"
   "mako"
   "rofi"
   "rofi-emoji"

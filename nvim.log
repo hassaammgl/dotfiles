@@ -8,3 +8,5 @@ WRN 2026-07-31T21:54:13.551 ?.11186    socket_watcher_start:184: Failed to remov
 WRN 2026-07-31T21:54:13.551 ?.11186    server_start:197: Failed to start server: no such file or directory: /run/user/1000/
 WRN 2026-08-14T21:52:28.924 ?.13765    socket_watcher_start:184: Failed to remove stale socket /run/user/1000/nvim.13765.0: no such file or directory
 WRN 2026-08-14T21:52:28.924 ?.13765    server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+WRN 2026-08-15T08:41:59.033 ?.98077    socket_watcher_start:184: Failed to remove stale socket /run/user/1000/nvim.98077.0: no such file or directory
+WRN 2026-08-15T08:41:59.033 ?.98077    server_start:197: Failed to start server: no such file or directory: /run/user/1000/

@@ -42,10 +42,6 @@ function M.apply()
   local c = load_colors()
   vim.o.termguicolors = true
   vim.o.background = "dark"
-  vim.cmd("highlight clear")
-  if vim.fn.exists("syntax_on") == 1 then
-    vim.cmd("syntax reset")
-  end
   vim.g.colors_name = "wallust"
 
   for i = 0, 15 do
@@ -181,23 +177,14 @@ function M.apply()
 end
 
 function M.setup()
-  M.apply()
+  pcall(M.apply)
 
   vim.api.nvim_create_autocmd("FocusGained", {
     group = vim.api.nvim_create_augroup("wallust_theme", { clear = true }),
-    callback = M.apply,
+    callback = function()
+      pcall(M.apply)
+    end,
   })
-
-  local dir = vim.fn.fnamemodify(path, ":h")
-  vim.fn.mkdir(dir, "p")
-  local watcher = vim.uv.new_fs_event()
-  if watcher then
-    watcher:start(dir, {}, function(_, filename)
-      if filename == "nvim.lua" then
-        vim.schedule(M.apply)
-      end
-    end)
-  end
 end
 
 return M
