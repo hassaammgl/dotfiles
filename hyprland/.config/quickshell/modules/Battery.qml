@@ -46,5 +46,6 @@ BarButton {
         return "󰁺";
     }
     label: `${percent}%`
+    labelOnHover: false
     iconColor: percent <= 15 && !charging ? Colors.color1 : Colors.foreground
 }

@@ -1,7 +1,7 @@
 font=JetBrainsMono Nerd Font 11
-background-color=#141414
-text-color=#FBF9F5
-border-color=#967772
+background-color=#151717
+text-color=#CAE6E2
+border-color=#668953
 border-radius=10
 border-size=2
 default-timeout=4000
@@ -23,16 +23,16 @@ ignore-timeout=0
 outer-margin=12
 
 [urgency=low]
-border-color=#A8A7A3
+border-color=#78948F
 default-timeout=3000
 
 [urgency=normal]
-border-color=#967772
+border-color=#668953
 default-timeout=4000
 
 [urgency=critical]
-background-color=#141414
-text-color=#484848
-border-color=#484848
+background-color=#151717
+text-color=#455A7D
+border-color=#455A7D
 border-size=2
 default-timeout=0

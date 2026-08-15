@@ -3,13 +3,14 @@ import Quickshell.Services.SystemTray
 import QtQuick
 import ".."
 
-Item {
+Rectangle {
     id: root
 
-    implicitWidth: BarState.vertical ? 32 : row.implicitWidth
-    implicitHeight: BarState.vertical ? col.implicitHeight : 28
-
     visible: SystemTray.items.values.length > 0
+    implicitWidth: BarState.vertical ? 32 : row.implicitWidth + 12
+    implicitHeight: BarState.vertical ? col.implicitHeight + 12 : 32
+    color: Colors.surface
+    radius: 999
 
     component TrayIcon: Item {
         id: iconRoot
@@ -46,8 +47,8 @@ Item {
     Column {
         id: col
         visible: BarState.vertical
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 4
+        anchors.centerIn: parent
+        spacing: 6
 
         Repeater {
             model: SystemTray.items
@@ -58,7 +59,7 @@ Item {
     Row {
         id: row
         visible: !BarState.vertical
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: parent
         spacing: 6
 
         Repeater {

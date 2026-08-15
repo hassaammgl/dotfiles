@@ -2,8 +2,16 @@ import Quickshell
 import QtQuick
 import ".."
 
-BarButton {
-    icon: ""
-    iconColor: Colors.color4
-    onClicked: event => Quickshell.execDetached(["rofi", "-show", "drun"])
+Rectangle {
+    implicitWidth: 32
+    implicitHeight: 32
+    color: Colors.surface
+    radius: 999
+
+    BarButton {
+        anchors.centerIn: parent
+        icon: ""
+        iconColor: Colors.accent
+        onClicked: event => Quickshell.execDetached(["rofi", "-show", "drun"])
+    }
 }

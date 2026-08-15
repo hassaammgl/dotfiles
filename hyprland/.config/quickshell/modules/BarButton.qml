@@ -8,18 +8,21 @@ Item {
     property string label: ""
     property color iconColor: Colors.foreground
     property bool active: false
-    property bool compact: BarState.vertical
+    property bool labelOnHover: false
+    readonly property bool hovered: mouse.containsMouse
 
     signal clicked(mouse: var)
     signal wheel(delta: int)
 
-    implicitWidth: BarState.vertical ? 32 : Math.max(32, row.implicitWidth + 10)
-    implicitHeight: BarState.vertical ? Math.max(28, col.implicitHeight + 8) : 28
+    implicitWidth: BarState.vertical ? 28 : Math.max(28, row.implicitWidth + 8)
+    implicitHeight: BarState.vertical ? Math.max(24, col.implicitHeight + 2) : 26
 
     Rectangle {
-        anchors.fill: parent
-        radius: 999
-        color: root.active ? Colors.color4 : (mouse.containsMouse ? Colors.color15 : "transparent")
+        anchors.centerIn: parent
+        width: 24
+        height: 24
+        radius: 12
+        color: root.active ? Colors.color4 : (root.hovered ? Qt.rgba(1, 1, 1, 0.14) : "transparent")
     }
 
     Column {
@@ -32,16 +35,16 @@ Item {
             text: root.icon
             color: root.active ? Colors.background : root.iconColor
             font.family: Colors.fontFamily
-            font.pixelSize: 13
+            font.pixelSize: 12
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
-            visible: root.label.length > 0
+            visible: root.label.length > 0 && (!root.labelOnHover || root.hovered)
             text: root.label
             color: root.active ? Colors.background : Colors.foreground
             font.family: Colors.fontFamily
-            font.pixelSize: 9
+            font.pixelSize: 8
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
@@ -56,12 +59,12 @@ Item {
             text: root.icon
             color: root.active ? Colors.background : root.iconColor
             font.family: Colors.fontFamily
-            font.pixelSize: 13
+            font.pixelSize: 12
             anchors.verticalCenter: parent.verticalCenter
         }
 
         Text {
-            visible: root.label.length > 0
+            visible: root.label.length > 0 && (!root.labelOnHover || root.hovered)
             text: root.label
             color: root.active ? Colors.background : Colors.foreground
             font.family: Colors.fontFamily

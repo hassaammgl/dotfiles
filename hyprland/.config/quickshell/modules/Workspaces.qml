@@ -3,61 +3,55 @@ import Quickshell.Hyprland
 import QtQuick
 import ".."
 
-Item {
+Rectangle {
     id: root
-
-    implicitWidth: BarState.vertical ? 32 : row.implicitWidth
-    implicitHeight: BarState.vertical ? col.implicitHeight : 28
 
     readonly property var occupied: {
         const ids = {};
         for (const ws of Hyprland.workspaces.values) {
-            if (ws.id > 0)
-                ids[ws.id] = true;
+            const windows = ws.lastIpcObject?.windows;
+            ids[ws.id] = windows === undefined ? true : windows > 0;
         }
         return ids;
     }
 
+    readonly property int activeId: Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : 1
+
+    implicitWidth: BarState.vertical ? 32 : row.implicitWidth + 12
+    implicitHeight: BarState.vertical ? col.implicitHeight + 12 : 32
+    color: Colors.surface
+    radius: 999
+
     component WsButton: Item {
         id: btn
 
-        required property int wsId
-        readonly property bool focused: Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id === wsId
+        required property int index
+        readonly property int wsId: index + 1
+        readonly property bool focused: root.activeId === wsId
         readonly property bool exists: !!root.occupied[wsId]
 
-        implicitWidth: 22
-        implicitHeight: 22
-
-        Rectangle {
-            anchors.centerIn: parent
-            width: btn.focused ? 18 : 8
-            height: btn.focused ? 18 : 8
-            radius: 999
-            color: btn.focused ? Colors.color4 : (btn.exists ? Colors.color8 : Colors.color0)
-            opacity: btn.focused || btn.exists ? 1 : 0.35
-
-            Behavior on width {
-                NumberAnimation {
-                    duration: 120
-                    easing.type: Easing.OutCubic
-                }
-            }
-            Behavior on height {
-                NumberAnimation {
-                    duration: 120
-                    easing.type: Easing.OutCubic
-                }
-            }
-        }
+        implicitWidth: 18
+        implicitHeight: 18
 
         Text {
-            visible: btn.focused
             anchors.centerIn: parent
-            text: btn.wsId === 10 ? "0" : `${btn.wsId}`
-            color: Colors.background
+            text: btn.focused || btn.exists ? "󰮯" : ""
+            color: btn.focused ? Colors.accent : (btn.exists ? Colors.foreground : Colors.color8)
+            opacity: btn.focused || btn.exists ? 1 : 0.45
             font.family: Colors.fontFamily
-            font.pixelSize: 9
-            font.bold: true
+            font.pixelSize: btn.focused ? 12 : 10
+
+            Behavior on font.pixelSize {
+                NumberAnimation {
+                    duration: 160
+                    easing.type: Easing.OutCubic
+                }
+            }
+            Behavior on color {
+                ColorAnimation {
+                    duration: 160
+                }
+            }
         }
 
         MouseArea {
@@ -70,30 +64,24 @@ Item {
     Column {
         id: col
         visible: BarState.vertical
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.centerIn: parent
         spacing: 2
 
         Repeater {
             model: 5
-            WsButton {
-                required property int index
-                wsId: index + 1
-            }
+            WsButton {}
         }
     }
 
     Row {
         id: row
         visible: !BarState.vertical
-        anchors.verticalCenter: parent.verticalCenter
-        spacing: 4
+        anchors.centerIn: parent
+        spacing: 6
 
         Repeater {
             model: 5
-            WsButton {
-                required property int index
-                wsId: index + 1
-            }
+            WsButton {}
         }
     }
 }

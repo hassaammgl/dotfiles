@@ -27,6 +27,11 @@ Singleton {
     readonly property color color14: pal.color14
     readonly property color color15: pal.color15
 
+    readonly property color surface: Qt.alpha(color0, 0.72)
+    readonly property color accent: color4
+    readonly property color secondary: color12
+    readonly property color tertiary: color4
+
     readonly property string fontFamily: "JetBrainsMono Nerd Font"
 
     FileView {
