@@ -4,7 +4,6 @@ bibata-cursor-theme
 nwg-look
 ueberzugpp
 qps
-wlogout
 google-chrome
 brave-bin
 zen-browser-bin

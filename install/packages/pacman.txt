@@ -39,17 +39,12 @@ pacman-contrib
 
 # Hyprland & Wayland
 hyprland
-hyprpaper
 hyprlock
 hyprpicker
-waybar
 quickshell
 mako
-dunst
 rofi
 rofi-emoji
-fuzzel
-wofi
 uwsm
 awww
 xdg-desktop-portal

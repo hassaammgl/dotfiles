@@ -167,7 +167,6 @@ reload_hypr_colors() {
 }
 
 reload_themed_apps() {
-    killall -SIGUSR2 waybar 2>/dev/null || true
     # Quickshell Colors.qml watches ~/.cache/wallust/quickshell.json
 
     if pgrep -x mako >/dev/null 2>&1; then
