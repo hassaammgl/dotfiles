@@ -109,7 +109,7 @@ hl.bind("SUPER + ALT + R",         hl.dsp.exec_cmd("wf-recorder --audio -f ~/Vid
 hl.bind("CTRL + ALT + R",          hl.dsp.exec_cmd("wf-recorder -f ~/Videos/recording_$(date +%s).mp4"))
 hl.bind("SUPER + SHIFT + ALT + R", hl.dsp.exec_cmd("wf-recorder -g \"$(slurp)\" -f ~/Videos/recording_$(date +%s).mp4"))
 hl.bind("SUPER + SHIFT + C",       hl.dsp.exec_cmd("hyprpicker -a"))
-hl.bind("ALT + W",          hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-picker.sh"))
+hl.bind("ALT + W",          hl.dsp.exec_cmd("qs ipc call wallpaper toggle"))
 hl.bind("ALT + SHIFT + W",  hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper.sh next"))
 hl.bind("ALT + G",          hl.dsp.exec_cmd("~/.config/hypr/scripts/video-to-gif-picker.sh"))
 

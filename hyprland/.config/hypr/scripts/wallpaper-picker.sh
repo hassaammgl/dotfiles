@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# Opens the Quickshell wallpaper HUD (fallback: fzf in kitty).
+
+if command -v qs >/dev/null 2>&1 && pgrep -x qs >/dev/null 2>&1; then
+    qs ipc call wallpaper toggle
+    exit 0
+fi
 
 wall_dir="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 script="${WALLPAPER_SCRIPT:-$HOME/.config/hypr/scripts/wallpaper.sh}"

@@ -90,7 +90,7 @@ CTRL + SHIFT + ALT + V  Type latest clipboard
 SUPER + Period          Emoji picker
 
 󰟸  Wallpaper
-ALT + W                 Wallpaper picker (fzf + preview)
+ALT + W                 Wallpaper picker (Quickshell)
 SHIFT + ALT + W         Next random wallpaper
 ALT + G                 Video → GIF picker (~/Pictures/WallpaperVideos)
 
