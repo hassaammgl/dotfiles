@@ -11,6 +11,8 @@ Item {
     implicitWidth: btn.implicitWidth
     implicitHeight: btn.implicitHeight
 
+    property bool ignoreClick: false
+
     readonly property var devices: Networking.devices.values
 
     readonly property var wifiDev: {
@@ -71,12 +73,30 @@ Item {
         return "󰤯";
     }
 
+    function pctOf(net: var): int {
+        const s = net.signalStrength;
+        return s <= 1 ? Math.round(s * 100) : Math.round(s);
+    }
+
+    function isOpen(net: var): bool {
+        return net.security === WifiSecurityType.Open;
+    }
+
+    function openPop(): void {
+        if (wifiDev) {
+            if (!Networking.wifiEnabled)
+                Networking.wifiEnabled = true;
+            wifiDev.scannerEnabled = true;
+        }
+        pop.visible = true;
+    }
+
     BarButton {
         id: btn
         anchors.centerIn: parent
         icon: {
             if (wiredDev)
-                return "󰀂";
+                return "󰈀";
             if (!Networking.wifiEnabled)
                 return "󰤮";
             if (wifiNet)
@@ -84,14 +104,14 @@ Item {
             return "󰤫";
         }
         iconColor: (wiredDev || wifiNet) ? Colors.foreground : Colors.color8
+        active: pop.visible
         onClicked: event => {
-            pop.visible = !pop.visible;
-            if (pop.visible) {
-                if (!Networking.wifiEnabled)
-                    Networking.wifiEnabled = true;
-                if (root.wifiDev)
-                    root.wifiDev.scannerEnabled = true;
-            }
+            if (root.ignoreClick)
+                return;
+            if (pop.visible)
+                pop.visible = false;
+            else
+                root.openPop();
         }
     }
 
@@ -100,35 +120,45 @@ Item {
 
         visible: false
         color: "transparent"
-        implicitWidth: 260
-        implicitHeight: Math.min(360, sheet.implicitHeight + 20)
+        implicitWidth: 280
+        implicitHeight: 360
+        grabFocus: true
 
         anchor {
             item: root
-            edges: BarState.edge === "right" ? Edges.Left : Edges.Right
-            gravity: BarState.edge === "right" ? Edges.Left : Edges.Right
+            edges: BarState.edge === "right" ? Edges.Left : (BarState.edge === "top" ? Edges.Bottom : (BarState.edge === "bottom" ? Edges.Top : Edges.Right))
+            gravity: BarState.edge === "right" ? Edges.Left : (BarState.edge === "top" ? Edges.Bottom : (BarState.edge === "bottom" ? Edges.Top : Edges.Right))
+            adjustment: PopupAdjustment.Slide
             margins.left: 10
             margins.right: 10
+            margins.top: 10
+            margins.bottom: 10
         }
 
         HyprlandFocusGrab {
             active: pop.visible
             windows: [pop]
-            onCleared: pop.visible = false
+            onCleared: {
+                pop.visible = false;
+                root.ignoreClick = true;
+                Qt.callLater(() => {
+                    root.ignoreClick = false;
+                });
+            }
         }
 
         Rectangle {
-            id: sheet
             anchors.fill: parent
+            radius: 16
             color: Colors.background
-            radius: 18
             border.width: 1
             border.color: Colors.color0
+            clip: true
 
             ColumnLayout {
                 anchors.fill: parent
                 anchors.margins: 12
-                spacing: 8
+                spacing: 10
 
                 RowLayout {
                     Layout.fillWidth: true
@@ -138,8 +168,8 @@ Item {
                         text: "Wi‑Fi"
                         color: Colors.foreground
                         font.family: Colors.fontFamily
-                        font.pixelSize: 13
-                        font.bold: true
+                        font.pixelSize: 14
+                        font.weight: Font.DemiBold
                         Layout.fillWidth: true
                     }
 
@@ -147,7 +177,7 @@ Item {
                         width: 42
                         height: 22
                         radius: 11
-                        color: Networking.wifiEnabled ? Colors.color4 : Colors.color0
+                        color: Networking.wifiEnabled ? Colors.accent : Colors.color0
 
                         Rectangle {
                             width: 16
@@ -176,94 +206,102 @@ Item {
                 Text {
                     visible: !!root.wifiNet
                     text: root.wifiNet ? root.wifiNet.name : ""
-                    color: Colors.color8
+                    color: Colors.accent
                     font.family: Colors.fontFamily
                     font.pixelSize: 11
                     elide: Text.ElideRight
                     Layout.fillWidth: true
                 }
 
-                Flickable {
+                ListView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     clip: true
-                    contentHeight: listCol.implicitHeight
+                    spacing: 4
                     boundsBehavior: Flickable.StopAtBounds
                     visible: Networking.wifiEnabled
+                    model: root.wifiList
 
-                    Column {
-                        id: listCol
-                        width: parent.width
-                        spacing: 4
+                    delegate: Rectangle {
+                        required property var modelData
+                        width: ListView.view.width
+                        height: 42
+                        radius: 10
+                        color: modelData.connected ? Qt.alpha(Colors.accent, 0.22) : (rowHover.containsMouse ? Qt.alpha(Colors.color0, 0.55) : "transparent")
 
-                        Repeater {
-                            model: root.wifiList
+                        RowLayout {
+                            anchors.fill: parent
+                            anchors.leftMargin: 8
+                            anchors.rightMargin: 8
+                            spacing: 8
 
-                            Rectangle {
-                                required property var modelData
-                                width: listCol.width
-                                height: 36
-                                radius: 10
-                                color: modelData.connected ? Qt.rgba(1, 1, 1, 0.10) : (cellHover.containsMouse ? Qt.rgba(1, 1, 1, 0.06) : "transparent")
+                            Text {
+                                text: root.wifiIcon(root.pctOf(modelData))
+                                color: Colors.foreground
+                                font.family: Colors.fontFamily
+                                font.pixelSize: 14
+                            }
 
-                                RowLayout {
-                                    anchors.fill: parent
-                                    anchors.leftMargin: 8
-                                    anchors.rightMargin: 8
-                                    spacing: 8
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                spacing: 0
 
-                                    Text {
-                                        text: {
-                                            const s = modelData.signalStrength;
-                                            const pct = s <= 1 ? Math.round(s * 100) : Math.round(s);
-                                            return root.wifiIcon(pct);
-                                        }
-                                        color: Colors.foreground
-                                        font.family: Colors.fontFamily
-                                        font.pixelSize: 14
-                                    }
-
-                                    Text {
-                                        text: modelData.name
-                                        color: Colors.foreground
-                                        font.family: Colors.fontFamily
-                                        font.pixelSize: 12
-                                        elide: Text.ElideRight
-                                        Layout.fillWidth: true
-                                    }
-
-                                    Text {
-                                        visible: modelData.connected
-                                        text: "connected"
-                                        color: Colors.color4
-                                        font.family: Colors.fontFamily
-                                        font.pixelSize: 10
-                                    }
+                                Text {
+                                    text: modelData.name
+                                    color: Colors.foreground
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 12
+                                    elide: Text.ElideRight
+                                    Layout.fillWidth: true
                                 }
 
-                                MouseArea {
-                                    id: cellHover
-                                    anchors.fill: parent
-                                    hoverEnabled: true
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {
-                                        if (modelData.connected)
-                                            modelData.disconnect();
-                                        else
-                                            modelData.connect();
-                                    }
+                                Text {
+                                    text: modelData.connected ? "connected" : (modelData.known ? "saved" : (root.isOpen(modelData) ? "open" : "secured"))
+                                    color: modelData.connected ? Colors.accent : Colors.color8
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 10
                                 }
                             }
+
+                            Text {
+                                visible: !root.isOpen(modelData)
+                                text: ""
+                                color: Colors.color8
+                                font.family: Colors.fontFamily
+                                font.pixelSize: 10
+                            }
                         }
+
+                        MouseArea {
+                            id: rowHover
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: {
+                                if (modelData.connected)
+                                    modelData.disconnect();
+                                else
+                                    modelData.connect();
+                            }
+                        }
+                    }
+
+                    Text {
+                        anchors.centerIn: parent
+                        visible: parent.count === 0
+                        text: "scanning…"
+                        color: Colors.color8
+                        font.family: Colors.fontFamily
+                        font.pixelSize: 12
                     }
                 }
 
                 Text {
-                    visible: Networking.wifiEnabled && root.wifiList.length === 0
-                    text: "Scanning…"
+                    visible: !Networking.wifiEnabled
+                    text: "Wi‑Fi is off"
                     color: Colors.color8
                     font.family: Colors.fontFamily
-                    font.pixelSize: 11
+                    font.pixelSize: 12
                     Layout.alignment: Qt.AlignHCenter
                 }
             }

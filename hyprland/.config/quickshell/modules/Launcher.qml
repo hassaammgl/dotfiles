@@ -1,17 +1,14 @@
-import Quickshell
 import QtQuick
 import ".."
 
-Rectangle {
-    implicitWidth: 32
-    implicitHeight: 32
-    color: Colors.surface
-    radius: 999
+Capsule {
+    implicitWidth: 36
+    implicitHeight: 36
 
     BarButton {
         anchors.centerIn: parent
         icon: ""
         iconColor: Colors.accent
-        onClicked: event => Quickshell.execDetached(["rofi", "-show", "drun"])
+        onClicked: event => OverlayState.toggleLauncher()
     }
 }

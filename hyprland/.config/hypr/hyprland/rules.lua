@@ -250,3 +250,9 @@ hl.layer_rule({
     blur = true,
     ignore_alpha = 0.45,
 })
+
+hl.layer_rule({
+    name = "quickshell-bar",
+    match = { namespace = "quickshell-bar" },
+    blur = false,
+})

@@ -1,5 +1,5 @@
 󰘴  General
-SUPER + Space           Launcher (rofi)
+SUPER + Space           Launcher (Quickshell)
 SUPER + Return          Terminal (kitty)
 CTRL + T                Terminal + tmux sessions (kitty)
 SUPER + B               Browser (brave)
@@ -10,7 +10,7 @@ SUPER + M               Music workspace toggle
 SUPER + D               Communication workspace toggle
 SUPER + R               Todo workspace toggle
 CTRL + SHIFT + Escape   System monitor workspace toggle
-SUPER + Escape          Session menu (wlogout)
+SUPER + Escape          Power menu (Quickshell)
 SUPER + L               Lock (hyprlock)
 SUPER + SHIFT + L       Suspend then hibernate
 ALT + H                 This help

@@ -3,14 +3,12 @@ import Quickshell.Services.SystemTray
 import QtQuick
 import ".."
 
-Rectangle {
+Capsule {
     id: root
 
     visible: SystemTray.items.values.length > 0
-    implicitWidth: BarState.vertical ? 32 : row.implicitWidth + 12
-    implicitHeight: BarState.vertical ? col.implicitHeight + 12 : 32
-    color: Colors.surface
-    radius: 999
+    implicitWidth: BarState.vertical ? 36 : row.implicitWidth + 14
+    implicitHeight: BarState.vertical ? col.implicitHeight + 14 : 36
 
     component TrayIcon: Item {
         id: iconRoot

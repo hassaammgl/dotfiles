@@ -1,17 +1,14 @@
-import Quickshell
 import QtQuick
 import ".."
 
-Rectangle {
-    implicitWidth: 32
-    implicitHeight: 32
-    color: Colors.surface
-    radius: 999
+Capsule {
+    implicitWidth: 36
+    implicitHeight: 36
 
     BarButton {
         anchors.centerIn: parent
         icon: ""
         iconColor: Colors.color1
-        onClicked: event => Quickshell.execDetached(["wlogout"])
+        onClicked: event => OverlayState.togglePower()
     }
 }

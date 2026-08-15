@@ -14,15 +14,15 @@ Item {
     signal clicked(mouse: var)
     signal wheel(delta: int)
 
-    implicitWidth: BarState.vertical ? 28 : Math.max(28, row.implicitWidth + 8)
-    implicitHeight: BarState.vertical ? Math.max(24, col.implicitHeight + 2) : 26
+    implicitWidth: BarState.vertical ? 30 : Math.max(30, row.implicitWidth + 8)
+    implicitHeight: BarState.vertical ? Math.max(26, col.implicitHeight + 4) : 28
 
     Rectangle {
         anchors.centerIn: parent
-        width: 24
-        height: 24
-        radius: 12
-        color: root.active ? Colors.color4 : (root.hovered ? Qt.rgba(1, 1, 1, 0.14) : "transparent")
+        width: 26
+        height: 26
+        radius: 13
+        color: root.active ? Colors.accent : (root.hovered ? Qt.rgba(1, 1, 1, 0.12) : "transparent")
     }
 
     Column {
@@ -35,7 +35,7 @@ Item {
             text: root.icon
             color: root.active ? Colors.background : root.iconColor
             font.family: Colors.fontFamily
-            font.pixelSize: 12
+            font.pixelSize: 14
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
@@ -44,7 +44,7 @@ Item {
             text: root.label
             color: root.active ? Colors.background : Colors.foreground
             font.family: Colors.fontFamily
-            font.pixelSize: 8
+            font.pixelSize: 9
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }
@@ -59,7 +59,7 @@ Item {
             text: root.icon
             color: root.active ? Colors.background : root.iconColor
             font.family: Colors.fontFamily
-            font.pixelSize: 12
+            font.pixelSize: 14
             anchors.verticalCenter: parent.verticalCenter
         }
 

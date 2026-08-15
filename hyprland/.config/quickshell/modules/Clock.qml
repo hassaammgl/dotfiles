@@ -1,15 +1,13 @@
 import QtQuick
 import ".."
 
-Rectangle {
+Capsule {
     id: root
 
     property bool showDate: false
 
-    implicitWidth: BarState.vertical ? 32 : layout.implicitWidth + 16
-    implicitHeight: BarState.vertical ? layout.implicitHeight + 12 : 32
-    color: Colors.surface
-    radius: 999
+    implicitWidth: BarState.vertical ? 36 : layout.implicitWidth + 16
+    implicitHeight: BarState.vertical ? layout.implicitHeight + 14 : 36
 
     Column {
         id: layout
@@ -50,9 +48,9 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: Time.hour
-            color: Colors.tertiary
+            color: Colors.foreground
             font.family: Colors.fontFamily
-            font.pixelSize: 11
+            font.pixelSize: 13
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
         }
@@ -60,9 +58,9 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: Time.minute
-            color: Colors.tertiary
+            color: Colors.foreground
             font.family: Colors.fontFamily
-            font.pixelSize: 11
+            font.pixelSize: 13
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
         }
@@ -70,9 +68,9 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: Time.ampm.toLowerCase()
-            color: Colors.tertiary
+            color: Colors.color8
             font.family: Colors.fontFamily
-            font.pixelSize: 9
+            font.pixelSize: 10
             horizontalAlignment: Text.AlignHCenter
         }
     }
@@ -81,9 +79,9 @@ Rectangle {
         visible: !BarState.vertical
         anchors.centerIn: parent
         text: root.showDate ? Time.altHorizontal : Time.horizontal
-        color: Colors.tertiary
+        color: Colors.foreground
         font.family: Colors.fontFamily
-        font.pixelSize: 12
+        font.pixelSize: 13
     }
 
     MouseArea {

@@ -2,13 +2,12 @@ import QtQuick
 import QtQuick.Layouts
 import ".."
 
-Rectangle {
+Capsule {
     id: root
 
-    implicitWidth: BarState.vertical ? 32 : icons.implicitWidth + 10
-    implicitHeight: BarState.vertical ? icons.implicitHeight + 10 : 32
-    color: Colors.surface
-    radius: 999
+    implicitWidth: BarState.vertical ? 36 : icons.implicitWidth + 12
+    implicitHeight: BarState.vertical ? icons.implicitHeight + 12 : 36
+    clip: true
 
     GridLayout {
         id: icons
