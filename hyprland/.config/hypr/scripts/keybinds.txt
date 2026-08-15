@@ -5,7 +5,7 @@ CTRL + T                Terminal + tmux sessions (kitty)
 SUPER + B               Browser (brave)
 SUPER + C               Editor (code)
 SUPER + E               File explorer (nautilus)
-SUPER + ALT + E         File explorer (nemo)
+SUPER + ALT + E         File explorer (dolphin)
 SUPER + M               Music workspace toggle
 SUPER + D               Communication workspace toggle
 SUPER + R               Todo workspace toggle

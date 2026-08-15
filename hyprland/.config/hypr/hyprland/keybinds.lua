@@ -96,7 +96,7 @@ hl.bind("CTRL + T", hl.dsp.exec_cmd("kitty --title tmux -e ~/.config/hypr/script
 hl.bind(kbBrowser,  hl.dsp.exec_cmd(browser))
 hl.bind(kbEditor,   hl.dsp.exec_cmd(editor))
 hl.bind(kbFileExplorer,   hl.dsp.exec_cmd(fileExplorer))
-hl.bind("SUPER + ALT + E",   hl.dsp.exec_cmd("nemo"))
+hl.bind("SUPER + ALT + E",   hl.dsp.exec_cmd("dolphin"))
 hl.bind("ALT + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-bar.sh"))
 hl.bind("ALT + SHIFT + T", hl.dsp.exec_cmd("~/.config/hypr/scripts/bar-orient.sh"))
 hl.bind("CTRL + ALT + Escape", hl.dsp.exec_cmd("qps"))
