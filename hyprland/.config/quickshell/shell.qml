@@ -9,6 +9,8 @@ Scope {
     PowerOverlay {}
     WallpaperOverlay {}
     KeybindsOverlay {}
+    ClipboardOverlay {}
+    EmojiOverlay {}
 
     IpcHandler {
         target: "launcher"
@@ -18,11 +20,7 @@ Scope {
         }
 
         function show(): void {
-            OverlayState.power = false;
-            OverlayState.wallpaper = false;
-            OverlayState.notifs = false;
-            OverlayState.keybinds = false;
-            OverlayState.launcher = true;
+            OverlayState.showLauncher();
         }
 
         function hide(): void {
@@ -38,11 +36,7 @@ Scope {
         }
 
         function show(): void {
-            OverlayState.launcher = false;
-            OverlayState.wallpaper = false;
-            OverlayState.notifs = false;
-            OverlayState.keybinds = false;
-            OverlayState.power = true;
+            OverlayState.showPower();
         }
 
         function hide(): void {
@@ -58,11 +52,7 @@ Scope {
         }
 
         function show(): void {
-            OverlayState.launcher = false;
-            OverlayState.power = false;
-            OverlayState.notifs = false;
-            OverlayState.keybinds = false;
-            OverlayState.wallpaper = true;
+            OverlayState.showWallpaper();
         }
 
         function hide(): void {
@@ -78,11 +68,7 @@ Scope {
         }
 
         function show(): void {
-            OverlayState.launcher = false;
-            OverlayState.power = false;
-            OverlayState.wallpaper = false;
-            OverlayState.keybinds = false;
-            OverlayState.notifs = true;
+            OverlayState.showNotifs();
         }
 
         function hide(): void {
@@ -98,15 +84,48 @@ Scope {
         }
 
         function show(): void {
-            OverlayState.launcher = false;
-            OverlayState.power = false;
-            OverlayState.wallpaper = false;
-            OverlayState.notifs = false;
-            OverlayState.keybinds = true;
+            OverlayState.showKeybinds();
         }
 
         function hide(): void {
             OverlayState.keybinds = false;
+        }
+    }
+
+    IpcHandler {
+        target: "clipboard"
+
+        function toggle(): void {
+            OverlayState.toggleClipboard(false);
+        }
+
+        function toggleDelete(): void {
+            OverlayState.toggleClipboard(true);
+        }
+
+        function show(): void {
+            OverlayState.showClipboard(false);
+        }
+
+        function hide(): void {
+            OverlayState.clipboard = false;
+            OverlayState.clipboardDelete = false;
+        }
+    }
+
+    IpcHandler {
+        target: "emoji"
+
+        function toggle(): void {
+            OverlayState.toggleEmoji();
+        }
+
+        function show(): void {
+            OverlayState.showEmoji();
+        }
+
+        function hide(): void {
+            OverlayState.emoji = false;
         }
     }
 }

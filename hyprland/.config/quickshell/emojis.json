@@ -1,0 +1,4272 @@
+[
+{
+"g": "😀",
+"n": "grinning",
+"k": "smile happy"
+},
+{
+"g": "😃",
+"n": "grinning big eyes",
+"k": "smile happy"
+},
+{
+"g": "😄",
+"n": "grinning squinting",
+"k": "smile happy laugh"
+},
+{
+"g": "😁",
+"n": "beaming",
+"k": "smile grin"
+},
+{
+"g": "😆",
+"n": "squinting",
+"k": "laugh xd"
+},
+{
+"g": "😅",
+"n": "sweat smile",
+"k": "nervous relief"
+},
+{
+"g": "🤣",
+"n": "rofl",
+"k": "laugh lmao"
+},
+{
+"g": "😂",
+"n": "tears of joy",
+"k": "laugh cry lmao"
+},
+{
+"g": "🙂",
+"n": "slight smile",
+"k": "smile"
+},
+{
+"g": "😉",
+"n": "wink",
+"k": "flirt"
+},
+{
+"g": "😊",
+"n": "blush",
+"k": "smile happy"
+},
+{
+"g": "😇",
+"n": "halo",
+"k": "innocent angel"
+},
+{
+"g": "🥰",
+"n": "hearts",
+"k": "love smile"
+},
+{
+"g": "😍",
+"n": "heart eyes",
+"k": "love crush"
+},
+{
+"g": "🤩",
+"n": "star eyes",
+"k": "wow"
+},
+{
+"g": "😘",
+"n": "kiss",
+"k": "love"
+},
+{
+"g": "😗",
+"n": "kissing",
+"k": "love"
+},
+{
+"g": "😚",
+"n": "kiss closed eyes",
+"k": "love"
+},
+{
+"g": "😋",
+"n": "yum",
+"k": "delicious tongue"
+},
+{
+"g": "😛",
+"n": "tongue",
+"k": "playful"
+},
+{
+"g": "😜",
+"n": "wink tongue",
+"k": "playful"
+},
+{
+"g": "🤪",
+"n": "zany",
+"k": "goofy crazy"
+},
+{
+"g": "😝",
+"n": "squint tongue",
+"k": "playful"
+},
+{
+"g": "🤑",
+"n": "money mouth",
+"k": "rich dollar"
+},
+{
+"g": "🤗",
+"n": "hug",
+"k": "hands"
+},
+{
+"g": "🤭",
+"n": "hand over mouth",
+"k": "oops secret"
+},
+{
+"g": "🤫",
+"n": "shush",
+"k": "quiet secret"
+},
+{
+"g": "🤔",
+"n": "thinking",
+"k": "hmm consider"
+},
+{
+"g": "🫡",
+"n": "salute",
+"k": "yes sir"
+},
+{
+"g": "🤐",
+"n": "zipper mouth",
+"k": "secret quiet"
+},
+{
+"g": "🤨",
+"n": "raised eyebrow",
+"k": "skeptical"
+},
+{
+"g": "😐",
+"n": "neutral",
+"k": "meh"
+},
+{
+"g": "😑",
+"n": "expressionless",
+"k": "meh"
+},
+{
+"g": "😶",
+"n": "no mouth",
+"k": "silent"
+},
+{
+"g": "🫥",
+"n": "dotted",
+"k": "invisible"
+},
+{
+"g": "😏",
+"n": "smirk",
+"k": "smug"
+},
+{
+"g": "😒",
+"n": "unamused",
+"k": "meh annoyed"
+},
+{
+"g": "🙄",
+"n": "eye roll",
+"k": "whatever"
+},
+{
+"g": "😬",
+"n": "grimace",
+"k": "awkward"
+},
+{
+"g": "😮‍💨",
+"n": "exhale",
+"k": "sigh relief"
+},
+{
+"g": "🤥",
+"n": "lying",
+"k": "pinocchio"
+},
+{
+"g": "😌",
+"n": "relieved",
+"k": "calm"
+},
+{
+"g": "😔",
+"n": "pensive",
+"k": "sad"
+},
+{
+"g": "😪",
+"n": "sleepy",
+"k": "tired"
+},
+{
+"g": "🤤",
+"n": "drool",
+"k": "want"
+},
+{
+"g": "😴",
+"n": "sleeping",
+"k": "zzz tired"
+},
+{
+"g": "😷",
+"n": "mask",
+"k": "sick covid"
+},
+{
+"g": "🤒",
+"n": "thermometer",
+"k": "sick fever"
+},
+{
+"g": "🤕",
+"n": "bandage",
+"k": "hurt"
+},
+{
+"g": "🤢",
+"n": "nauseated",
+"k": "sick"
+},
+{
+"g": "🤮",
+"n": "vomit",
+"k": "sick"
+},
+{
+"g": "🥵",
+"n": "hot",
+"k": "heat"
+},
+{
+"g": "🥶",
+"n": "cold",
+"k": "freeze"
+},
+{
+"g": "🥴",
+"n": "woozy",
+"k": "drunk dizzy"
+},
+{
+"g": "😵",
+"n": "dizzy",
+"k": "dead"
+},
+{
+"g": "🤯",
+"n": "exploding head",
+"k": "mind blown"
+},
+{
+"g": "🤠",
+"n": "cowboy",
+"k": "hat"
+},
+{
+"g": "🥳",
+"n": "party",
+"k": "birthday celebrate"
+},
+{
+"g": "😎",
+"n": "sunglasses",
+"k": "cool"
+},
+{
+"g": "🤓",
+"n": "nerd",
+"k": "glasses"
+},
+{
+"g": "🧐",
+"n": "monocle",
+"k": "inspect"
+},
+{
+"g": "😕",
+"n": "confused",
+"k": "huh"
+},
+{
+"g": "😟",
+"n": "worried",
+"k": "sad"
+},
+{
+"g": "🙁",
+"n": "slight frown",
+"k": "sad"
+},
+{
+"g": "😮",
+"n": "open mouth",
+"k": "wow surprise"
+},
+{
+"g": "😯",
+"n": "hushed",
+"k": "surprise"
+},
+{
+"g": "😲",
+"n": "astonished",
+"k": "shock"
+},
+{
+"g": "😳",
+"n": "flushed",
+"k": "embarrassed"
+},
+{
+"g": "🥺",
+"n": "pleading",
+"k": "puppy please"
+},
+{
+"g": "🥹",
+"n": "holding tears",
+"k": "proud cute"
+},
+{
+"g": "😦",
+"n": "frown open",
+"k": "shock"
+},
+{
+"g": "😧",
+"n": "anguished",
+"k": "pain"
+},
+{
+"g": "😨",
+"n": "fearful",
+"k": "scared"
+},
+{
+"g": "😰",
+"n": "anxious sweat",
+"k": "nervous"
+},
+{
+"g": "😥",
+"n": "sad but relieved",
+"k": "disappoint"
+},
+{
+"g": "😢",
+"n": "cry",
+"k": "sad tear"
+},
+{
+"g": "😭",
+"n": "sob",
+"k": "cry sad"
+},
+{
+"g": "😱",
+"n": "scream",
+"k": "fear shock"
+},
+{
+"g": "😖",
+"n": "confounded",
+"k": "upset"
+},
+{
+"g": "😣",
+"n": "persevere",
+"k": "struggle"
+},
+{
+"g": "😞",
+"n": "disappointed",
+"k": "sad"
+},
+{
+"g": "😓",
+"n": "downcast sweat",
+"k": "sad"
+},
+{
+"g": "😩",
+"n": "weary",
+"k": "tired"
+},
+{
+"g": "😫",
+"n": "tired",
+"k": "exhausted"
+},
+{
+"g": "🥱",
+"n": "yawn",
+"k": "bored sleepy"
+},
+{
+"g": "😤",
+"n": "steam",
+"k": "angry huff"
+},
+{
+"g": "😡",
+"n": "pout",
+"k": "angry mad"
+},
+{
+"g": "😠",
+"n": "angry",
+"k": "mad"
+},
+{
+"g": "🤬",
+"n": "swearing",
+"k": "angry curse"
+},
+{
+"g": "😈",
+"n": "smiling horns",
+"k": "devil"
+},
+{
+"g": "👿",
+"n": "angry horns",
+"k": "devil"
+},
+{
+"g": "💀",
+"n": "skull",
+"k": "dead"
+},
+{
+"g": "☠️",
+"n": "skull crossbones",
+"k": "dead poison"
+},
+{
+"g": "💩",
+"n": "poop",
+"k": "poo"
+},
+{
+"g": "🤡",
+"n": "clown",
+"k": "joker"
+},
+{
+"g": "👹",
+"n": "ogre",
+"k": "monster"
+},
+{
+"g": "👺",
+"n": "goblin",
+"k": "monster"
+},
+{
+"g": "👻",
+"n": "ghost",
+"k": "boo halloween"
+},
+{
+"g": "👽",
+"n": "alien",
+"k": "ufo"
+},
+{
+"g": "👾",
+"n": "alien monster",
+"k": "game space"
+},
+{
+"g": "🤖",
+"n": "robot",
+"k": "bot"
+},
+{
+"g": "😺",
+"n": "cat smile",
+"k": "cat"
+},
+{
+"g": "😸",
+"n": "cat grin",
+"k": "cat"
+},
+{
+"g": "😹",
+"n": "cat tears",
+"k": "cat laugh"
+},
+{
+"g": "😻",
+"n": "cat hearts",
+"k": "cat love"
+},
+{
+"g": "😼",
+"n": "cat smirk",
+"k": "cat"
+},
+{
+"g": "😽",
+"n": "cat kiss",
+"k": "cat"
+},
+{
+"g": "🙀",
+"n": "cat scream",
+"k": "cat shock"
+},
+{
+"g": "😿",
+"n": "cat cry",
+"k": "cat sad"
+},
+{
+"g": "😾",
+"n": "cat pout",
+"k": "cat angry"
+},
+{
+"g": "👋",
+"n": "wave",
+"k": "hello hi bye"
+},
+{
+"g": "🤚",
+"n": "raised back hand",
+"k": "stop"
+},
+{
+"g": "🖐️",
+"n": "hand",
+"k": "five"
+},
+{
+"g": "✋",
+"n": "raised hand",
+"k": "stop"
+},
+{
+"g": "🖖",
+"n": "vulcan",
+"k": "spock"
+},
+{
+"g": "👌",
+"n": "ok",
+"k": "okay"
+},
+{
+"g": "🤌",
+"n": "pinched",
+"k": "italian"
+},
+{
+"g": "✌️",
+"n": "victory",
+"k": "peace"
+},
+{
+"g": "🤞",
+"n": "crossed fingers",
+"k": "luck hope"
+},
+{
+"g": "🤟",
+"n": "love you",
+"k": "ily"
+},
+{
+"g": "🤘",
+"n": "horns",
+"k": "rock metal"
+},
+{
+"g": "🤙",
+"n": "call me",
+"k": "shaka"
+},
+{
+"g": "👈",
+"n": "left",
+"k": "point"
+},
+{
+"g": "👉",
+"n": "right",
+"k": "point"
+},
+{
+"g": "👆",
+"n": "up",
+"k": "point"
+},
+{
+"g": "👇",
+"n": "down",
+"k": "point"
+},
+{
+"g": "☝️",
+"n": "index up",
+"k": "point one"
+},
+{
+"g": "👍",
+"n": "thumbs up",
+"k": "yes like good"
+},
+{
+"g": "👎",
+"n": "thumbs down",
+"k": "no dislike"
+},
+{
+"g": "✊",
+"n": "fist",
+"k": "power"
+},
+{
+"g": "👊",
+"n": "punch",
+"k": "fist bump"
+},
+{
+"g": "🤛",
+"n": "left fist",
+"k": "bump"
+},
+{
+"g": "🤜",
+"n": "right fist",
+"k": "bump"
+},
+{
+"g": "👏",
+"n": "clap",
+"k": "applause"
+},
+{
+"g": "🙌",
+"n": "raising hands",
+"k": "hooray praise"
+},
+{
+"g": "🫶",
+"n": "heart hands",
+"k": "love"
+},
+{
+"g": "👐",
+"n": "open hands",
+"k": "hug"
+},
+{
+"g": "🤲",
+"n": "palms up",
+"k": "pray receive"
+},
+{
+"g": "🤝",
+"n": "handshake",
+"k": "deal agree"
+},
+{
+"g": "🙏",
+"n": "folded hands",
+"k": "pray please thanks"
+},
+{
+"g": "💪",
+"n": "bicep",
+"k": "strong gym"
+},
+{
+"g": "🦾",
+"n": "mechanical arm",
+"k": "robot strong"
+},
+{
+"g": "✍️",
+"n": "writing",
+"k": "write"
+},
+{
+"g": "👀",
+"n": "eyes",
+"k": "look see"
+},
+{
+"g": "👁️",
+"n": "eye",
+"k": "look"
+},
+{
+"g": "👅",
+"n": "tongue",
+"k": "lick"
+},
+{
+"g": "👄",
+"n": "mouth",
+"k": "lips"
+},
+{
+"g": "💋",
+"n": "kiss mark",
+"k": "love lips"
+},
+{
+"g": "🧠",
+"n": "brain",
+"k": "smart think"
+},
+{
+"g": "🫀",
+"n": "heart organ",
+"k": "anatomy"
+},
+{
+"g": "🫁",
+"n": "lungs",
+"k": "breathe"
+},
+{
+"g": "🦷",
+"n": "tooth",
+"k": "dentist"
+},
+{
+"g": "🦴",
+"n": "bone",
+"k": "skeleton"
+},
+{
+"g": "👶",
+"n": "baby",
+"k": "child"
+},
+{
+"g": "👧",
+"n": "girl",
+"k": "child"
+},
+{
+"g": "👦",
+"n": "boy",
+"k": "child"
+},
+{
+"g": "👩",
+"n": "woman",
+"k": "person"
+},
+{
+"g": "👨",
+"n": "man",
+"k": "person"
+},
+{
+"g": "🧑",
+"n": "person",
+"k": "adult"
+},
+{
+"g": "👵",
+"n": "old woman",
+"k": "grandma"
+},
+{
+"g": "👴",
+"n": "old man",
+"k": "grandpa"
+},
+{
+"g": "🙍",
+"n": "frown person",
+"k": "sad"
+},
+{
+"g": "🙎",
+"n": "pout person",
+"k": "upset"
+},
+{
+"g": "🙅",
+"n": "no gesture",
+"k": "stop"
+},
+{
+"g": "🙆",
+"n": "ok gesture",
+"k": "yes"
+},
+{
+"g": "💁",
+"n": "sassy",
+"k": "info"
+},
+{
+"g": "🙋",
+"n": "raising hand",
+"k": "here me"
+},
+{
+"g": "🧏",
+"n": "deaf",
+"k": "hear"
+},
+{
+"g": "🙇",
+"n": "bow",
+"k": "sorry thanks"
+},
+{
+"g": "🤦",
+"n": "facepalm",
+"k": "fail"
+},
+{
+"g": "🤷",
+"n": "shrug",
+"k": "idk dunno"
+},
+{
+"g": "👮",
+"n": "police",
+"k": "cop"
+},
+{
+"g": "🕵️",
+"n": "detective",
+"k": "spy"
+},
+{
+"g": "💂",
+"n": "guard",
+"k": "britain"
+},
+{
+"g": "🥷",
+"n": "ninja",
+"k": "stealth"
+},
+{
+"g": "👷",
+"n": "construction",
+"k": "worker"
+},
+{
+"g": "🤴",
+"n": "prince",
+"k": "royal"
+},
+{
+"g": "👸",
+"n": "princess",
+"k": "royal"
+},
+{
+"g": "🦸",
+"n": "superhero",
+"k": "hero"
+},
+{
+"g": "🦹",
+"n": "supervillain",
+"k": "villain"
+},
+{
+"g": "🧙",
+"n": "mage",
+"k": "wizard magic"
+},
+{
+"g": "🧚",
+"n": "fairy",
+"k": "magic"
+},
+{
+"g": "🧛",
+"n": "vampire",
+"k": "blood"
+},
+{
+"g": "🧜",
+"n": "mermaid",
+"k": "sea"
+},
+{
+"g": "🧝",
+"n": "elf",
+"k": "fantasy"
+},
+{
+"g": "🧞",
+"n": "genie",
+"k": "wish"
+},
+{
+"g": "🧟",
+"n": "zombie",
+"k": "undead"
+},
+{
+"g": "💆",
+"n": "massage",
+"k": "spa"
+},
+{
+"g": "💇",
+"n": "haircut",
+"k": "salon"
+},
+{
+"g": "🚶",
+"n": "walk",
+"k": "person"
+},
+{
+"g": "🧍",
+"n": "stand",
+"k": "person"
+},
+{
+"g": "🧎",
+"n": "kneel",
+"k": "person"
+},
+{
+"g": "🏃",
+"n": "run",
+"k": "sprint"
+},
+{
+"g": "💃",
+"n": "dance woman",
+"k": "party"
+},
+{
+"g": "🕺",
+"n": "dance man",
+"k": "party"
+},
+{
+"g": "🕴️",
+"n": "levitate",
+"k": "suit"
+},
+{
+"g": "👯",
+"n": "bunny ears",
+"k": "party"
+},
+{
+"g": "🧖",
+"n": "sauna",
+"k": "steam"
+},
+{
+"g": "🧗",
+"n": "climb",
+"k": "sport"
+},
+{
+"g": "🤺",
+"n": "fencing",
+"k": "sport"
+},
+{
+"g": "🏇",
+"n": "horse racing",
+"k": "sport"
+},
+{
+"g": "⛷️",
+"n": "ski",
+"k": "snow sport"
+},
+{
+"g": "🏂",
+"n": "snowboard",
+"k": "snow sport"
+},
+{
+"g": "🏌️",
+"n": "golf",
+"k": "sport"
+},
+{
+"g": "🏄",
+"n": "surf",
+"k": "sport"
+},
+{
+"g": "🚣",
+"n": "rowboat",
+"k": "sport"
+},
+{
+"g": "🏊",
+"n": "swim",
+"k": "sport"
+},
+{
+"g": "⛹️",
+"n": "basketball",
+"k": "sport"
+},
+{
+"g": "🏋️",
+"n": "lift",
+"k": "gym sport"
+},
+{
+"g": "🚴",
+"n": "bike",
+"k": "cycle sport"
+},
+{
+"g": "🚵",
+"n": "mountain bike",
+"k": "sport"
+},
+{
+"g": "🤸",
+"n": "cartwheel",
+"k": "sport"
+},
+{
+"g": "🤼",
+"n": "wrestle",
+"k": "sport"
+},
+{
+"g": "🤽",
+"n": "water polo",
+"k": "sport"
+},
+{
+"g": "🤾",
+"n": "handball",
+"k": "sport"
+},
+{
+"g": "🤹",
+"n": "juggle",
+"k": "circus"
+},
+{
+"g": "🧘",
+"n": "lotus",
+"k": "yoga meditate"
+},
+{
+"g": "🛀",
+"n": "bath",
+"k": "tub"
+},
+{
+"g": "🛌",
+"n": "bed",
+"k": "sleep"
+},
+{
+"g": "💌",
+"n": "love letter",
+"k": "mail"
+},
+{
+"g": "💘",
+"n": "heart arrow",
+"k": "cupid love"
+},
+{
+"g": "💝",
+"n": "heart ribbon",
+"k": "gift love"
+},
+{
+"g": "💖",
+"n": "sparkling heart",
+"k": "love"
+},
+{
+"g": "💗",
+"n": "growing heart",
+"k": "love"
+},
+{
+"g": "💓",
+"n": "beating heart",
+"k": "love"
+},
+{
+"g": "💞",
+"n": "revolving hearts",
+"k": "love"
+},
+{
+"g": "💕",
+"n": "two hearts",
+"k": "love"
+},
+{
+"g": "💟",
+"n": "heart decoration",
+"k": "love"
+},
+{
+"g": "❣️",
+"n": "heart exclamation",
+"k": "love"
+},
+{
+"g": "💔",
+"n": "broken heart",
+"k": "sad love"
+},
+{
+"g": "❤️‍🔥",
+"n": "heart on fire",
+"k": "love passion"
+},
+{
+"g": "❤️‍🩹",
+"n": "mending heart",
+"k": "heal"
+},
+{
+"g": "❤️",
+"n": "red heart",
+"k": "love"
+},
+{
+"g": "🧡",
+"n": "orange heart",
+"k": "love"
+},
+{
+"g": "💛",
+"n": "yellow heart",
+"k": "love"
+},
+{
+"g": "💚",
+"n": "green heart",
+"k": "love"
+},
+{
+"g": "💙",
+"n": "blue heart",
+"k": "love"
+},
+{
+"g": "💜",
+"n": "purple heart",
+"k": "love"
+},
+{
+"g": "🤎",
+"n": "brown heart",
+"k": "love"
+},
+{
+"g": "🖤",
+"n": "black heart",
+"k": "love"
+},
+{
+"g": "🤍",
+"n": "white heart",
+"k": "love"
+},
+{
+"g": "🩷",
+"n": "pink heart",
+"k": "love"
+},
+{
+"g": "🩵",
+"n": "light blue heart",
+"k": "love"
+},
+{
+"g": "🩶",
+"n": "grey heart",
+"k": "love"
+},
+{
+"g": "💯",
+"n": "hundred",
+"k": "100 perfect"
+},
+{
+"g": "💢",
+"n": "anger",
+"k": "mad"
+},
+{
+"g": "💥",
+"n": "collision",
+"k": "boom"
+},
+{
+"g": "💫",
+"n": "dizzy star",
+"k": "sparkle"
+},
+{
+"g": "💦",
+"n": "sweat drops",
+"k": "water"
+},
+{
+"g": "💨",
+"n": "dash",
+"k": "fast wind"
+},
+{
+"g": "🕳️",
+"n": "hole",
+"k": "empty"
+},
+{
+"g": "💣",
+"n": "bomb",
+"k": "explode"
+},
+{
+"g": "💬",
+"n": "speech",
+"k": "chat comment"
+},
+{
+"g": "💭",
+"n": "thought",
+"k": "think"
+},
+{
+"g": "💤",
+"n": "zzz",
+"k": "sleep"
+},
+{
+"g": "⭐",
+"n": "star",
+"k": "favorite"
+},
+{
+"g": "🌟",
+"n": "glowing star",
+"k": "shine"
+},
+{
+"g": "✨",
+"n": "sparkles",
+"k": "magic shine"
+},
+{
+"g": "⚡",
+"n": "zap",
+"k": "lightning electric"
+},
+{
+"g": "🔥",
+"n": "fire",
+"k": "lit hot"
+},
+{
+"g": "🌈",
+"n": "rainbow",
+"k": "pride color"
+},
+{
+"g": "☀️",
+"n": "sun",
+"k": "weather hot"
+},
+{
+"g": "🌤️",
+"n": "sun cloud",
+"k": "weather"
+},
+{
+"g": "⛅",
+"n": "cloud sun",
+"k": "weather"
+},
+{
+"g": "🌧️",
+"n": "rain",
+"k": "weather"
+},
+{
+"g": "⛈️",
+"n": "storm",
+"k": "weather"
+},
+{
+"g": "❄️",
+"n": "snowflake",
+"k": "cold winter"
+},
+{
+"g": "🌙",
+"n": "crescent",
+"k": "night moon"
+},
+{
+"g": "🌝",
+"n": "full moon face",
+"k": "night"
+},
+{
+"g": "🌞",
+"n": "sun face",
+"k": "happy"
+},
+{
+"g": "🪐",
+"n": "saturn",
+"k": "planet space"
+},
+{
+"g": "🌍",
+"n": "earth africa",
+"k": "world globe"
+},
+{
+"g": "🌎",
+"n": "earth americas",
+"k": "world globe"
+},
+{
+"g": "🌏",
+"n": "earth asia",
+"k": "world globe"
+},
+{
+"g": "🐶",
+"n": "dog",
+"k": "puppy pet"
+},
+{
+"g": "🐱",
+"n": "cat",
+"k": "kitten pet"
+},
+{
+"g": "🐭",
+"n": "mouse",
+"k": "pet"
+},
+{
+"g": "🐹",
+"n": "hamster",
+"k": "pet"
+},
+{
+"g": "🐰",
+"n": "rabbit",
+"k": "bunny"
+},
+{
+"g": "🦊",
+"n": "fox",
+"k": "animal"
+},
+{
+"g": "🐻",
+"n": "bear",
+"k": "animal"
+},
+{
+"g": "🐼",
+"n": "panda",
+"k": "animal"
+},
+{
+"g": "🐻‍❄️",
+"n": "polar bear",
+"k": "animal"
+},
+{
+"g": "🐨",
+"n": "koala",
+"k": "animal"
+},
+{
+"g": "🐯",
+"n": "tiger",
+"k": "animal"
+},
+{
+"g": "🦁",
+"n": "lion",
+"k": "animal"
+},
+{
+"g": "🐮",
+"n": "cow",
+"k": "animal"
+},
+{
+"g": "🐷",
+"n": "pig",
+"k": "animal"
+},
+{
+"g": "🐸",
+"n": "frog",
+"k": "animal"
+},
+{
+"g": "🐵",
+"n": "monkey",
+"k": "animal"
+},
+{
+"g": "🙈",
+"n": "see no evil",
+"k": "monkey"
+},
+{
+"g": "🙉",
+"n": "hear no evil",
+"k": "monkey"
+},
+{
+"g": "🙊",
+"n": "speak no evil",
+"k": "monkey"
+},
+{
+"g": "🐒",
+"n": "monkey face",
+"k": "animal"
+},
+{
+"g": "🐔",
+"n": "chicken",
+"k": "bird"
+},
+{
+"g": "🐧",
+"n": "penguin",
+"k": "bird"
+},
+{
+"g": "🐦",
+"n": "bird",
+"k": "animal"
+},
+{
+"g": "🐤",
+"n": "chick",
+"k": "bird baby"
+},
+{
+"g": "🐣",
+"n": "hatching",
+"k": "bird"
+},
+{
+"g": "🦆",
+"n": "duck",
+"k": "bird"
+},
+{
+"g": "🦅",
+"n": "eagle",
+"k": "bird"
+},
+{
+"g": "🦉",
+"n": "owl",
+"k": "bird wise"
+},
+{
+"g": "🦇",
+"n": "bat",
+"k": "halloween"
+},
+{
+"g": "🐺",
+"n": "wolf",
+"k": "animal"
+},
+{
+"g": "🐗",
+"n": "boar",
+"k": "animal"
+},
+{
+"g": "🐴",
+"n": "horse",
+"k": "animal"
+},
+{
+"g": "🦄",
+"n": "unicorn",
+"k": "magic"
+},
+{
+"g": "🐝",
+"n": "bee",
+"k": "insect"
+},
+{
+"g": "🪱",
+"n": "worm",
+"k": "insect"
+},
+{
+"g": "🐛",
+"n": "bug",
+"k": "insect"
+},
+{
+"g": "🦋",
+"n": "butterfly",
+"k": "insect"
+},
+{
+"g": "🐌",
+"n": "snail",
+"k": "slow"
+},
+{
+"g": "🐞",
+"n": "ladybug",
+"k": "insect"
+},
+{
+"g": "🐜",
+"n": "ant",
+"k": "insect"
+},
+{
+"g": "🦟",
+"n": "mosquito",
+"k": "insect"
+},
+{
+"g": "🦗",
+"n": "cricket",
+"k": "insect"
+},
+{
+"g": "🕷️",
+"n": "spider",
+"k": "insect"
+},
+{
+"g": "🕸️",
+"n": "web",
+"k": "spider"
+},
+{
+"g": "🦂",
+"n": "scorpion",
+"k": "insect"
+},
+{
+"g": "🐢",
+"n": "turtle",
+"k": "slow"
+},
+{
+"g": "🐍",
+"n": "snake",
+"k": "animal"
+},
+{
+"g": "🦎",
+"n": "lizard",
+"k": "animal"
+},
+{
+"g": "🦖",
+"n": "t-rex",
+"k": "dinosaur"
+},
+{
+"g": "🦕",
+"n": "sauropod",
+"k": "dinosaur"
+},
+{
+"g": "🐙",
+"n": "octopus",
+"k": "sea"
+},
+{
+"g": "🦑",
+"n": "squid",
+"k": "sea"
+},
+{
+"g": "🦐",
+"n": "shrimp",
+"k": "sea"
+},
+{
+"g": "🦞",
+"n": "lobster",
+"k": "sea"
+},
+{
+"g": "🦀",
+"n": "crab",
+"k": "sea"
+},
+{
+"g": "🐡",
+"n": "blowfish",
+"k": "sea"
+},
+{
+"g": "🐠",
+"n": "tropical fish",
+"k": "sea"
+},
+{
+"g": "🐟",
+"n": "fish",
+"k": "sea"
+},
+{
+"g": "🐬",
+"n": "dolphin",
+"k": "sea"
+},
+{
+"g": "🐳",
+"n": "whale spout",
+"k": "sea"
+},
+{
+"g": "🐋",
+"n": "whale",
+"k": "sea"
+},
+{
+"g": "🦈",
+"n": "shark",
+"k": "sea"
+},
+{
+"g": "🐊",
+"n": "crocodile",
+"k": "animal"
+},
+{
+"g": "🐅",
+"n": "tiger full",
+"k": "animal"
+},
+{
+"g": "🐆",
+"n": "leopard",
+"k": "animal"
+},
+{
+"g": "🦓",
+"n": "zebra",
+"k": "animal"
+},
+{
+"g": "🦍",
+"n": "gorilla",
+"k": "animal"
+},
+{
+"g": "🦧",
+"n": "orangutan",
+"k": "animal"
+},
+{
+"g": "🐘",
+"n": "elephant",
+"k": "animal"
+},
+{
+"g": "🦛",
+"n": "hippo",
+"k": "animal"
+},
+{
+"g": "🦏",
+"n": "rhino",
+"k": "animal"
+},
+{
+"g": "🐪",
+"n": "camel",
+"k": "animal"
+},
+{
+"g": "🐫",
+"n": "two hump camel",
+"k": "animal"
+},
+{
+"g": "🦒",
+"n": "giraffe",
+"k": "animal"
+},
+{
+"g": "🦘",
+"n": "kangaroo",
+"k": "animal"
+},
+{
+"g": "🦬",
+"n": "bison",
+"k": "animal"
+},
+{
+"g": "🐃",
+"n": "water buffalo",
+"k": "animal"
+},
+{
+"g": "🐂",
+"n": "ox",
+"k": "animal"
+},
+{
+"g": "🐄",
+"n": "cow full",
+"k": "animal"
+},
+{
+"g": "🐎",
+"n": "race horse",
+"k": "animal"
+},
+{
+"g": "🐖",
+"n": "pig full",
+"k": "animal"
+},
+{
+"g": "🐏",
+"n": "ram",
+"k": "animal"
+},
+{
+"g": "🐑",
+"n": "ewe",
+"k": "sheep"
+},
+{
+"g": "🦙",
+"n": "llama",
+"k": "animal"
+},
+{
+"g": "🐐",
+"n": "goat",
+"k": "animal"
+},
+{
+"g": "🦌",
+"n": "deer",
+"k": "animal"
+},
+{
+"g": "🐕",
+"n": "dog full",
+"k": "pet"
+},
+{
+"g": "🐩",
+"n": "poodle",
+"k": "dog"
+},
+{
+"g": "🦮",
+"n": "guide dog",
+"k": "pet"
+},
+{
+"g": "🐈",
+"n": "cat full",
+"k": "pet"
+},
+{
+"g": "🐓",
+"n": "rooster",
+"k": "bird"
+},
+{
+"g": "🦃",
+"n": "turkey",
+"k": "bird"
+},
+{
+"g": "🦤",
+"n": "dodo",
+"k": "bird"
+},
+{
+"g": "🦚",
+"n": "peacock",
+"k": "bird"
+},
+{
+"g": "🦜",
+"n": "parrot",
+"k": "bird"
+},
+{
+"g": "🦢",
+"n": "swan",
+"k": "bird"
+},
+{
+"g": "🦩",
+"n": "flamingo",
+"k": "bird"
+},
+{
+"g": "🕊️",
+"n": "dove",
+"k": "peace"
+},
+{
+"g": "🐇",
+"n": "rabbit full",
+"k": "bunny"
+},
+{
+"g": "🦝",
+"n": "raccoon",
+"k": "animal"
+},
+{
+"g": "🦨",
+"n": "skunk",
+"k": "animal"
+},
+{
+"g": "🦡",
+"n": "badger",
+"k": "animal"
+},
+{
+"g": "🦦",
+"n": "otter",
+"k": "animal"
+},
+{
+"g": "🦥",
+"n": "sloth",
+"k": "slow"
+},
+{
+"g": "🐁",
+"n": "mouse full",
+"k": "animal"
+},
+{
+"g": "🐀",
+"n": "rat",
+"k": "animal"
+},
+{
+"g": "🐿️",
+"n": "chipmunk",
+"k": "animal"
+},
+{
+"g": "🦔",
+"n": "hedgehog",
+"k": "animal"
+},
+{
+"g": "🐾",
+"n": "paws",
+"k": "tracks pet"
+},
+{
+"g": "🐉",
+"n": "dragon",
+"k": "myth"
+},
+{
+"g": "🐲",
+"n": "dragon face",
+"k": "myth"
+},
+{
+"g": "🌵",
+"n": "cactus",
+"k": "plant"
+},
+{
+"g": "🎄",
+"n": "tree",
+"k": "christmas"
+},
+{
+"g": "🌲",
+"n": "evergreen",
+"k": "tree"
+},
+{
+"g": "🌳",
+"n": "deciduous",
+"k": "tree"
+},
+{
+"g": "🌴",
+"n": "palm",
+"k": "tree beach"
+},
+{
+"g": "🌱",
+"n": "seedling",
+"k": "plant grow"
+},
+{
+"g": "🌿",
+"n": "herb",
+"k": "leaf plant"
+},
+{
+"g": "☘️",
+"n": "shamrock",
+"k": "luck"
+},
+{
+"g": "🍀",
+"n": "clover",
+"k": "luck four"
+},
+{
+"g": "🍁",
+"n": "maple",
+"k": "leaf fall"
+},
+{
+"g": "🍂",
+"n": "fallen leaf",
+"k": "fall"
+},
+{
+"g": "🍃",
+"n": "leaf wind",
+"k": "nature"
+},
+{
+"g": "🍄",
+"n": "mushroom",
+"k": "plant"
+},
+{
+"g": "🌹",
+"n": "rose",
+"k": "flower love"
+},
+{
+"g": "🥀",
+"n": "wilted",
+"k": "flower sad"
+},
+{
+"g": "🌺",
+"n": "hibiscus",
+"k": "flower"
+},
+{
+"g": "🌻",
+"n": "sunflower",
+"k": "flower"
+},
+{
+"g": "🌼",
+"n": "blossom",
+"k": "flower"
+},
+{
+"g": "🌷",
+"n": "tulip",
+"k": "flower"
+},
+{
+"g": "🌸",
+"n": "cherry blossom",
+"k": "flower japan"
+},
+{
+"g": "💐",
+"n": "bouquet",
+"k": "flowers"
+},
+{
+"g": "🍇",
+"n": "grapes",
+"k": "fruit"
+},
+{
+"g": "🍈",
+"n": "melon",
+"k": "fruit"
+},
+{
+"g": "🍉",
+"n": "watermelon",
+"k": "fruit"
+},
+{
+"g": "🍊",
+"n": "tangerine",
+"k": "orange fruit"
+},
+{
+"g": "🍋",
+"n": "lemon",
+"k": "fruit"
+},
+{
+"g": "🍌",
+"n": "banana",
+"k": "fruit"
+},
+{
+"g": "🍍",
+"n": "pineapple",
+"k": "fruit"
+},
+{
+"g": "🥭",
+"n": "mango",
+"k": "fruit"
+},
+{
+"g": "🍎",
+"n": "red apple",
+"k": "fruit"
+},
+{
+"g": "🍏",
+"n": "green apple",
+"k": "fruit"
+},
+{
+"g": "🍐",
+"n": "pear",
+"k": "fruit"
+},
+{
+"g": "🍑",
+"n": "peach",
+"k": "fruit"
+},
+{
+"g": "🍒",
+"n": "cherries",
+"k": "fruit"
+},
+{
+"g": "🍓",
+"n": "strawberry",
+"k": "fruit"
+},
+{
+"g": "🫐",
+"n": "blueberries",
+"k": "fruit"
+},
+{
+"g": "🥝",
+"n": "kiwi",
+"k": "fruit"
+},
+{
+"g": "🍅",
+"n": "tomato",
+"k": "veg"
+},
+{
+"g": "🫒",
+"n": "olive",
+"k": "food"
+},
+{
+"g": "🥥",
+"n": "coconut",
+"k": "fruit"
+},
+{
+"g": "🥑",
+"n": "avocado",
+"k": "food"
+},
+{
+"g": "🍆",
+"n": "eggplant",
+"k": "veg"
+},
+{
+"g": "🥔",
+"n": "potato",
+"k": "veg"
+},
+{
+"g": "🥕",
+"n": "carrot",
+"k": "veg"
+},
+{
+"g": "🌽",
+"n": "corn",
+"k": "veg"
+},
+{
+"g": "🌶️",
+"n": "hot pepper",
+"k": "spicy"
+},
+{
+"g": "🫑",
+"n": "bell pepper",
+"k": "veg"
+},
+{
+"g": "🥒",
+"n": "cucumber",
+"k": "veg"
+},
+{
+"g": "🥬",
+"n": "leafy green",
+"k": "veg"
+},
+{
+"g": "🥦",
+"n": "broccoli",
+"k": "veg"
+},
+{
+"g": "🧄",
+"n": "garlic",
+"k": "food"
+},
+{
+"g": "🧅",
+"n": "onion",
+"k": "food"
+},
+{
+"g": "🥜",
+"n": "peanuts",
+"k": "food"
+},
+{
+"g": "🫘",
+"n": "beans",
+"k": "food"
+},
+{
+"g": "🌰",
+"n": "chestnut",
+"k": "food"
+},
+{
+"g": "🍞",
+"n": "bread",
+"k": "food"
+},
+{
+"g": "🥐",
+"n": "croissant",
+"k": "food"
+},
+{
+"g": "🥖",
+"n": "baguette",
+"k": "food"
+},
+{
+"g": "🫓",
+"n": "flatbread",
+"k": "food"
+},
+{
+"g": "🥨",
+"n": "pretzel",
+"k": "food"
+},
+{
+"g": "🥯",
+"n": "bagel",
+"k": "food"
+},
+{
+"g": "🥞",
+"n": "pancakes",
+"k": "food"
+},
+{
+"g": "🧇",
+"n": "waffle",
+"k": "food"
+},
+{
+"g": "🧀",
+"n": "cheese",
+"k": "food"
+},
+{
+"g": "🍖",
+"n": "meat",
+"k": "food"
+},
+{
+"g": "🍗",
+"n": "poultry",
+"k": "chicken food"
+},
+{
+"g": "🥩",
+"n": "steak",
+"k": "meat food"
+},
+{
+"g": "🥓",
+"n": "bacon",
+"k": "food"
+},
+{
+"g": "🍔",
+"n": "burger",
+"k": "food"
+},
+{
+"g": "🍟",
+"n": "fries",
+"k": "food"
+},
+{
+"g": "🍕",
+"n": "pizza",
+"k": "food"
+},
+{
+"g": "🌭",
+"n": "hotdog",
+"k": "food"
+},
+{
+"g": "🥪",
+"n": "sandwich",
+"k": "food"
+},
+{
+"g": "🌮",
+"n": "taco",
+"k": "food"
+},
+{
+"g": "🌯",
+"n": "burrito",
+"k": "food"
+},
+{
+"g": "🫔",
+"n": "tamale",
+"k": "food"
+},
+{
+"g": "🥙",
+"n": "falafel",
+"k": "food"
+},
+{
+"g": "🧆",
+"n": "falafel ball",
+"k": "food"
+},
+{
+"g": "🥚",
+"n": "egg",
+"k": "food"
+},
+{
+"g": "🍳",
+"n": "cooking",
+"k": "egg food"
+},
+{
+"g": "🥘",
+"n": "paella",
+"k": "food"
+},
+{
+"g": "🍲",
+"n": "stew",
+"k": "food"
+},
+{
+"g": "🫕",
+"n": "fondue",
+"k": "food"
+},
+{
+"g": "🥣",
+"n": "bowl",
+"k": "food"
+},
+{
+"g": "🥗",
+"n": "salad",
+"k": "food"
+},
+{
+"g": "🍿",
+"n": "popcorn",
+"k": "food"
+},
+{
+"g": "🧈",
+"n": "butter",
+"k": "food"
+},
+{
+"g": "🧂",
+"n": "salt",
+"k": "food"
+},
+{
+"g": "🥫",
+"n": "canned",
+"k": "food"
+},
+{
+"g": "🍱",
+"n": "bento",
+"k": "food japan"
+},
+{
+"g": "🍘",
+"n": "rice cracker",
+"k": "food"
+},
+{
+"g": "🍙",
+"n": "rice ball",
+"k": "food"
+},
+{
+"g": "🍚",
+"n": "rice",
+"k": "food"
+},
+{
+"g": "🍛",
+"n": "curry",
+"k": "food"
+},
+{
+"g": "🍜",
+"n": "ramen",
+"k": "noodles food"
+},
+{
+"g": "🍝",
+"n": "spaghetti",
+"k": "pasta food"
+},
+{
+"g": "🍠",
+"n": "sweet potato",
+"k": "food"
+},
+{
+"g": "🍢",
+"n": "oden",
+"k": "food"
+},
+{
+"g": "🍣",
+"n": "sushi",
+"k": "food japan"
+},
+{
+"g": "🍤",
+"n": "shrimp fry",
+"k": "food"
+},
+{
+"g": "🍥",
+"n": "fish cake",
+"k": "food"
+},
+{
+"g": "🥮",
+"n": "moon cake",
+"k": "food"
+},
+{
+"g": "🍡",
+"n": "dango",
+"k": "food"
+},
+{
+"g": "🥟",
+"n": "dumpling",
+"k": "food"
+},
+{
+"g": "🥠",
+"n": "fortune cookie",
+"k": "food"
+},
+{
+"g": "🥡",
+"n": "takeout",
+"k": "food"
+},
+{
+"g": "🍦",
+"n": "soft ice cream",
+"k": "dessert"
+},
+{
+"g": "🍧",
+"n": "shaved ice",
+"k": "dessert"
+},
+{
+"g": "🍨",
+"n": "ice cream",
+"k": "dessert"
+},
+{
+"g": "🍩",
+"n": "donut",
+"k": "dessert"
+},
+{
+"g": "🍪",
+"n": "cookie",
+"k": "dessert"
+},
+{
+"g": "🎂",
+"n": "cake",
+"k": "birthday dessert"
+},
+{
+"g": "🍰",
+"n": "shortcake",
+"k": "dessert"
+},
+{
+"g": "🧁",
+"n": "cupcake",
+"k": "dessert"
+},
+{
+"g": "🥧",
+"n": "pie",
+"k": "dessert"
+},
+{
+"g": "🍫",
+"n": "chocolate",
+"k": "dessert"
+},
+{
+"g": "🍬",
+"n": "candy",
+"k": "sweet"
+},
+{
+"g": "🍭",
+"n": "lollipop",
+"k": "sweet"
+},
+{
+"g": "🍮",
+"n": "custard",
+"k": "dessert"
+},
+{
+"g": "🍯",
+"n": "honey",
+"k": "sweet"
+},
+{
+"g": "🍼",
+"n": "baby bottle",
+"k": "milk"
+},
+{
+"g": "🥛",
+"n": "milk",
+"k": "drink"
+},
+{
+"g": "☕",
+"n": "coffee",
+"k": "drink cafe"
+},
+{
+"g": "🫖",
+"n": "teapot",
+"k": "drink"
+},
+{
+"g": "🍵",
+"n": "tea",
+"k": "drink"
+},
+{
+"g": "🍶",
+"n": "sake",
+"k": "drink"
+},
+{
+"g": "🍾",
+"n": "champagne",
+"k": "drink party"
+},
+{
+"g": "🍷",
+"n": "wine",
+"k": "drink"
+},
+{
+"g": "🍸",
+"n": "cocktail",
+"k": "drink"
+},
+{
+"g": "🍹",
+"n": "tropical drink",
+"k": "drink"
+},
+{
+"g": "🍺",
+"n": "beer",
+"k": "drink"
+},
+{
+"g": "🍻",
+"n": "beers",
+"k": "cheers drink"
+},
+{
+"g": "🥂",
+"n": "clink",
+"k": "cheers drink"
+},
+{
+"g": "🥃",
+"n": "tumbler",
+"k": "whiskey drink"
+},
+{
+"g": "🥤",
+"n": "cup straw",
+"k": "drink soda"
+},
+{
+"g": "🧋",
+"n": "boba",
+"k": "tea drink"
+},
+{
+"g": "🧃",
+"n": "juice box",
+"k": "drink"
+},
+{
+"g": "🧉",
+"n": "mate",
+"k": "drink"
+},
+{
+"g": "🧊",
+"n": "ice",
+"k": "cold"
+},
+{
+"g": "🥢",
+"n": "chopsticks",
+"k": "food"
+},
+{
+"g": "🍽️",
+"n": "fork knife plate",
+"k": "dinner"
+},
+{
+"g": "🍴",
+"n": "fork knife",
+"k": "eat"
+},
+{
+"g": "🥄",
+"n": "spoon",
+"k": "eat"
+},
+{
+"g": "🚗",
+"n": "car",
+"k": "drive"
+},
+{
+"g": "🚕",
+"n": "taxi",
+"k": "cab"
+},
+{
+"g": "🚙",
+"n": "suv",
+"k": "car"
+},
+{
+"g": "🚌",
+"n": "bus",
+"k": "transit"
+},
+{
+"g": "🚎",
+"n": "trolley",
+"k": "bus"
+},
+{
+"g": "🏎️",
+"n": "race car",
+"k": "fast"
+},
+{
+"g": "🚓",
+"n": "police car",
+"k": "cop"
+},
+{
+"g": "🚑",
+"n": "ambulance",
+"k": "emergency"
+},
+{
+"g": "🚒",
+"n": "fire truck",
+"k": "emergency"
+},
+{
+"g": "🚐",
+"n": "van",
+"k": "car"
+},
+{
+"g": "🛻",
+"n": "pickup",
+"k": "truck"
+},
+{
+"g": "🚚",
+"n": "truck",
+"k": "delivery"
+},
+{
+"g": "🚛",
+"n": "lorry",
+"k": "truck"
+},
+{
+"g": "🚜",
+"n": "tractor",
+"k": "farm"
+},
+{
+"g": "🛵",
+"n": "scooter",
+"k": "bike"
+},
+{
+"g": "🏍️",
+"n": "motorcycle",
+"k": "bike"
+},
+{
+"g": "🛺",
+"n": "rickshaw",
+"k": "tuk"
+},
+{
+"g": "🚲",
+"n": "bicycle",
+"k": "bike"
+},
+{
+"g": "🛴",
+"n": "kick scooter",
+"k": "ride"
+},
+{
+"g": "🛹",
+"n": "skateboard",
+"k": "ride"
+},
+{
+"g": "🛼",
+"n": "roller skate",
+"k": "ride"
+},
+{
+"g": "🚁",
+"n": "helicopter",
+"k": "fly"
+},
+{
+"g": "🛸",
+"n": "ufo",
+"k": "alien"
+},
+{
+"g": "✈️",
+"n": "airplane",
+"k": "fly travel"
+},
+{
+"g": "🛩️",
+"n": "small plane",
+"k": "fly"
+},
+{
+"g": "🛫",
+"n": "departure",
+"k": "fly"
+},
+{
+"g": "🛬",
+"n": "arrival",
+"k": "fly"
+},
+{
+"g": "🪂",
+"n": "parachute",
+"k": "sky"
+},
+{
+"g": "💺",
+"n": "seat",
+"k": "plane"
+},
+{
+"g": "🚀",
+"n": "rocket",
+"k": "space launch"
+},
+{
+"g": "🛰️",
+"n": "satellite",
+"k": "space"
+},
+{
+"g": "🚢",
+"n": "ship",
+"k": "boat"
+},
+{
+"g": "⛴️",
+"n": "ferry",
+"k": "boat"
+},
+{
+"g": "🛳️",
+"n": "cruise",
+"k": "boat"
+},
+{
+"g": "🚤",
+"n": "speedboat",
+"k": "boat"
+},
+{
+"g": "⛵",
+"n": "sailboat",
+"k": "boat"
+},
+{
+"g": "🛶",
+"n": "canoe",
+"k": "boat"
+},
+{
+"g": "⚓",
+"n": "anchor",
+"k": "ship"
+},
+{
+"g": "⛽",
+"n": "fuel",
+"k": "gas"
+},
+{
+"g": "🚧",
+"n": "construction",
+"k": "road"
+},
+{
+"g": "🚦",
+"n": "traffic light",
+"k": "road"
+},
+{
+"g": "🚥",
+"n": "horizontal light",
+"k": "road"
+},
+{
+"g": "🗺️",
+"n": "map",
+"k": "travel"
+},
+{
+"g": "🗿",
+"n": "moai",
+"k": "statue"
+},
+{
+"g": "🗽",
+"n": "liberty",
+"k": "nyc"
+},
+{
+"g": "🗼",
+"n": "tokyo tower",
+"k": "japan"
+},
+{
+"g": "🏰",
+"n": "castle",
+"k": "europe"
+},
+{
+"g": "🏯",
+"n": "japanese castle",
+"k": "japan"
+},
+{
+"g": "🏟️",
+"n": "stadium",
+"k": "sport"
+},
+{
+"g": "🎡",
+"n": "ferris",
+"k": "park"
+},
+{
+"g": "🎢",
+"n": "coaster",
+"k": "park"
+},
+{
+"g": "🎠",
+"n": "carousel",
+"k": "park"
+},
+{
+"g": "⛲",
+"n": "fountain",
+"k": "park"
+},
+{
+"g": "⛱️",
+"n": "umbrella beach",
+"k": "vacation"
+},
+{
+"g": "🏖️",
+"n": "beach",
+"k": "vacation"
+},
+{
+"g": "🏝️",
+"n": "island",
+"k": "vacation"
+},
+{
+"g": "🏜️",
+"n": "desert",
+"k": "sand"
+},
+{
+"g": "🌋",
+"n": "volcano",
+"k": "mountain"
+},
+{
+"g": "⛰️",
+"n": "mountain",
+"k": "hike"
+},
+{
+"g": "🏔️",
+"n": "snow mountain",
+"k": "hike"
+},
+{
+"g": "🗻",
+"n": "fuji",
+"k": "japan"
+},
+{
+"g": "🏕️",
+"n": "camping",
+"k": "tent"
+},
+{
+"g": "⛺",
+"n": "tent",
+"k": "camp"
+},
+{
+"g": "🏠",
+"n": "house",
+"k": "home"
+},
+{
+"g": "🏡",
+"n": "house garden",
+"k": "home"
+},
+{
+"g": "🏢",
+"n": "office",
+"k": "building"
+},
+{
+"g": "🏣",
+"n": "post office",
+"k": "japan"
+},
+{
+"g": "🏥",
+"n": "hospital",
+"k": "health"
+},
+{
+"g": "🏦",
+"n": "bank",
+"k": "money"
+},
+{
+"g": "🏨",
+"n": "hotel",
+"k": "travel"
+},
+{
+"g": "🏪",
+"n": "convenience",
+"k": "store"
+},
+{
+"g": "🏫",
+"n": "school",
+"k": "education"
+},
+{
+"g": "🏬",
+"n": "department",
+"k": "store"
+},
+{
+"g": "🏭",
+"n": "factory",
+"k": "work"
+},
+{
+"g": "🏛️",
+"n": "classical",
+"k": "building"
+},
+{
+"g": "💒",
+"n": "wedding",
+"k": "church"
+},
+{
+"g": "⛪",
+"n": "church",
+"k": "religion"
+},
+{
+"g": "🕌",
+"n": "mosque",
+"k": "religion"
+},
+{
+"g": "🕍",
+"n": "synagogue",
+"k": "religion"
+},
+{
+"g": "🕋",
+"n": "kaaba",
+"k": "religion"
+},
+{
+"g": "⛩️",
+"n": "shinto",
+"k": "japan"
+},
+{
+"g": "⌚",
+"n": "watch",
+"k": "time"
+},
+{
+"g": "📱",
+"n": "phone",
+"k": "mobile"
+},
+{
+"g": "💻",
+"n": "laptop",
+"k": "computer"
+},
+{
+"g": "⌨️",
+"n": "keyboard",
+"k": "computer"
+},
+{
+"g": "🖥️",
+"n": "desktop",
+"k": "computer"
+},
+{
+"g": "🖨️",
+"n": "printer",
+"k": "computer"
+},
+{
+"g": "🖱️",
+"n": "mouse",
+"k": "computer"
+},
+{
+"g": "💽",
+"n": "minidisc",
+"k": "disk"
+},
+{
+"g": "💾",
+"n": "floppy",
+"k": "save"
+},
+{
+"g": "💿",
+"n": "cd",
+"k": "disk"
+},
+{
+"g": "📀",
+"n": "dvd",
+"k": "disk"
+},
+{
+"g": "📷",
+"n": "camera",
+"k": "photo"
+},
+{
+"g": "📸",
+"n": "camera flash",
+"k": "photo"
+},
+{
+"g": "📹",
+"n": "video camera",
+"k": "film"
+},
+{
+"g": "🎥",
+"n": "movie camera",
+"k": "film"
+},
+{
+"g": "📽️",
+"n": "projector",
+"k": "film"
+},
+{
+"g": "🎬",
+"n": "clapper",
+"k": "movie"
+},
+{
+"g": "📺",
+"n": "tv",
+"k": "television"
+},
+{
+"g": "📻",
+"n": "radio",
+"k": "music"
+},
+{
+"g": "🎙️",
+"n": "studio mic",
+"k": "podcast"
+},
+{
+"g": "🎚️",
+"n": "slider",
+"k": "audio"
+},
+{
+"g": "🎛️",
+"n": " knobs",
+"k": "audio"
+},
+{
+"g": "🧭",
+"n": "compass",
+"k": "nav"
+},
+{
+"g": "⏱️",
+"n": "stopwatch",
+"k": "time"
+},
+{
+"g": "⏲️",
+"n": "timer",
+"k": "time"
+},
+{
+"g": "⏰",
+"n": "alarm",
+"k": "time"
+},
+{
+"g": "🕰️",
+"n": "mantel clock",
+"k": "time"
+},
+{
+"g": "⌛",
+"n": "hourglass",
+"k": "wait"
+},
+{
+"g": "⏳",
+"n": "hourglass flow",
+"k": "wait"
+},
+{
+"g": "📡",
+"n": "antenna",
+"k": "signal"
+},
+{
+"g": "🔋",
+"n": "battery",
+"k": "power"
+},
+{
+"g": "🔌",
+"n": "plug",
+"k": "power"
+},
+{
+"g": "💡",
+"n": "bulb",
+"k": "idea light"
+},
+{
+"g": "🔦",
+"n": "flashlight",
+"k": "light"
+},
+{
+"g": "🕯️",
+"n": "candle",
+"k": "light"
+},
+{
+"g": "🪔",
+"n": "diya",
+"k": "light"
+},
+{
+"g": "🧯",
+"n": "extinguisher",
+"k": "fire"
+},
+{
+"g": "🛢️",
+"n": "oil",
+"k": "drum"
+},
+{
+"g": "💸",
+"n": "money wings",
+"k": "cash"
+},
+{
+"g": "💵",
+"n": "dollar",
+"k": "money"
+},
+{
+"g": "💴",
+"n": "yen",
+"k": "money"
+},
+{
+"g": "💶",
+"n": "euro",
+"k": "money"
+},
+{
+"g": "💷",
+"n": "pound",
+"k": "money"
+},
+{
+"g": "💰",
+"n": "money bag",
+"k": "cash"
+},
+{
+"g": "💳",
+"n": "card",
+"k": "credit pay"
+},
+{
+"g": "💎",
+"n": "gem",
+"k": "diamond"
+},
+{
+"g": "⚖️",
+"n": "scale",
+"k": "law"
+},
+{
+"g": "🪜",
+"n": "ladder",
+"k": "climb"
+},
+{
+"g": "🧰",
+"n": "toolbox",
+"k": "tools"
+},
+{
+"g": "🪛",
+"n": "screwdriver",
+"k": "tools"
+},
+{
+"g": "🔧",
+"n": "wrench",
+"k": "tools"
+},
+{
+"g": "🔨",
+"n": "hammer",
+"k": "tools"
+},
+{
+"g": "⚒️",
+"n": "hammer pick",
+"k": "tools"
+},
+{
+"g": "🛠️",
+"n": "hammer wrench",
+"k": "tools"
+},
+{
+"g": "⛏️",
+"n": "pick",
+"k": "tools"
+},
+{
+"g": "🪚",
+"n": "saw",
+"k": "tools"
+},
+{
+"g": "🔩",
+"n": "nut bolt",
+"k": "tools"
+},
+{
+"g": "⚙️",
+"n": "gear",
+"k": "settings"
+},
+{
+"g": "🔗",
+"n": "link",
+"k": "url"
+},
+{
+"g": "⛓️",
+"n": "chains",
+"k": "lock"
+},
+{
+"g": "🔒",
+"n": "lock",
+"k": "secure"
+},
+{
+"g": "🔓",
+"n": "unlock",
+"k": "open"
+},
+{
+"g": "🔑",
+"n": "key",
+"k": "password"
+},
+{
+"g": "🗝️",
+"n": "old key",
+"k": "password"
+},
+{
+"g": "🚪",
+"n": "door",
+"k": "enter"
+},
+{
+"g": "🪑",
+"n": "chair",
+"k": "sit"
+},
+{
+"g": "🛏️",
+"n": "bed object",
+"k": "sleep"
+},
+{
+"g": "🛋️",
+"n": "couch",
+"k": "sit"
+},
+{
+"g": "🚽",
+"n": "toilet",
+"k": "bath"
+},
+{
+"g": "🚿",
+"n": "shower",
+"k": "bath"
+},
+{
+"g": "🛁",
+"n": "bathtub",
+"k": "bath"
+},
+{
+"g": "🧴",
+"n": "lotion",
+"k": "bottle"
+},
+{
+"g": "🧷",
+"n": "safety pin",
+"k": "clip"
+},
+{
+"g": "🧹",
+"n": "broom",
+"k": "clean"
+},
+{
+"g": "🧺",
+"n": "basket",
+"k": "laundry"
+},
+{
+"g": "🧻",
+"n": "roll",
+"k": "paper"
+},
+{
+"g": "🪣",
+"n": "bucket",
+"k": "clean"
+},
+{
+"g": "🧼",
+"n": "soap",
+"k": "clean"
+},
+{
+"g": "🪥",
+"n": "toothbrush",
+"k": "clean"
+},
+{
+"g": "🧽",
+"n": "sponge",
+"k": "clean"
+},
+{
+"g": "🛒",
+"n": "cart",
+"k": "shop"
+},
+{
+"g": "🚬",
+"n": "cigarette",
+"k": "smoke"
+},
+{
+"g": "⚰️",
+"n": "coffin",
+"k": "dead"
+},
+{
+"g": "🪦",
+"n": "headstone",
+"k": "dead"
+},
+{
+"g": "⚱️",
+"n": "urn",
+"k": "dead"
+},
+{
+"g": "🪧",
+"n": "placard",
+"k": "sign"
+},
+{
+"g": "🪪",
+"n": "id",
+"k": "card"
+},
+{
+"g": "⚽",
+"n": "soccer",
+"k": "football sport"
+},
+{
+"g": "🏀",
+"n": "basketball ball",
+"k": "sport"
+},
+{
+"g": "🏈",
+"n": "american football",
+"k": "sport"
+},
+{
+"g": "⚾",
+"n": "baseball",
+"k": "sport"
+},
+{
+"g": "🥎",
+"n": "softball",
+"k": "sport"
+},
+{
+"g": "🎾",
+"n": "tennis",
+"k": "sport"
+},
+{
+"g": "🏐",
+"n": "volleyball",
+"k": "sport"
+},
+{
+"g": "🏉",
+"n": "rugby",
+"k": "sport"
+},
+{
+"g": "🥏",
+"n": "frisbee",
+"k": "sport"
+},
+{
+"g": "🎱",
+"n": "8ball",
+"k": "pool"
+},
+{
+"g": "🪀",
+"n": "yo-yo",
+"k": "toy"
+},
+{
+"g": "🏓",
+"n": "ping pong",
+"k": "sport"
+},
+{
+"g": "🏸",
+"n": "badminton",
+"k": "sport"
+},
+{
+"g": "🏒",
+"n": "ice hockey",
+"k": "sport"
+},
+{
+"g": "🏑",
+"n": "field hockey",
+"k": "sport"
+},
+{
+"g": "🥍",
+"n": "lacrosse",
+"k": "sport"
+},
+{
+"g": "🏏",
+"n": "cricket bat",
+"k": "sport"
+},
+{
+"g": "🪃",
+"n": "boomerang",
+"k": "sport"
+},
+{
+"g": "🥅",
+"n": "goal",
+"k": "sport"
+},
+{
+"g": "⛳",
+"n": "flag in hole",
+"k": "golf"
+},
+{
+"g": "🪁",
+"n": "kite",
+"k": "fly"
+},
+{
+"g": "🛝",
+"n": "slide",
+"k": "park"
+},
+{
+"g": "🏹",
+"n": "bow arrow",
+"k": "archery"
+},
+{
+"g": "🎣",
+"n": "fishing",
+"k": "rod"
+},
+{
+"g": "🤿",
+"n": "diving",
+"k": "mask"
+},
+{
+"g": "🥊",
+"n": "boxing",
+"k": "glove"
+},
+{
+"g": "🥋",
+"n": "martial arts",
+"k": "gi"
+},
+{
+"g": "🎽",
+"n": "running shirt",
+"k": "sport"
+},
+{
+"g": "🛷",
+"n": "sled",
+"k": "snow"
+},
+{
+"g": "⛸️",
+"n": "ice skate",
+"k": "sport"
+},
+{
+"g": "🥌",
+"n": "curling",
+"k": "sport"
+},
+{
+"g": "🎿",
+"n": "skis",
+"k": "snow"
+},
+{
+"g": "🎯",
+"n": "bullseye",
+"k": "target"
+},
+{
+"g": "🎮",
+"n": "controller",
+"k": "game xbox"
+},
+{
+"g": "🕹️",
+"n": "joystick",
+"k": "game"
+},
+{
+"g": "🎰",
+"n": "slot",
+"k": "casino"
+},
+{
+"g": "🎲",
+"n": "dice",
+"k": "game random"
+},
+{
+"g": "🧩",
+"n": "puzzle",
+"k": "piece"
+},
+{
+"g": "♟️",
+"n": "chess",
+"k": "pawn"
+},
+{
+"g": "🎭",
+"n": "masks",
+"k": "theatre art"
+},
+{
+"g": "🎨",
+"n": "palette",
+"k": "art paint"
+},
+{
+"g": "🎤",
+"n": "mic",
+"k": "sing karaoke"
+},
+{
+"g": "🎧",
+"n": "headphones",
+"k": "music"
+},
+{
+"g": "🎼",
+"n": "score",
+"k": "music"
+},
+{
+"g": "🎹",
+"n": "piano",
+"k": "music"
+},
+{
+"g": "🥁",
+"n": "drum",
+"k": "music"
+},
+{
+"g": "🪘",
+"n": "long drum",
+"k": "music"
+},
+{
+"g": "🎷",
+"n": "sax",
+"k": "music"
+},
+{
+"g": "🎺",
+"n": "trumpet",
+"k": "music"
+},
+{
+"g": "🎸",
+"n": "guitar",
+"k": "music"
+},
+{
+"g": "🪕",
+"n": "banjo",
+"k": "music"
+},
+{
+"g": "🎻",
+"n": "violin",
+"k": "music"
+},
+{
+"g": "🪗",
+"n": "accordion",
+"k": "music"
+},
+{
+"g": "🎳",
+"n": "bowling",
+"k": "sport"
+},
+{
+"g": "✅",
+"n": "check",
+"k": "done yes"
+},
+{
+"g": "❌",
+"n": "x",
+"k": "no close"
+},
+{
+"g": "⚠️",
+"n": "warning",
+"k": "caution"
+},
+{
+"g": "🚫",
+"n": "prohibited",
+"k": "ban no"
+},
+{
+"g": "🔔",
+"n": "bell",
+"k": "notif"
+},
+{
+"g": "🔕",
+"n": "bell off",
+"k": "mute"
+},
+{
+"g": "📣",
+"n": "megaphone",
+"k": "announce"
+},
+{
+"g": "📢",
+"n": "loudspeaker",
+"k": "announce"
+},
+{
+"g": "🗯️",
+"n": "anger bubble",
+"k": "comic"
+},
+{
+"g": "♠️",
+"n": "spades",
+"k": "cards"
+},
+{
+"g": "♥️",
+"n": "hearts suit",
+"k": "cards"
+},
+{
+"g": "♦️",
+"n": "diamonds",
+"k": "cards"
+},
+{
+"g": "♣️",
+"n": "clubs",
+"k": "cards"
+},
+{
+"g": "🃏",
+"n": "joker",
+"k": "cards"
+},
+{
+"g": "🀄",
+"n": "mahjong",
+"k": "game"
+},
+{
+"g": "🎴",
+"n": "flower cards",
+"k": "game"
+},
+{
+"g": "🔇",
+"n": "mute",
+"k": "sound off"
+},
+{
+"g": "🔈",
+"n": "speaker low",
+"k": "sound"
+},
+{
+"g": "🔉",
+"n": "speaker mid",
+"k": "sound"
+},
+{
+"g": "🔊",
+"n": "speaker high",
+"k": "sound"
+},
+{
+"g": "🎵",
+"n": "note",
+"k": "music"
+},
+{
+"g": "🎶",
+"n": "notes",
+"k": "music"
+},
+{
+"g": "➕",
+"n": "plus",
+"k": "add"
+},
+{
+"g": "➖",
+"n": "minus",
+"k": "sub"
+},
+{
+"g": "➗",
+"n": "divide",
+"k": "math"
+},
+{
+"g": "✖️",
+"n": "multiply",
+"k": "math"
+},
+{
+"g": "♾️",
+"n": "infinity",
+"k": "math"
+},
+{
+"g": "💲",
+"n": "dollar sign",
+"k": "money"
+},
+{
+"g": "©",
+"n": "copyright",
+"k": "legal"
+},
+{
+"g": "®",
+"n": "registered",
+"k": "legal"
+},
+{
+"g": "™",
+"n": "tm",
+"k": "legal"
+},
+{
+"g": "♻️",
+"n": "recycle",
+"k": "green"
+},
+{
+"g": "✔️",
+"n": "heavy check",
+"k": "done"
+},
+{
+"g": "☑️",
+"n": "ballot check",
+"k": "todo"
+},
+{
+"g": "🔘",
+"n": "radio button",
+"k": "ui"
+},
+{
+"g": "🔴",
+"n": "red circle",
+"k": "dot"
+},
+{
+"g": "🟠",
+"n": "orange circle",
+"k": "dot"
+},
+{
+"g": "🟡",
+"n": "yellow circle",
+"k": "dot"
+},
+{
+"g": "🟢",
+"n": "green circle",
+"k": "dot"
+},
+{
+"g": "🔵",
+"n": "blue circle",
+"k": "dot"
+},
+{
+"g": "🟣",
+"n": "purple circle",
+"k": "dot"
+},
+{
+"g": "⚫",
+"n": "black circle",
+"k": "dot"
+},
+{
+"g": "⚪",
+"n": "white circle",
+"k": "dot"
+},
+{
+"g": "🟥",
+"n": "red square",
+"k": "block"
+},
+{
+"g": "🟧",
+"n": "orange square",
+"k": "block"
+},
+{
+"g": "🟨",
+"n": "yellow square",
+"k": "block"
+},
+{
+"g": "🟩",
+"n": "green square",
+"k": "block"
+},
+{
+"g": "🟦",
+"n": "blue square",
+"k": "block"
+},
+{
+"g": "🟪",
+"n": "purple square",
+"k": "block"
+},
+{
+"g": "⬛",
+"n": "black square",
+"k": "block"
+},
+{
+"g": "⬜",
+"n": "white square",
+"k": "block"
+},
+{
+"g": "⬆️",
+"n": "up arrow",
+"k": "dir"
+},
+{
+"g": "⬇️",
+"n": "down arrow",
+"k": "dir"
+},
+{
+"g": "⬅️",
+"n": "left arrow",
+"k": "dir"
+},
+{
+"g": "➡️",
+"n": "right arrow",
+"k": "dir"
+},
+{
+"g": "↩️",
+"n": "right hook",
+"k": "reply"
+},
+{
+"g": "↪️",
+"n": "left hook",
+"k": "forward"
+},
+{
+"g": "⤴️",
+"n": "up right",
+"k": "dir"
+},
+{
+"g": "⤵️",
+"n": "down right",
+"k": "dir"
+},
+{
+"g": "🔃",
+"n": "clockwise",
+"k": "reload"
+},
+{
+"g": "🔄",
+"n": "arrows",
+"k": "refresh"
+},
+{
+"g": "🔙",
+"n": "back",
+"k": "arrow"
+},
+{
+"g": "🔚",
+"n": "end",
+"k": "arrow"
+},
+{
+"g": "🔛",
+"n": "on",
+"k": "arrow"
+},
+{
+"g": "🔜",
+"n": "soon",
+"k": "arrow"
+},
+{
+"g": "🔝",
+"n": "top",
+"k": "arrow"
+},
+{
+"g": "🛐",
+"n": "worship",
+"k": "religion"
+},
+{
+"g": "⚛️",
+"n": "atom",
+"k": "science"
+},
+{
+"g": "🕉️",
+"n": "om",
+"k": "hindu"
+},
+{
+"g": "✡️",
+"n": "star of david",
+"k": "jewish"
+},
+{
+"g": "☸️",
+"n": "dharma",
+"k": "buddhist"
+},
+{
+"g": "☯️",
+"n": "yin yang",
+"k": "tao"
+},
+{
+"g": "✝️",
+"n": "cross",
+"k": "christian"
+},
+{
+"g": "☦️",
+"n": "orthodox",
+"k": "christian"
+},
+{
+"g": "☪️",
+"n": "star crescent",
+"k": "islam"
+},
+{
+"g": "☮️",
+"n": "peace",
+"k": "symbol"
+},
+{
+"g": "🕎",
+"n": "menorah",
+"k": "jewish"
+},
+{
+"g": "🔯",
+"n": "six point star",
+"k": "jewish"
+},
+{
+"g": "♈",
+"n": "aries",
+"k": "zodiac"
+},
+{
+"g": "♉",
+"n": "taurus",
+"k": "zodiac"
+},
+{
+"g": "♊",
+"n": "gemini",
+"k": "zodiac"
+},
+{
+"g": "♋",
+"n": "cancer",
+"k": "zodiac"
+},
+{
+"g": "♌",
+"n": "leo",
+"k": "zodiac"
+},
+{
+"g": "♍",
+"n": "virgo",
+"k": "zodiac"
+},
+{
+"g": "♎",
+"n": "libra",
+"k": "zodiac"
+},
+{
+"g": "♏",
+"n": "scorpio",
+"k": "zodiac"
+},
+{
+"g": "♐",
+"n": "sagittarius",
+"k": "zodiac"
+},
+{
+"g": "♑",
+"n": "capricorn",
+"k": "zodiac"
+},
+{
+"g": "♒",
+"n": "aquarius",
+"k": "zodiac"
+},
+{
+"g": "♓",
+"n": "pisces",
+"k": "zodiac"
+},
+{
+"g": "⛎",
+"n": "ophiuchus",
+"k": "zodiac"
+},
+{
+"g": "🔞",
+"n": "18",
+"k": "nsfw"
+},
+{
+"g": "💮",
+"n": "white flower",
+"k": "japan"
+},
+{
+"g": "💠",
+"n": "diamond dot",
+"k": "geo"
+},
+{
+"g": "🔰",
+"n": "beginner",
+"k": "japan"
+},
+{
+"g": "🔱",
+"n": "trident",
+"k": "emblem"
+},
+{
+"g": "📛",
+"n": "name badge",
+"k": "id"
+},
+{
+"g": "⭕",
+"n": "hollow red",
+"k": "o"
+},
+{
+"g": "❓",
+"n": "question",
+"k": "help"
+},
+{
+"g": "❔",
+"n": "white question",
+"k": "help"
+},
+{
+"g": "❕",
+"n": "white exclaim",
+"k": "wow"
+},
+{
+"g": "❗",
+"n": "exclaim",
+"k": "wow"
+},
+{
+"g": "💱",
+"n": "currency",
+"k": "exchange"
+},
+{
+"g": "💹",
+"n": "chart yen",
+"k": "stocks"
+}
+]

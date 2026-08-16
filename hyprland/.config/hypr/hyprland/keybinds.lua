@@ -125,9 +125,9 @@ hl.bind("SUPER + F1", hl.dsp.exec_cmd("~/.config/hypr/scripts/volume.sh mute"), 
 
 hl.bind("SUPER + SHIFT + L", hl.dsp.exec_cmd("systemctl suspend-then-hibernate"), { locked = true })
 
-hl.bind("SUPER + V",           hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
-hl.bind("SUPER + ALT + V",     hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist delete"))
-hl.bind("SUPER + Period",      hl.dsp.exec_cmd("rofi -show emoji"))
+hl.bind("SUPER + V",           hl.dsp.exec_cmd("qs ipc call clipboard toggle"))
+hl.bind("SUPER + ALT + V",     hl.dsp.exec_cmd("qs ipc call clipboard toggleDelete"))
+hl.bind("SUPER + Period",      hl.dsp.exec_cmd("qs ipc call emoji toggle"))
 hl.bind("CTRL + SHIFT + ALT + V", hl.dsp.exec_cmd("sleep 0.5s && ydotool type -d 1 \"$(cliphist list | head -1 | cliphist decode)\""), { locked = true })
 
 hl.bind("ALT + H", hl.dsp.exec_cmd("qs ipc call keybinds toggle"))

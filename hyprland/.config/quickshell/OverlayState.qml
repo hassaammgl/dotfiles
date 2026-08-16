@@ -11,46 +11,9 @@ Singleton {
     property bool wallpaper: false
     property bool notifs: false
     property bool keybinds: false
-
-    function toggleLauncher(): void {
-        power = false;
-        wallpaper = false;
-        notifs = false;
-        keybinds = false;
-        launcher = !launcher;
-    }
-
-    function togglePower(): void {
-        launcher = false;
-        wallpaper = false;
-        notifs = false;
-        keybinds = false;
-        power = !power;
-    }
-
-    function toggleWallpaper(): void {
-        launcher = false;
-        power = false;
-        notifs = false;
-        keybinds = false;
-        wallpaper = !wallpaper;
-    }
-
-    function toggleNotifs(): void {
-        launcher = false;
-        power = false;
-        wallpaper = false;
-        keybinds = false;
-        notifs = !notifs;
-    }
-
-    function toggleKeybinds(): void {
-        launcher = false;
-        power = false;
-        wallpaper = false;
-        notifs = false;
-        keybinds = !keybinds;
-    }
+    property bool clipboard: false
+    property bool emoji: false
+    property bool clipboardDelete: false
 
     function close(): void {
         launcher = false;
@@ -58,5 +21,93 @@ Singleton {
         wallpaper = false;
         notifs = false;
         keybinds = false;
+        clipboard = false;
+        emoji = false;
+        clipboardDelete = false;
+    }
+
+    function toggleLauncher(): void {
+        if (launcher)
+            close();
+        else
+            showLauncher();
+    }
+
+    function showLauncher(): void {
+        close();
+        launcher = true;
+    }
+
+    function togglePower(): void {
+        if (power)
+            close();
+        else
+            showPower();
+    }
+
+    function showPower(): void {
+        close();
+        power = true;
+    }
+
+    function toggleWallpaper(): void {
+        if (wallpaper)
+            close();
+        else
+            showWallpaper();
+    }
+
+    function showWallpaper(): void {
+        close();
+        wallpaper = true;
+    }
+
+    function toggleNotifs(): void {
+        if (notifs)
+            close();
+        else
+            showNotifs();
+    }
+
+    function showNotifs(): void {
+        close();
+        notifs = true;
+    }
+
+    function toggleKeybinds(): void {
+        if (keybinds)
+            close();
+        else
+            showKeybinds();
+    }
+
+    function showKeybinds(): void {
+        close();
+        keybinds = true;
+    }
+
+    function toggleClipboard(del: bool): void {
+        if (clipboard && clipboardDelete === del)
+            close();
+        else
+            showClipboard(del);
+    }
+
+    function showClipboard(del: bool): void {
+        close();
+        clipboardDelete = del;
+        clipboard = true;
+    }
+
+    function toggleEmoji(): void {
+        if (emoji)
+            close();
+        else
+            showEmoji();
+    }
+
+    function showEmoji(): void {
+        close();
+        emoji = true;
     }
 }

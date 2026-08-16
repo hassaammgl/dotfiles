@@ -85,10 +85,10 @@ SUPER + SHIFT + ALT + R Record region
 SUPER + SHIFT + C       Color picker
 
 󰟸  Clipboard & Input
-SUPER + V               Clipboard history
-SUPER + ALT + V         Clipboard delete
+SUPER + V               Clipboard history (Quickshell)
+SUPER + ALT + V         Clipboard delete (Quickshell)
 CTRL + SHIFT + ALT + V  Type latest clipboard
-SUPER + Period          Emoji picker
+SUPER + Period          Emoji picker (Quickshell)
 
 󰟸  Wallpaper
 ALT + W                 Wallpaper picker (Quickshell)
