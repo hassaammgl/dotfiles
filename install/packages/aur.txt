@@ -27,3 +27,4 @@ rustdesk
 anydesk-bin
 toofan-bin
 cppman
+vscodium-bin
