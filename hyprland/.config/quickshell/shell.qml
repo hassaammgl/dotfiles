@@ -8,6 +8,7 @@ Scope {
     LauncherOverlay {}
     PowerOverlay {}
     WallpaperOverlay {}
+    KeybindsOverlay {}
 
     IpcHandler {
         target: "launcher"
@@ -20,6 +21,7 @@ Scope {
             OverlayState.power = false;
             OverlayState.wallpaper = false;
             OverlayState.notifs = false;
+            OverlayState.keybinds = false;
             OverlayState.launcher = true;
         }
 
@@ -39,6 +41,7 @@ Scope {
             OverlayState.launcher = false;
             OverlayState.wallpaper = false;
             OverlayState.notifs = false;
+            OverlayState.keybinds = false;
             OverlayState.power = true;
         }
 
@@ -58,6 +61,7 @@ Scope {
             OverlayState.launcher = false;
             OverlayState.power = false;
             OverlayState.notifs = false;
+            OverlayState.keybinds = false;
             OverlayState.wallpaper = true;
         }
 
@@ -77,11 +81,32 @@ Scope {
             OverlayState.launcher = false;
             OverlayState.power = false;
             OverlayState.wallpaper = false;
+            OverlayState.keybinds = false;
             OverlayState.notifs = true;
         }
 
         function hide(): void {
             OverlayState.notifs = false;
+        }
+    }
+
+    IpcHandler {
+        target: "keybinds"
+
+        function toggle(): void {
+            OverlayState.toggleKeybinds();
+        }
+
+        function show(): void {
+            OverlayState.launcher = false;
+            OverlayState.power = false;
+            OverlayState.wallpaper = false;
+            OverlayState.notifs = false;
+            OverlayState.keybinds = true;
+        }
+
+        function hide(): void {
+            OverlayState.keybinds = false;
         }
     }
 }

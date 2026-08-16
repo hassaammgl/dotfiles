@@ -130,6 +130,6 @@ hl.bind("SUPER + ALT + V",     hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cl
 hl.bind("SUPER + Period",      hl.dsp.exec_cmd("rofi -show emoji"))
 hl.bind("CTRL + SHIFT + ALT + V", hl.dsp.exec_cmd("sleep 0.5s && ydotool type -d 1 \"$(cliphist list | head -1 | cliphist decode)\""), { locked = true })
 
-hl.bind("ALT + H", hl.dsp.exec_cmd("rofi -dmenu -p 'Keybinds' -theme-str 'window{width:50%;}' < ~/.config/hypr/scripts/keybinds.txt"))
+hl.bind("ALT + H", hl.dsp.exec_cmd("qs ipc call keybinds toggle"))
 
 hl.bind("SUPER + ALT + f12", hl.dsp.exec_cmd("notify-send -u low -i dialog-information-symbolic 'Test notification' \"Here's a really long message to test truncation and wrapping\\nSwipe right, middle click, or press X to dismiss.\" -a 'Shell' -A \"Test1=I got it!\" -A \"Test2=Another action\""))
