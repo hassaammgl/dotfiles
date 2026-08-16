@@ -1,0 +1,9 @@
+clipboard
+emoji
+keybinds-help
+volume-brightness-osd
+lock-screen
+video-to-gif-picker
+media-popup
+screenshot-ui
+cleanup-waybar-mako-wlogout-fuzzel

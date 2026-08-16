@@ -1,5 +1,6 @@
 󰘴  General
 SUPER + Space           Launcher (Quickshell)
+SUPER + K               Notification history (left sidebar)
 SUPER + Return          Terminal (kitty)
 CTRL + T                Terminal + tmux sessions (kitty)
 SUPER + B               Browser (brave)

@@ -23,6 +23,7 @@ Scope {
 
         onNotification: notif => {
             notif.tracked = true;
+            NotifState.record(notif);
             const vals = server.trackedNotifications.values;
             if (vals.length > root.maxVisible)
                 vals[0].expire();

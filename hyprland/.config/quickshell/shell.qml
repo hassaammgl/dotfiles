@@ -4,6 +4,7 @@ import Quickshell.Io
 Scope {
     Bar {}
     Notifications {}
+    NotifSidebar {}
     LauncherOverlay {}
     PowerOverlay {}
     WallpaperOverlay {}
@@ -18,6 +19,7 @@ Scope {
         function show(): void {
             OverlayState.power = false;
             OverlayState.wallpaper = false;
+            OverlayState.notifs = false;
             OverlayState.launcher = true;
         }
 
@@ -36,6 +38,7 @@ Scope {
         function show(): void {
             OverlayState.launcher = false;
             OverlayState.wallpaper = false;
+            OverlayState.notifs = false;
             OverlayState.power = true;
         }
 
@@ -54,11 +57,31 @@ Scope {
         function show(): void {
             OverlayState.launcher = false;
             OverlayState.power = false;
+            OverlayState.notifs = false;
             OverlayState.wallpaper = true;
         }
 
         function hide(): void {
             OverlayState.wallpaper = false;
+        }
+    }
+
+    IpcHandler {
+        target: "notifs"
+
+        function toggle(): void {
+            OverlayState.toggleNotifs();
+        }
+
+        function show(): void {
+            OverlayState.launcher = false;
+            OverlayState.power = false;
+            OverlayState.wallpaper = false;
+            OverlayState.notifs = true;
+        }
+
+        function hide(): void {
+            OverlayState.notifs = false;
         }
     }
 }

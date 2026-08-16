@@ -1,4 +1,5 @@
 hl.bind("SUPER + Space", hl.dsp.exec_cmd("qs ipc call launcher toggle"))
+hl.bind("SUPER + K",     hl.dsp.exec_cmd("qs ipc call notifs toggle"))
 
 hl.bind(kbSession, hl.dsp.exec_cmd("qs ipc call power toggle"))
 hl.bind(kbLock, hl.dsp.exec_cmd("hyprlock"))
