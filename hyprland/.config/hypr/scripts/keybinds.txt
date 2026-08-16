@@ -81,10 +81,11 @@ XF86MonBrightnessUp/Down Brightness up/down
 CTRL + SUPER + Space    Play/Pause (playerctl)
 CTRL + SUPER + Equal    Next track
 CTRL + SUPER + Minus    Previous track
+SUPER + ALT + M         Now playing overlay (Quickshell)
 
 󰹑  Screenshot & Recording
-Print                   Screenshot full (clipboard)
-SUPER + SHIFT + S       Screenshot region (clipboard)
+Print                   Screenshot UI (Quickshell)
+SUPER + SHIFT + S       Screenshot UI (Quickshell)
 SUPER + SHIFT + ALT + S Screenshot region (clipboard)
 SUPER + ALT + R         Record screen with audio
 CTRL + ALT + R          Record screen

@@ -1,3 +1,1 @@
-media-popup
-screenshot-ui
 cleanup-waybar-mako-wlogout-fuzzel

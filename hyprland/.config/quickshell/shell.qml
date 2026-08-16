@@ -7,6 +7,8 @@ Scope {
     NotifSidebar {}
     LauncherOverlay {}
     PowerOverlay {}
+    MediaOverlay {}
+    ScreenshotOverlay {}
     WallpaperOverlay {}
     GifOverlay {}
     KeybindsOverlay {}
@@ -145,6 +147,44 @@ Scope {
 
         function hide(): void {
             OverlayState.gif = false;
+        }
+    }
+
+    IpcHandler {
+        target: "media"
+
+        function toggle(): void {
+            OverlayState.toggleMedia();
+        }
+
+        function show(): void {
+            OverlayState.showMedia();
+        }
+
+        function hide(): void {
+            OverlayState.media = false;
+        }
+    }
+
+    IpcHandler {
+        target: "screenshot"
+
+        function toggle(): void {
+            if (OverlayState.screenshot)
+                OverlayState.close();
+            else {
+                ScreenshotState.resetPick();
+                OverlayState.showScreenshot();
+            }
+        }
+
+        function show(): void {
+            ScreenshotState.resetPick();
+            OverlayState.showScreenshot();
+        }
+
+        function hide(): void {
+            OverlayState.screenshot = false;
         }
     }
 }

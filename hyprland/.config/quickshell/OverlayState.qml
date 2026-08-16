@@ -15,6 +15,8 @@ Singleton {
     property bool emoji: false
     property bool clipboardDelete: false
     property bool gif: false
+    property bool media: false
+    property bool screenshot: false
 
     function close(): void {
         launcher = false;
@@ -26,6 +28,8 @@ Singleton {
         emoji = false;
         clipboardDelete = false;
         gif = false;
+        media = false;
+        screenshot = false;
     }
 
     function toggleLauncher(): void {
@@ -123,5 +127,29 @@ Singleton {
     function showGif(): void {
         close();
         gif = true;
+    }
+
+    function toggleMedia(): void {
+        if (media)
+            close();
+        else
+            showMedia();
+    }
+
+    function showMedia(): void {
+        close();
+        media = true;
+    }
+
+    function toggleScreenshot(): void {
+        if (screenshot)
+            close();
+        else
+            showScreenshot();
+    }
+
+    function showScreenshot(): void {
+        close();
+        screenshot = true;
     }
 }

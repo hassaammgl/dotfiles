@@ -119,6 +119,7 @@ firefox
 vlc
 vlc-plugins-all
 mpv
+mpv-mpris
 imv
 cava
 feh
