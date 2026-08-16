@@ -1,9 +1,7 @@
 import Quickshell
 import Quickshell.Hyprland
-import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
-import Qt.labs.folderlistmodel
 import ".."
 
 Item {
@@ -13,52 +11,12 @@ Item {
     implicitHeight: btn.implicitHeight
 
     property bool ignoreClick: false
-    property int raw: 0
-    property int max: 1
-
-    readonly property string device: backs.count > 0 ? backs.get(0, "fileName") : "intel_backlight"
-    readonly property string briPath: `/sys/class/backlight/${device}/brightness`
-    readonly property real level: max > 0 ? raw / max : 0
-
-    FolderListModel {
-        id: backs
-        folder: "file:///sys/class/backlight"
-        showDirs: true
-        showFiles: false
-        showDotAndDotDot: false
-    }
-
-    FileView {
-        path: root.briPath
-        watchChanges: true
-        onFileChanged: reload()
-        onLoaded: root.raw = parseInt(text().trim())
-    }
-
-    FileView {
-        path: `/sys/class/backlight/${root.device}/max_brightness`
-        onLoaded: root.max = parseInt(text().trim()) || 1
-    }
-
-    function write(next: real): void {
-        if (root.max <= 0)
-            return;
-        const val = Math.round(Math.max(0.01, Math.min(1, next)) * root.max);
-        root.raw = val;
-        Quickshell.execDetached(["sh", "-c", `printf '%s' '${val}' > '${root.briPath}'`]);
-    }
 
     BarButton {
         id: btn
         anchors.centerIn: parent
         active: pop.visible
-        icon: {
-            if (root.level < 0.25)
-                return "󰃞";
-            if (root.level < 0.7)
-                return "󰃟";
-            return "󰃠";
-        }
+        icon: OsdState.brightnessIcon
         onClicked: event => {
             if (root.ignoreClick)
                 return;
@@ -66,7 +24,7 @@ Item {
         }
         onWheel: delta => {
             const step = delta > 0 ? 0.05 : -0.05;
-            root.write(root.level + step);
+            OsdState.setBri(OsdState.bri + step, true);
         }
     }
 
@@ -128,7 +86,7 @@ Item {
                     }
 
                     Text {
-                        text: `${Math.round(root.level * 100)}%`
+                        text: `${Math.round(OsdState.bri * 100)}%`
                         color: Colors.color8
                         font.family: Colors.fontFamily
                         font.pixelSize: 12
@@ -137,8 +95,8 @@ Item {
 
                 PopSlider {
                     Layout.fillWidth: true
-                    value: root.level
-                    onApplied: next => root.write(next)
+                    value: OsdState.bri
+                    onApplied: next => OsdState.setBri(next, true)
                 }
             }
         }

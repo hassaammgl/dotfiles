@@ -19,7 +19,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("mpris-proxy")
 
     hl.exec_cmd("pkill -x mako || true")
-    hl.exec_cmd("swayosd-server")
+    hl.exec_cmd("pkill -x swayosd-server || true")
     hl.exec_cmd("qs -n")
     hl.exec_cmd("awww-daemon")
 

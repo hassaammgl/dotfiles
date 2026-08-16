@@ -44,7 +44,9 @@ Item {
             text: root.label
             color: root.active ? Colors.background : Colors.foreground
             font.family: Colors.fontFamily
-            font.pixelSize: 9
+            font.pixelSize: 8
+            lineHeight: 0.95
+            horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
         }
     }

@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Io
 import Quickshell.Networking
 import QtQuick
 import QtQuick.Layouts
@@ -12,6 +13,11 @@ Item {
     implicitHeight: btn.implicitHeight
 
     property bool ignoreClick: false
+    property real lastRx: -1
+    property real lastTx: -1
+    property real lastAt: 0
+    property real downBps: 0
+    property real upBps: 0
 
     readonly property var devices: Networking.devices.values
 
@@ -61,6 +67,25 @@ Item {
         });
     }
 
+    readonly property string iface: {
+        if (wiredDev && wiredDev.connected)
+            return wiredDev.name;
+        if (wifiDev && wifiNet)
+            return wifiDev.name;
+        return "";
+    }
+
+    function fmtSpeed(bps: real): string {
+        if (bps < 1024)
+            return `${Math.round(bps)}B`;
+        if (bps < 1048576) {
+            const k = bps / 1024;
+            return k < 10 ? `${k.toFixed(1)}K` : `${Math.round(k)}K`;
+        }
+        const m = bps / 1048576;
+        return m < 10 ? `${m.toFixed(1)}M` : `${Math.round(m)}M`;
+    }
+
     function wifiIcon(pct: int): string {
         if (pct >= 80)
             return "󰤨";
@@ -91,6 +116,49 @@ Item {
         pop.visible = true;
     }
 
+    Process {
+        id: poll
+        stdout: StdioCollector {
+            waitForEnd: true
+            onStreamFinished: {
+                const lines = text.trim().split("\n");
+                if (lines.length < 2)
+                    return;
+                const rx = parseInt(lines[0], 10);
+                const tx = parseInt(lines[1], 10);
+                const now = Date.now();
+                if (root.lastRx >= 0 && root.lastAt > 0) {
+                    const dt = Math.max(0.2, (now - root.lastAt) / 1000);
+                    root.downBps = Math.max(0, (rx - root.lastRx) / dt);
+                    root.upBps = Math.max(0, (tx - root.lastTx) / dt);
+                }
+                root.lastRx = rx;
+                root.lastTx = tx;
+                root.lastAt = now;
+            }
+        }
+    }
+
+    Timer {
+        interval: 1000
+        running: root.iface.length > 0
+        repeat: true
+        triggeredOnStart: true
+        onTriggered: poll.exec([
+            "cat",
+            `/sys/class/net/${root.iface}/statistics/rx_bytes`,
+            `/sys/class/net/${root.iface}/statistics/tx_bytes`
+        ])
+        onRunningChanged: {
+            if (!running) {
+                root.lastRx = -1;
+                root.lastTx = -1;
+                root.downBps = 0;
+                root.upBps = 0;
+            }
+        }
+    }
+
     BarButton {
         id: btn
         anchors.centerIn: parent
@@ -105,6 +173,14 @@ Item {
         }
         iconColor: (wiredDev || wifiNet) ? Colors.foreground : Colors.color8
         active: pop.visible
+        label: {
+            if (!root.iface)
+                return "";
+            if (BarState.vertical)
+                return `${root.fmtSpeed(root.downBps)}\n${root.fmtSpeed(root.upBps)}`;
+            return `↓${root.fmtSpeed(root.downBps)} ↑${root.fmtSpeed(root.upBps)}`;
+        }
+        labelOnHover: false
         onClicked: event => {
             if (root.ignoreClick)
                 return;
@@ -211,6 +287,30 @@ Item {
                     font.pixelSize: 11
                     elide: Text.ElideRight
                     Layout.fillWidth: true
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    visible: root.iface.length > 0
+                    spacing: 12
+
+                    Text {
+                        text: `↓ ${root.fmtSpeed(root.downBps)}`
+                        color: Colors.foreground
+                        font.family: Colors.fontFamily
+                        font.pixelSize: 11
+                    }
+
+                    Text {
+                        text: `↑ ${root.fmtSpeed(root.upBps)}`
+                        color: Colors.color8
+                        font.family: Colors.fontFamily
+                        font.pixelSize: 11
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
                 }
 
                 ListView {

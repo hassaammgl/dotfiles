@@ -13,73 +13,24 @@ Item {
 
     property bool ignoreClick: false
 
-    readonly property PwNode sink: Pipewire.defaultAudioSink
-    readonly property PwNode source: Pipewire.defaultAudioSource
-    readonly property bool ready: sink !== null && sink.ready && sink.audio !== null
-    readonly property bool muted: ready ? sink.audio.muted : false
-    readonly property real vol: ready ? sink.audio.volume : 0
-    readonly property bool micReady: source !== null && source.ready && source.audio !== null
-    readonly property bool micMuted: micReady ? source.audio.muted : false
-    readonly property real micVol: micReady ? source.audio.volume : 0
-
-    readonly property var sinks: {
-        const out = [];
-        for (const n of Pipewire.nodes.values) {
-            if (n && n.isSink && !n.isStream)
-                out.push(n);
-        }
-        return out;
-    }
-
-    function setVol(next: real): void {
-        if (!root.ready)
-            return;
-        root.sink.audio.muted = false;
-        root.sink.audio.volume = Math.max(0, Math.min(1, next));
-    }
-
-    function setMic(next: real): void {
-        if (!root.micReady)
-            return;
-        root.source.audio.muted = false;
-        root.source.audio.volume = Math.max(0, Math.min(1, next));
-    }
-
-    function nodeLabel(n: var): string {
-        return n.nickname || n.description || n.name || "output";
-    }
-
-    PwObjectTracker {
-        objects: [root.sink, root.source].concat(root.sinks).filter(n => n)
-    }
-
     BarButton {
         id: btn
         anchors.centerIn: parent
         active: pop.visible
-        icon: {
-            if (root.muted || !root.ready || root.vol === 0)
-                return "";
-            if (root.vol < 0.35)
-                return "";
-            if (root.vol < 0.7)
-                return "";
-            return "";
-        }
-        iconColor: root.muted ? Colors.color8 : Colors.foreground
+        icon: OsdState.volumeIcon
+        iconColor: OsdState.muted ? Colors.color8 : Colors.foreground
         onClicked: event => {
             if (root.ignoreClick)
                 return;
             if (event.button === Qt.RightButton) {
-                if (root.ready)
-                    root.sink.audio.muted = !root.sink.audio.muted;
+                OsdState.volumeMute(true);
                 return;
             }
             pop.visible = !pop.visible;
         }
         onWheel: delta => {
             const step = delta > 0 ? 0.05 : -0.05;
-            root.setVol(root.vol + step);
+            OsdState.setVol(OsdState.vol + step, true);
         }
     }
 
@@ -142,7 +93,7 @@ Item {
                     }
 
                     Text {
-                        text: `${Math.round(root.vol * 100)}%`
+                        text: `${Math.round(OsdState.vol * 100)}%`
                         color: Colors.color8
                         font.family: Colors.fontFamily
                         font.pixelSize: 12
@@ -152,14 +103,14 @@ Item {
                         width: 42
                         height: 22
                         radius: 11
-                        color: root.ready && !root.muted ? Colors.accent : Colors.color0
+                        color: OsdState.ready && !OsdState.muted ? Colors.accent : Colors.color0
 
                         Rectangle {
                             width: 16
                             height: 16
                             radius: 8
                             anchors.verticalCenter: parent.verticalCenter
-                            x: root.ready && !root.muted ? parent.width - width - 3 : 3
+                            x: OsdState.ready && !OsdState.muted ? parent.width - width - 3 : 3
                             color: Colors.foreground
 
                             Behavior on x {
@@ -173,19 +124,16 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: {
-                                if (root.ready)
-                                    root.sink.audio.muted = !root.sink.audio.muted;
-                            }
+                            onClicked: OsdState.volumeMute(true)
                         }
                     }
                 }
 
                 PopSlider {
                     Layout.fillWidth: true
-                    value: root.vol
-                    dimmed: root.muted
-                    onApplied: next => root.setVol(next)
+                    value: OsdState.vol
+                    dimmed: OsdState.muted
+                    onApplied: next => OsdState.setVol(next, true)
                 }
 
                 RowLayout {
@@ -193,21 +141,21 @@ Item {
                     spacing: 8
 
                     Text {
-                        text: root.micMuted ? "󰍭" : "󰍬"
-                        color: root.micMuted ? Colors.color8 : Colors.foreground
+                        text: OsdState.micMuted ? "󰍭" : "󰍬"
+                        color: OsdState.micMuted ? Colors.color8 : Colors.foreground
                         font.family: Colors.fontFamily
                         font.pixelSize: 14
                     }
 
                     PopSlider {
                         Layout.fillWidth: true
-                        value: root.micVol
-                        dimmed: root.micMuted
-                        onApplied: next => root.setMic(next)
+                        value: OsdState.micVol
+                        dimmed: OsdState.micMuted
+                        onApplied: next => OsdState.setMic(next, true)
                     }
 
                     Text {
-                        text: `${Math.round(root.micVol * 100)}%`
+                        text: `${Math.round(OsdState.micVol * 100)}%`
                         color: Colors.color8
                         font.family: Colors.fontFamily
                         font.pixelSize: 11
@@ -227,11 +175,11 @@ Item {
                     clip: true
                     spacing: 4
                     boundsBehavior: Flickable.StopAtBounds
-                    model: root.sinks
+                    model: OsdState.sinks
 
                     delegate: Rectangle {
                         required property var modelData
-                        readonly property bool current: root.sink && modelData && root.sink.id === modelData.id
+                        readonly property bool current: OsdState.sink && modelData && OsdState.sink.id === modelData.id
                         width: ListView.view.width
                         height: 36
                         radius: 10
@@ -241,7 +189,7 @@ Item {
                             anchors.fill: parent
                             anchors.leftMargin: 10
                             anchors.rightMargin: 10
-                            text: root.nodeLabel(modelData)
+                            text: OsdState.nodeLabel(modelData)
                             color: Colors.foreground
                             font.family: Colors.fontFamily
                             font.pixelSize: 12

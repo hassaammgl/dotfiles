@@ -12,6 +12,7 @@ Scope {
     ClipboardOverlay {}
     EmojiOverlay {}
     LockOverlay {}
+    OsdOverlay {}
 
     IpcHandler {
         target: "launcher"
