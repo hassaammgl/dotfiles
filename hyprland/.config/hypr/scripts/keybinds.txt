@@ -100,7 +100,7 @@ SUPER + Period          Emoji picker (Quickshell)
 󰟸  Wallpaper
 ALT + W                 Wallpaper picker (Quickshell)
 SHIFT + ALT + W         Next random wallpaper
-ALT + G                 Video → GIF picker (~/Pictures/WallpaperVideos)
+ALT + G                 Video → GIF picker (Quickshell)
 
 󰟸  Bar (Quickshell)
 ALT + T                 Toggle bar

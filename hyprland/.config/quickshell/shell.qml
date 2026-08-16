@@ -8,6 +8,7 @@ Scope {
     LauncherOverlay {}
     PowerOverlay {}
     WallpaperOverlay {}
+    GifOverlay {}
     KeybindsOverlay {}
     ClipboardOverlay {}
     EmojiOverlay {}
@@ -128,6 +129,22 @@ Scope {
 
         function hide(): void {
             OverlayState.emoji = false;
+        }
+    }
+
+    IpcHandler {
+        target: "gif"
+
+        function toggle(): void {
+            OverlayState.toggleGif();
+        }
+
+        function show(): void {
+            OverlayState.showGif();
+        }
+
+        function hide(): void {
+            OverlayState.gif = false;
         }
     }
 }

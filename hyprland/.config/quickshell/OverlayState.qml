@@ -14,6 +14,7 @@ Singleton {
     property bool clipboard: false
     property bool emoji: false
     property bool clipboardDelete: false
+    property bool gif: false
 
     function close(): void {
         launcher = false;
@@ -24,6 +25,7 @@ Singleton {
         clipboard = false;
         emoji = false;
         clipboardDelete = false;
+        gif = false;
     }
 
     function toggleLauncher(): void {
@@ -109,5 +111,17 @@ Singleton {
     function showEmoji(): void {
         close();
         emoji = true;
+    }
+
+    function toggleGif(): void {
+        if (gif)
+            close();
+        else
+            showGif();
+    }
+
+    function showGif(): void {
+        close();
+        gif = true;
     }
 }
