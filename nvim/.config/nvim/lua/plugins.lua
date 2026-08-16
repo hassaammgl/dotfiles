@@ -18,46 +18,44 @@ require("lazy").setup({
         "numToStr/Comment.nvim",
         opts = {}
     },
-  -- 1. nvim-tree (File Explorer)
-{
-  "nvim-tree/nvim-tree.lua",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    require("nvim-tree").setup({
-      view = {
-        width = 35,
-        side = "left",
-        float = {
-          enable = true,
-          open_win_config = {
-            relative = "editor",
-            width = 60,
-            height = 30,
-            row = 3,
-            col = 10,
-            border = "rounded",
-          },
+  -- 1. neo-tree (File Explorer)
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("neo-tree").setup({
+        close_if_last_window = true,
+        popup_border_style = "rounded",
+        default_component_configs = {
+          indent = { with_expanders = true },
         },
-      },
-      renderer = {
-        group_empty = true,
-      },
-      filters = {
-        dotfiles = false,
-      },
-    })
+        filesystem = {
+          hijack_netrw_behavior = "open_default",
+          filtered_items = {
+            visible = true,
+            hide_dotfiles = false,
+            hide_gitignored = false,
+          },
+          follow_current_file = { enabled = true },
+          use_libuv_file_watcher = true,
+          group_empty_dirs = true,
+        },
+        window = {
+          position = "left",
+          width = 35,
+        },
+      })
 
-    vim.keymap.set(
-      "n",
-      "<leader>e",
-      "<cmd>NvimTreeToggle<CR>",
-      { desc = "Open file explorer" }
-    )
-  end,
-},
+      vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer" })
+      vim.keymap.set("n", "<leader>o", "<cmd>Neotree focus<CR>", { desc = "Focus file explorer" })
+    end,
+  },
 
   -- 2. fzf-lua (Fuzzy Finder)
   {

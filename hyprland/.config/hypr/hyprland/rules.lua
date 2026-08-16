@@ -220,12 +220,6 @@ hl.layer_rule({
 })
 
 hl.layer_rule({
-    name = "fade-wlogout",
-    match = { namespace = "logout_dialog" },
-    animation = "fade",
-})
-
-hl.layer_rule({
     name = "fade-slurp",
     match = { namespace = "selection" },
     animation = "fade",
@@ -235,13 +229,6 @@ hl.layer_rule({
     name = "fade-wayfreeze",
     match = { namespace = "wayfreeze" },
     animation = "fade",
-})
-
-hl.layer_rule({
-    name = "fuzzel-popup",
-    match = { namespace = "launcher" },
-    animation = "popin 80%",
-    blur = true,
 })
 
 hl.layer_rule({

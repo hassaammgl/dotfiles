@@ -1,1 +1,0 @@
-cleanup-waybar-mako-wlogout-fuzzel

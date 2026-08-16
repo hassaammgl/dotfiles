@@ -133,13 +133,16 @@ function M.apply()
   hi("GitSignsChange", { fg = c.color4 })
   hi("GitSignsDelete", { fg = c.color1 })
 
-  hi("NvimTreeNormal", { fg = c.foreground, bg = c.color0 })
-  hi("NvimTreeFolderName", { fg = c.color4 })
-  hi("NvimTreeOpenedFolderName", { fg = c.color6, bold = true })
-  hi("NvimTreeRootFolder", { fg = c.color5, bold = true })
-  hi("NvimTreeGitDirty", { fg = c.color3 })
-  hi("NvimTreeGitNew", { fg = c.color2 })
-  hi("NvimTreeGitDeleted", { fg = c.color1 })
+  hi("NeoTreeNormal", { fg = c.foreground, bg = c.color0 })
+  hi("NeoTreeNormalNC", { fg = c.foreground, bg = c.color0 })
+  hi("NeoTreeDirectoryName", { fg = c.color4 })
+  hi("NeoTreeDirectoryIcon", { fg = c.color4 })
+  hi("NeoTreeRootName", { fg = c.color5, bold = true })
+  hi("NeoTreeFileNameOpened", { fg = c.color6, bold = true })
+  hi("NeoTreeGitModified", { fg = c.color3 })
+  hi("NeoTreeGitAdded", { fg = c.color2 })
+  hi("NeoTreeGitUntracked", { fg = c.color2 })
+  hi("NeoTreeGitDeleted", { fg = c.color1 })
 
   local ts = {
     ["@comment"] = { fg = c.color8, italic = true },

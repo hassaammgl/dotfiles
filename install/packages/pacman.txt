@@ -42,8 +42,6 @@ hyprland
 hyprlock
 hyprpicker
 quickshell
-rofi
-rofi-emoji
 uwsm
 awww
 xdg-desktop-portal

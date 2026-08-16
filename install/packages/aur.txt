@@ -1,4 +1,3 @@
-swayosd-git
 wallust
 bibata-cursor-theme
 nwg-look

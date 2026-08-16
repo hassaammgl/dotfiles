@@ -1,3 +1,7 @@
+-- Let neo-tree take over directory browsing
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local opt = vim.opt
 
 -- line numbers

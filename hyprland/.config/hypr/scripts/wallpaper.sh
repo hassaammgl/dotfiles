@@ -4,12 +4,12 @@
 wall_dir="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 current_link="$wall_dir/current"
 lock_file="${XDG_RUNTIME_DIR:-/tmp}/wallpaper.apply.lock"
-css="$HOME/.config/waybar/colors.css"
+palette="$HOME/.cache/wallust/quickshell.json"
 quiet="${WALLPAPER_QUIET:-0}"
 
 mkdir -p "$wall_dir"
 
-# Close inherited lock fds so daemons (swayosd) cannot pin the lock forever.
+# Close inherited lock fds so child processes cannot pin the lock forever.
 spawn() {
     (
         local fd
@@ -108,9 +108,10 @@ wait_for_proc() {
     return 1
 }
 
-css_hex() {
+palette_hex() {
     local name="$1"
-    sed -n "s/.*@define-color ${name} #\([0-9A-Fa-f]\{6\}\).*/\1/p" "$css" | head -1
+    command -v jq >/dev/null 2>&1 || return 1
+    jq -r --arg k "$name" '.[$k] // empty' "$palette" 2>/dev/null | sed 's/^#//'
 }
 
 # First still frame for GIFs — wallust cannot palette an animation.
@@ -133,12 +134,12 @@ theme_source() {
 }
 
 reload_hypr_colors() {
-    [[ -f "$css" ]] || return 0
+    [[ -f "$palette" ]] || return 0
     local active inactive fg bg
-    active=$(css_hex color4)
-    inactive=$(css_hex color8)
-    fg=$(css_hex foreground)
-    bg=$(css_hex background)
+    active=$(palette_hex color4)
+    inactive=$(palette_hex color8)
+    fg=$(palette_hex foreground)
+    bg=$(palette_hex background)
     [[ -n "$active" && -n "$inactive" && -n "$fg" && -n "$bg" ]] || return 0
 
     hyprctl eval "hl.config({
@@ -169,10 +170,6 @@ reload_hypr_colors() {
 reload_themed_apps() {
     # Quickshell Colors.qml watches ~/.cache/wallust/quickshell.json
     # and reloads bar/notifications automatically.
-
-    # Do not restart swayosd — killing it used to leak the wallpaper lock
-    # and break volume keys. colors.css is read on the next OSD popup.
-
     reload_hypr_colors
 }
 
