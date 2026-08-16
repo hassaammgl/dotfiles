@@ -173,13 +173,6 @@ Item {
         }
         iconColor: (wiredDev || wifiNet) ? Colors.foreground : Colors.color8
         active: pop.visible
-        label: {
-            if (!root.iface)
-                return "";
-            if (BarState.vertical)
-                return `${root.fmtSpeed(root.downBps)}\n${root.fmtSpeed(root.upBps)}`;
-            return `↓${root.fmtSpeed(root.downBps)} ↑${root.fmtSpeed(root.upBps)}`;
-        }
         labelOnHover: false
         onClicked: event => {
             if (root.ignoreClick)

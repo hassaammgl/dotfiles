@@ -20,7 +20,14 @@ ALT + H                 This help (Quickshell)
 SUPER + W               Close window
 SUPER + F               Fullscreen
 SUPER + ALT + F         Fullscreen with borders
-SUPER + ALT + Space     Toggle floating
+SUPER + T               Toggle floating / tiled
+SUPER + ALT + Space     Toggle floating / tiled
+SUPER + SHIFT + P       Pseudo-tile (dwindle)
+SUPER + J               Toggle split orientation (side / stacked)
+SUPER + SHIFT + J       Swap the two split halves
+SUPER + [ / ]           Shrink / grow split
+CTRL + SUPER + arrows   Swap with neighbor window
+SUPER + ALT + SHIFT + arrows Move window to monitor
 SUPER + P               Pin window
 SUPER + Comma           Toggle window group
 SUPER + U               Ungroup window
@@ -32,7 +39,7 @@ CTRL + SHIFT + ALT + Tab Cycle group active (back)
 SUPER + LMB             Drag window
 SUPER + RMB             Resize window
 CTRL + SUPER + \        Center window
-CTRL + SUPER + ALT + \  Float 55%x70% + center
+CTRL + SUPER + ALT + \  Float + size + center
 
 󰶐  Focus & Move
 SUPER + arrows          Focus window
