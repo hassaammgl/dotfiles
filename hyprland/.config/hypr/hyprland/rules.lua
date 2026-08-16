@@ -256,3 +256,9 @@ hl.layer_rule({
     match = { namespace = "quickshell-bar" },
     blur = false,
 })
+
+hl.layer_rule({
+    name = "quickshell-notifications",
+    match = { namespace = "quickshell-notifications" },
+    blur = false,
+})

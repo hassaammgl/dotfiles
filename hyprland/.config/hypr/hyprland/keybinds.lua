@@ -131,4 +131,4 @@ hl.bind("CTRL + SHIFT + ALT + V", hl.dsp.exec_cmd("sleep 0.5s && ydotool type -d
 
 hl.bind("ALT + H", hl.dsp.exec_cmd("rofi -dmenu -p 'Keybinds' -theme-str 'window{width:50%;}' < ~/.config/hypr/scripts/keybinds.txt"))
 
-hl.bind("SUPER + ALT + f12", hl.dsp.exec_cmd("notify-send -u low -i dialog-information-symbolic 'Test notification' \"Here's a really long message to test truncation and wrapping\\nYou can middle click or flick this notification to dismiss it!\" -a 'Shell' -A \"Test1=I got it!\" -A \"Test2=Another action\""))
+hl.bind("SUPER + ALT + f12", hl.dsp.exec_cmd("notify-send -u low -i dialog-information-symbolic 'Test notification' \"Here's a really long message to test truncation and wrapping\\nSwipe right, middle click, or press X to dismiss.\" -a 'Shell' -A \"Test1=I got it!\" -A \"Test2=Another action\""))

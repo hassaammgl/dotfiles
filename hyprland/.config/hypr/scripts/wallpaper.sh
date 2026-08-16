@@ -9,7 +9,7 @@ quiet="${WALLPAPER_QUIET:-0}"
 
 mkdir -p "$wall_dir"
 
-# Close inherited lock fds so daemons (swayosd/mako) cannot pin the lock forever.
+# Close inherited lock fds so daemons (swayosd) cannot pin the lock forever.
 spawn() {
     (
         local fd
@@ -168,10 +168,7 @@ reload_hypr_colors() {
 
 reload_themed_apps() {
     # Quickshell Colors.qml watches ~/.cache/wallust/quickshell.json
-
-    if pgrep -x mako >/dev/null 2>&1; then
-        timeout 2 makoctl reload >/dev/null 2>&1 || true
-    fi
+    # and reloads bar/notifications automatically.
 
     # Do not restart swayosd — killing it used to leak the wallpaper lock
     # and break volume keys. colors.css is read on the next OSD popup.

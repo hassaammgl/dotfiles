@@ -3,6 +3,7 @@ import Quickshell.Io
 
 Scope {
     Bar {}
+    Notifications {}
     LauncherOverlay {}
     PowerOverlay {}
     WallpaperOverlay {}

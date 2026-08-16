@@ -42,7 +42,6 @@ hyprland
 hyprlock
 hyprpicker
 quickshell
-mako
 rofi
 rofi-emoji
 uwsm

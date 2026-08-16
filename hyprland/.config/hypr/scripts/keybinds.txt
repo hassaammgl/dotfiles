@@ -101,3 +101,4 @@ ALT + SHIFT + T         Cycle bar position
 󰟸  Utilities
 CTRL + ALT + Escape     QPS process manager
 CTRL + ALT + V          Pavucontrol audio
+SUPER + ALT + F12       Test notification
