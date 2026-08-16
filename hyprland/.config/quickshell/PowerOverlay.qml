@@ -69,7 +69,7 @@ Scope {
             function run(id: string): void {
                 OverlayState.close();
                 if (id === "lock")
-                    Quickshell.execDetached(["hyprlock"]);
+                    LockState.lock();
                 else if (id === "logout")
                     Hyprland.dispatch("exit");
                 else if (id === "sleep")

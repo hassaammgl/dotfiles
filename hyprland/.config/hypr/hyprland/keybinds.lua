@@ -2,7 +2,7 @@ hl.bind("SUPER + Space", hl.dsp.exec_cmd("qs ipc call launcher toggle"))
 hl.bind("SUPER + K",     hl.dsp.exec_cmd("qs ipc call notifs toggle"))
 
 hl.bind(kbSession, hl.dsp.exec_cmd("qs ipc call power toggle"))
-hl.bind(kbLock, hl.dsp.exec_cmd("hyprlock"))
+hl.bind(kbLock, hl.dsp.exec_cmd("qs ipc call lock lock"))
 
 hl.bind("SUPER + F7", hl.dsp.exec_cmd("~/.config/hypr/scripts/brightness.sh raise"), { locked = true, repeating = true })
 hl.bind("SUPER + F6", hl.dsp.exec_cmd("~/.config/hypr/scripts/brightness.sh lower"), { locked = true, repeating = true })

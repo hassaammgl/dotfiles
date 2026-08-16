@@ -20,6 +20,7 @@ Singleton {
     readonly property string horizontal: Qt.formatDateTime(clock.date, "ddd  h:mm ap")
     readonly property string altVertical: `${weekday}\n${day}\n${month}`
     readonly property string altHorizontal: Qt.formatDateTime(clock.date, "dd MMM yyyy")
+    readonly property string longDate: Qt.formatDateTime(clock.date, "dddd, d MMMM yyyy")
 
     SystemClock {
         id: clock

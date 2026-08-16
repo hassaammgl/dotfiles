@@ -1,5 +1,4 @@
 volume-brightness-osd
-lock-screen
 video-to-gif-picker
 media-popup
 screenshot-ui

@@ -11,6 +11,7 @@ Scope {
     KeybindsOverlay {}
     ClipboardOverlay {}
     EmojiOverlay {}
+    LockOverlay {}
 
     IpcHandler {
         target: "launcher"
