@@ -47,6 +47,9 @@ hl.bind("CTRL + SUPER + SHIFT + left",  hl.dsp.window.move({ workspace = "e-1" }
 hl.bind("CTRL + SUPER + SHIFT + up",   hl.dsp.window.move({ workspace = "special:special" }))
 hl.bind("CTRL + SUPER + SHIFT + down", hl.dsp.window.move({ workspace = "e+0" }))
 hl.bind("SUPER + ALT + S", hl.dsp.window.move({ workspace = "special:special" }))
+hl.bind("ALT + D", hl.dsp.exec_cmd("qs ipc call dashboard toggle"))
+hl.bind("ALT + A", hl.dsp.exec_cmd("qs ipc call widgets toggle"))
+hl.bind("ALT + SHIFT + A", hl.dsp.exec_cmd("qs ipc call widgets cycle"))
 
 hl.bind(kbWindowGroupCycleNext, hl.dsp.window.cycle_next({ next = true }), { repeating = true })
 hl.bind(kbWindowGroupCyclePrev, hl.dsp.window.cycle_next({ next = false }), { repeating = true })

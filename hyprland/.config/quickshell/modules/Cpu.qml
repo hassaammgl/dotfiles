@@ -4,5 +4,11 @@ import ".."
 
 BarButton {
     icon: "󰍛"
-    onClicked: event => Quickshell.execDetached(["kitty", "btop"])
+    active: OverlayState.dashboard
+    onClicked: event => {
+        if (event.button === Qt.RightButton)
+            Quickshell.execDetached(["kitty", "btop"]);
+        else
+            OverlayState.toggleDashboard();
+    }
 }

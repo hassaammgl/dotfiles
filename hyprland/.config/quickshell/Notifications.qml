@@ -9,7 +9,7 @@ Scope {
     id: root
 
     readonly property int maxVisible: 5
-    readonly property int cardW: 392
+    readonly property int cardW: 340
 
     NotificationServer {
         id: server
@@ -60,19 +60,6 @@ Scope {
         }
     }
 
-    function tagFor(notif): string {
-        if (!notif)
-            return "MSG";
-        switch (notif.urgency) {
-        case NotificationUrgency.Critical:
-            return "CRIT";
-        case NotificationUrgency.Low:
-            return "LOW";
-        default:
-            return "MSG";
-        }
-    }
-
     Variants {
         model: Quickshell.screens
 
@@ -108,7 +95,7 @@ Scope {
                 anchors.right: parent.right
                 width: root.cardW
                 height: contentHeight
-                spacing: 10
+                spacing: 8
                 clip: false
                 interactive: false
                 orientation: ListView.Vertical
@@ -119,7 +106,7 @@ Scope {
                     id: wrap
                     required property var modelData
                     readonly property var notif: modelData
-                    readonly property string appName: notif ? (notif.appName || "SYSTEM") : ""
+                    readonly property string appName: notif ? (notif.appName || "system") : ""
                     readonly property string summary: notif ? notif.summary : ""
                     readonly property string body: notif ? notif.body : ""
                     readonly property var actions: notif ? notif.actions : []
@@ -136,17 +123,13 @@ Scope {
                     property bool dismissing: false
                     property real dragX: 0
                     property real life: 1
-                    property real enterOff: shown ? 0 : 52
+                    property real enterOff: shown ? 0 : 28
                     readonly property color accent: root.accentFor(notif)
                     readonly property int timeoutMs: root.timeoutFor(notif)
                     readonly property bool hasImage: image.length > 0
                     readonly property bool hasIcon: appIcon.length > 0
-                    readonly property string stamp: {
-                        const d = new Date();
-                        return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
-                    }
 
-                    opacity: (shown ? 1 : 0) * Math.max(0, 1 - wrap.dragX / 170)
+                    opacity: (shown ? 1 : 0) * Math.max(0, 1 - wrap.dragX / 160)
 
                     function fadeOut(): void {
                         if (!shown)
@@ -173,7 +156,7 @@ Scope {
 
                     Timer {
                         id: fadeFinish
-                        interval: 200
+                        interval: 180
                         repeat: false
                         onTriggered: {
                             if (!wrap.notif)
@@ -201,174 +184,71 @@ Scope {
                         id: card
                         width: root.cardW
                         x: wrap.enterOff + wrap.dragX
-                        implicitHeight: inner.implicitHeight + 20
+                        implicitHeight: inner.implicitHeight + 24
                         height: implicitHeight
-                        radius: 2
-                        color: Colors.background
+                        radius: 18
+                        color: Qt.alpha(Colors.background, 0.92)
                         border.width: 1
-                        border.color: wrap.accent
+                        border.color: wrap.urgency === NotificationUrgency.Critical ? Qt.alpha(wrap.accent, 0.7) : Colors.color0
                         clip: true
-
-                        Rectangle {
-                            id: rail
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            anchors.bottom: parent.bottom
-                            width: 3
-                            color: wrap.accent
-
-                            SequentialAnimation on opacity {
-                                running: wrap.urgency === NotificationUrgency.Critical && wrap.shown
-                                loops: Animation.Infinite
-                                NumberAnimation {
-                                    from: 1
-                                    to: 0.25
-                                    duration: 420
-                                }
-                                NumberAnimation {
-                                    from: 0.25
-                                    to: 1
-                                    duration: 420
-                                }
-                            }
-                        }
-
-                        Repeater {
-                            model: 4
-                            Rectangle {
-                                required property int index
-                                width: 12
-                                height: 2
-                                color: wrap.accent
-                                x: index % 2 === 0 ? 6 : card.width - 18
-                                y: index < 2 ? 5 : card.height - 7
-                            }
-                        }
-                        Repeater {
-                            model: 4
-                            Rectangle {
-                                required property int index
-                                width: 2
-                                height: 12
-                                color: wrap.accent
-                                x: index % 2 === 0 ? 6 : card.width - 8
-                                y: index < 2 ? 5 : card.height - 17
-                            }
-                        }
 
                         Column {
                             id: inner
                             anchors.left: parent.left
                             anchors.right: parent.right
                             anchors.top: parent.top
-                            anchors.leftMargin: 16
-                            anchors.rightMargin: 12
-                            anchors.topMargin: 10
-                            spacing: 8
+                            anchors.leftMargin: 14
+                            anchors.rightMargin: 14
+                            anchors.topMargin: 12
+                            spacing: 10
 
                             RowLayout {
                                 width: parent.width
-                                spacing: 8
+                                spacing: 12
 
-                                Text {
-                                    text: "⟨ INCOMING ⟩"
-                                    color: wrap.accent
-                                    font.family: Colors.fontFamily
-                                    font.pixelSize: 10
-                                    font.letterSpacing: 1.2
-                                }
+                                Rectangle {
+                                    Layout.preferredWidth: 40
+                                    Layout.preferredHeight: 40
+                                    radius: 12
+                                    color: Qt.alpha(wrap.accent, 0.18)
 
-                                Item {
-                                    Layout.fillWidth: true
-                                }
-
-                                Text {
-                                    text: root.tagFor(wrap.notif)
-                                    color: wrap.accent
-                                    font.family: Colors.fontFamily
-                                    font.pixelSize: 10
-                                    font.letterSpacing: 1.4
-                                }
-
-                                Text {
-                                    text: wrap.stamp
-                                    color: Colors.color8
-                                    font.family: Colors.fontFamily
-                                    font.pixelSize: 10
-                                }
-
-                                Text {
-                                    text: "✕"
-                                    color: closeHover.containsMouse ? Colors.foreground : Colors.color8
-                                    font.family: Colors.fontFamily
-                                    font.pixelSize: 12
-                                    font.bold: true
-
-                                    MouseArea {
-                                        id: closeHover
+                                    Image {
                                         anchors.fill: parent
-                                        anchors.margins: -6
-                                        hoverEnabled: true
-                                        cursorShape: Qt.PointingHandCursor
-                                        onClicked: wrap.dismissCard()
+                                        anchors.margins: 3
+                                        visible: wrap.hasImage
+                                        source: wrap.hasImage ? wrap.image : ""
+                                        fillMode: Image.PreserveAspectCrop
+                                        asynchronous: true
                                     }
-                                }
-                            }
 
-                            RowLayout {
-                                width: parent.width
-                                spacing: 10
+                                    IconImage {
+                                        anchors.centerIn: parent
+                                        visible: !wrap.hasImage && wrap.hasIcon
+                                        implicitSize: 22
+                                        source: wrap.hasIcon ? Quickshell.iconPath(wrap.appIcon) : ""
+                                    }
 
-                                Item {
-                                    Layout.preferredWidth: 42
-                                    Layout.preferredHeight: 42
-
-                                    Rectangle {
-                                        anchors.fill: parent
-                                        radius: 2
-                                        color: Qt.alpha(wrap.accent, 0.18)
-                                        border.width: 1
-                                        border.color: Qt.alpha(wrap.accent, 0.55)
-
-                                        Image {
-                                            anchors.fill: parent
-                                            anchors.margins: 2
-                                            visible: wrap.hasImage
-                                            source: wrap.hasImage ? wrap.image : ""
-                                            fillMode: Image.PreserveAspectCrop
-                                            asynchronous: true
-                                        }
-
-                                        IconImage {
-                                            anchors.centerIn: parent
-                                            visible: !wrap.hasImage && wrap.hasIcon
-                                            implicitSize: 28
-                                            source: wrap.hasIcon ? Quickshell.iconPath(wrap.appIcon) : ""
-                                        }
-
-                                        Text {
-                                            anchors.centerIn: parent
-                                            visible: !wrap.hasImage && !wrap.hasIcon
-                                            text: (wrap.appName || "?").charAt(0).toUpperCase()
-                                            color: wrap.accent
-                                            font.family: Colors.fontFamily
-                                            font.pixelSize: 16
-                                            font.bold: true
-                                        }
+                                    Text {
+                                        anchors.centerIn: parent
+                                        visible: !wrap.hasImage && !wrap.hasIcon
+                                        text: (wrap.appName || "?").charAt(0).toUpperCase()
+                                        color: wrap.accent
+                                        font.family: Colors.fontFamily
+                                        font.pixelSize: 15
+                                        font.bold: true
                                     }
                                 }
 
                                 Column {
                                     Layout.fillWidth: true
-                                    spacing: 3
+                                    spacing: 2
 
                                     Text {
                                         width: parent.width
-                                        text: wrap.appName.toUpperCase()
+                                        text: wrap.appName
                                         color: Colors.color8
                                         font.family: Colors.fontFamily
-                                        font.pixelSize: 10
-                                        font.letterSpacing: 1.1
+                                        font.pixelSize: 11
                                         elide: Text.ElideRight
                                     }
 
@@ -394,8 +274,25 @@ Scope {
                                         font.pixelSize: 11
                                         textFormat: Text.StyledText
                                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                        maximumLineCount: 4
+                                        maximumLineCount: 3
                                         elide: Text.ElideRight
+                                    }
+                                }
+
+                                Text {
+                                    text: "✕"
+                                    color: closeHover.containsMouse ? Colors.foreground : Colors.color8
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 13
+                                    Layout.alignment: Qt.AlignTop
+
+                                    MouseArea {
+                                        id: closeHover
+                                        anchors.fill: parent
+                                        anchors.margins: -8
+                                        hoverEnabled: true
+                                        cursorShape: Qt.PointingHandCursor
+                                        onClicked: wrap.dismissCard()
                                     }
                                 }
                             }
@@ -410,12 +307,12 @@ Scope {
 
                                     delegate: Rectangle {
                                         required property var modelData
-                                        implicitWidth: actionLabel.implicitWidth + 16
-                                        implicitHeight: 22
-                                        radius: 1
-                                        color: actionHover.containsMouse ? Qt.alpha(wrap.accent, 0.4) : Qt.alpha(wrap.accent, 0.12)
+                                        implicitWidth: actionLabel.implicitWidth + 18
+                                        implicitHeight: 26
+                                        radius: 13
+                                        color: actionHover.containsMouse ? Qt.alpha(wrap.accent, 0.35) : Qt.alpha(wrap.accent, 0.14)
                                         border.width: 1
-                                        border.color: wrap.accent
+                                        border.color: Qt.alpha(wrap.accent, 0.55)
 
                                         Text {
                                             id: actionLabel
@@ -423,8 +320,7 @@ Scope {
                                             text: modelData.text
                                             color: Colors.foreground
                                             font.family: Colors.fontFamily
-                                            font.pixelSize: 10
-                                            font.letterSpacing: 0.6
+                                            font.pixelSize: 11
                                         }
 
                                         MouseArea {
@@ -446,15 +342,20 @@ Scope {
                             anchors.left: parent.left
                             anchors.right: parent.right
                             anchors.bottom: parent.bottom
-                            height: 2
-                            color: Qt.alpha(wrap.accent, 0.18)
+                            anchors.leftMargin: 14
+                            anchors.rightMargin: 14
+                            anchors.bottomMargin: 8
+                            height: 3
+                            radius: 2
+                            color: Colors.color0
+                            visible: wrap.timeoutMs > 0
 
                             Rectangle {
                                 anchors.left: parent.left
                                 anchors.top: parent.top
                                 anchors.bottom: parent.bottom
                                 width: parent.width * wrap.life
-                                visible: wrap.timeoutMs > 0
+                                radius: 2
                                 color: wrap.accent
                             }
                         }
@@ -489,14 +390,14 @@ Scope {
 
                     Behavior on enterOff {
                         NumberAnimation {
-                            duration: 220
+                            duration: 180
                             easing.type: Easing.OutCubic
                         }
                     }
 
                     Behavior on opacity {
                         NumberAnimation {
-                            duration: 180
+                            duration: 160
                             easing.type: Easing.OutCubic
                         }
                     }

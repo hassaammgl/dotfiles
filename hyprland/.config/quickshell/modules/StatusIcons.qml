@@ -12,8 +12,8 @@ Capsule {
     GridLayout {
         id: icons
         anchors.centerIn: parent
-        columns: BarState.vertical ? 1 : 8
-        rows: BarState.vertical ? 8 : 1
+        columns: BarState.vertical ? 1 : 9
+        rows: BarState.vertical ? 9 : 1
         flow: BarState.vertical ? GridLayout.TopToBottom : GridLayout.LeftToRight
         rowSpacing: 2
         columnSpacing: 2
@@ -23,6 +23,7 @@ Capsule {
         Audio {}
         Brightness {}
         Cpu {}
+        Widgets {}
         Battery {}
     }
 }

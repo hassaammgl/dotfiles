@@ -3,6 +3,7 @@ import Quickshell.Hyprland
 import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
+import "modules"
 
 Scope {
     Variants {
@@ -51,8 +52,8 @@ Scope {
 
             Column {
                 anchors.centerIn: parent
-                width: Math.min(560, parent.width - 64)
-                spacing: 22
+                width: Math.min(480, parent.width - 64)
+                spacing: 18
                 opacity: win.visible ? 1 : 0
                 scale: win.visible ? 1 : 0.94
 
@@ -72,7 +73,7 @@ Scope {
 
                 Column {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: 6
+                    spacing: 4
 
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -87,7 +88,7 @@ Scope {
                         text: NotifState.items.length ? `${NotifState.items.length} in history` : "empty"
                         color: Colors.foreground
                         font.family: Colors.fontFamily
-                        font.pixelSize: 28
+                        font.pixelSize: 26
                         font.weight: Font.DemiBold
                     }
                 }
@@ -96,19 +97,30 @@ Scope {
                     id: list
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: parent.width
-                    height: Math.min(420, win.height * 0.52)
+                    height: Math.min(400, win.height * 0.5)
                     clip: true
-                    spacing: 10
+                    spacing: 8
                     boundsBehavior: Flickable.StopAtBounds
                     model: NotifState.items
 
-                    Text {
+                    Column {
                         anchors.centerIn: parent
                         visible: list.count === 0
-                        text: "nothing here"
-                        color: Colors.color8
-                        font.family: Colors.fontFamily
-                        font.pixelSize: 14
+                        spacing: 12
+
+                        Mascot {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            fileName: "empty.png"
+                            maxH: 100
+                        }
+
+                        Text {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: "nothing here"
+                            color: Colors.color8
+                            font.family: Colors.fontFamily
+                            font.pixelSize: 14
+                        }
                     }
 
                     delegate: Rectangle {
@@ -119,11 +131,11 @@ Scope {
                         readonly property color accent: NotifState.accentFor(entry)
 
                         width: list.width
-                        implicitHeight: inner.implicitHeight + 20
-                        radius: 16
-                        color: Qt.alpha(Colors.color0, 0.55)
+                        implicitHeight: inner.implicitHeight + 24
+                        radius: 18
+                        color: Qt.alpha(Colors.background, 0.92)
                         border.width: 1
-                        border.color: Qt.alpha(card.accent, 0.4)
+                        border.color: Colors.color0
 
                         Column {
                             id: inner
@@ -135,17 +147,17 @@ Scope {
 
                             RowLayout {
                                 width: parent.width
-                                spacing: 8
+                                spacing: 12
 
                                 Rectangle {
                                     Layout.preferredWidth: 36
                                     Layout.preferredHeight: 36
-                                    radius: 10
-                                    color: Qt.alpha(card.accent, 0.22)
+                                    radius: 11
+                                    color: Qt.alpha(card.accent, 0.18)
 
                                     Image {
                                         anchors.fill: parent
-                                        anchors.margins: 4
+                                        anchors.margins: 3
                                         visible: entry.image && entry.image.length > 0
                                         source: entry.image || ""
                                         fillMode: Image.PreserveAspectCrop
@@ -189,7 +201,7 @@ Scope {
                                         text: entry.summary
                                         color: Colors.foreground
                                         font.family: Colors.fontFamily
-                                        font.pixelSize: 14
+                                        font.pixelSize: 13
                                         font.weight: Font.DemiBold
                                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                         maximumLineCount: 2
@@ -202,6 +214,7 @@ Scope {
                                     color: Colors.color8
                                     font.family: Colors.fontFamily
                                     font.pixelSize: 11
+                                    Layout.alignment: Qt.AlignTop
                                 }
 
                                 Text {
@@ -209,6 +222,7 @@ Scope {
                                     color: dropHover.containsMouse ? Colors.foreground : Colors.color8
                                     font.family: Colors.fontFamily
                                     font.pixelSize: 13
+                                    Layout.alignment: Qt.AlignTop
 
                                     MouseArea {
                                         id: dropHover
@@ -240,12 +254,12 @@ Scope {
                 Rectangle {
                     visible: NotifState.items.length > 0
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: 88
-                    height: 36
-                    radius: 18
-                    color: clearHover.containsMouse ? Qt.alpha(Colors.accent, 0.4) : Qt.alpha(Colors.accent, 0.18)
+                    width: 96
+                    height: 34
+                    radius: 17
+                    color: clearHover.containsMouse ? Qt.alpha(Colors.accent, 0.35) : Qt.alpha(Colors.accent, 0.16)
                     border.width: 1
-                    border.color: Qt.alpha(Colors.accent, 0.7)
+                    border.color: Qt.alpha(Colors.accent, 0.55)
 
                     Text {
                         anchors.centerIn: parent

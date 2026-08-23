@@ -17,6 +17,7 @@ Singleton {
     property bool gif: false
     property bool media: false
     property bool screenshot: false
+    property bool dashboard: false
 
     function close(): void {
         launcher = false;
@@ -30,6 +31,7 @@ Singleton {
         gif = false;
         media = false;
         screenshot = false;
+        dashboard = false;
     }
 
     function toggleLauncher(): void {
@@ -151,5 +153,17 @@ Singleton {
     function showScreenshot(): void {
         close();
         screenshot = true;
+    }
+
+    function toggleDashboard(): void {
+        if (dashboard)
+            close();
+        else
+            showDashboard();
+    }
+
+    function showDashboard(): void {
+        close();
+        dashboard = true;
     }
 }

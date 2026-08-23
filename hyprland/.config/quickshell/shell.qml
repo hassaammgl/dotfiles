@@ -16,6 +16,8 @@ Scope {
     EmojiOverlay {}
     LockOverlay {}
     OsdOverlay {}
+    DashOverlay {}
+    DesktopWidgets {}
 
     IpcHandler {
         target: "launcher"
@@ -185,6 +187,22 @@ Scope {
 
         function hide(): void {
             OverlayState.screenshot = false;
+        }
+    }
+
+    IpcHandler {
+        target: "dashboard"
+
+        function toggle(): void {
+            OverlayState.toggleDashboard();
+        }
+
+        function show(): void {
+            OverlayState.showDashboard();
+        }
+
+        function hide(): void {
+            OverlayState.dashboard = false;
         }
     }
 }

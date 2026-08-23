@@ -4,6 +4,7 @@ import Quickshell.Io
 import Quickshell.Networking
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 import ".."
 
 Item {
@@ -18,13 +19,21 @@ Item {
     property real lastAt: 0
     property real downBps: 0
     property real upBps: 0
+    property string statusMsg: ""
+    property string pendingSsid: ""
+    property int pendingSignal: 0
+    property bool showPass: false
+    property bool busy: false
+    property string lastAttemptSsid: ""
+
+    readonly property bool askingPass: pendingSsid.length > 0
 
     readonly property var devices: Networking.devices.values
 
     readonly property var wifiDev: {
         const list = root.devices;
         for (let i = 0; i < list.length; i++) {
-            if (list[i].type === DeviceType.Wifi)
+            if (list[i] && list[i].type === DeviceType.Wifi)
                 return list[i];
         }
         return null;
@@ -33,7 +42,7 @@ Item {
     readonly property var wiredDev: {
         const list = root.devices;
         for (let i = 0; i < list.length; i++) {
-            if (list[i].type === DeviceType.Wired && list[i].connected)
+            if (list[i] && list[i].type === DeviceType.Wired && list[i].connected)
                 return list[i];
         }
         return null;
@@ -44,34 +53,23 @@ Item {
             return null;
         const nets = wifiDev.networks.values;
         for (let i = 0; i < nets.length; i++) {
-            if (nets[i].connected)
+            if (nets[i] && nets[i].connected)
                 return nets[i];
         }
         return null;
     }
 
-    readonly property int signalPct: {
-        if (!wifiNet)
-            return 0;
-        const s = wifiNet.signalStrength;
-        return s <= 1 ? Math.round(s * 100) : Math.round(s);
-    }
+    readonly property int signalPct: wifiNet ? root.pctOf(wifiNet) : 0
 
-    readonly property var wifiList: {
-        if (!wifiDev)
-            return [];
-        return [...wifiDev.networks.values].sort((a, b) => {
-            if (a.connected !== b.connected)
-                return b.connected - a.connected;
-            return b.signalStrength - a.signalStrength;
-        });
-    }
+    readonly property int netCount: wifiDev ? wifiDev.networks.values.length : 0
 
     readonly property string iface: {
-        if (wiredDev && wiredDev.connected)
-            return wiredDev.name;
+        if (wiredDev)
+            return wiredDev.name || "";
         if (wifiDev && wifiNet)
-            return wifiDev.name;
+            return wifiDev.name || "";
+        if (wifiDev)
+            return wifiDev.name || "";
         return "";
     }
 
@@ -99,21 +97,181 @@ Item {
     }
 
     function pctOf(net: var): int {
-        const s = net.signalStrength;
-        return s <= 1 ? Math.round(s * 100) : Math.round(s);
+        if (!net)
+            return 0;
+        const s = Number(net.signalStrength);
+        if (isNaN(s))
+            return 0;
+        return s <= 1 ? Math.round(s * 100) : Math.round(Math.min(100, s));
     }
 
     function isOpen(net: var): bool {
-        return net.security === WifiSecurityType.Open;
+        if (!net)
+            return false;
+        return net.security === WifiSecurityType.Open || net.security === WifiSecurityType.Owe;
+    }
+
+    function needsPsk(net: var): bool {
+        if (!net)
+            return false;
+        const s = net.security;
+        return s === WifiSecurityType.WpaPsk || s === WifiSecurityType.Wpa2Psk || s === WifiSecurityType.Sae;
     }
 
     function openPop(): void {
-        if (wifiDev) {
-            if (!Networking.wifiEnabled)
-                Networking.wifiEnabled = true;
-            wifiDev.scannerEnabled = true;
-        }
+        root.cancelPass();
+        root.statusMsg = "";
+        if (!Networking.wifiEnabled)
+            Networking.wifiEnabled = true;
+        if (root.wifiDev)
+            root.wifiDev.scannerEnabled = true;
         pop.visible = true;
+        root.rescan();
+    }
+
+    function closePop(): void {
+        pop.visible = false;
+        root.cancelPass();
+        root.busy = false;
+        if (root.wifiDev)
+            root.wifiDev.scannerEnabled = false;
+    }
+
+    function cancelPass(): void {
+        root.pendingSsid = "";
+        root.pendingSignal = 0;
+        root.showPass = false;
+        passField.text = "";
+    }
+
+    function askPass(ssid: string, signalPct: int): void {
+        root.pendingSsid = ssid;
+        root.pendingSignal = signalPct;
+        root.showPass = false;
+        passField.text = "";
+        root.statusMsg = "";
+        root.lastAttemptSsid = ssid;
+        Qt.callLater(() => passField.forceActiveFocus());
+    }
+
+    function rescan(): void {
+        if (root.askingPass)
+            return;
+        root.statusMsg = "scanning…";
+        actionProc.exec(["nmcli", "device", "wifi", "rescan"]);
+        if (root.wifiDev) {
+            root.wifiDev.scannerEnabled = false;
+            Qt.callLater(() => {
+                if (root.wifiDev && pop.visible)
+                    root.wifiDev.scannerEnabled = true;
+            });
+        }
+        statusClear.restart();
+    }
+
+    function tryConnect(net: var): void {
+        if (!net || root.busy)
+            return;
+
+        if (net.connected) {
+            root.busy = true;
+            root.statusMsg = "disconnecting…";
+            const dev = root.wifiDev ? root.wifiDev.name : "";
+            if (dev.length)
+                actionProc.exec(["nmcli", "device", "disconnect", dev]);
+            else
+                net.disconnect();
+            return;
+        }
+
+        // Open network — no password
+        if (root.isOpen(net)) {
+            root.busy = true;
+            root.lastAttemptSsid = net.name;
+            root.statusMsg = `connecting to ${net.name}…`;
+            actionProc.exec(["nmcli", "device", "wifi", "connect", net.name]);
+            return;
+        }
+
+        // Saved network — try without asking first
+        if (net.known) {
+            root.busy = true;
+            root.lastAttemptSsid = net.name;
+            root.statusMsg = `connecting to ${net.name}…`;
+            actionProc.exec(["nmcli", "device", "wifi", "connect", net.name]);
+            return;
+        }
+
+        // New / other secured network — full password UI
+        root.askPass(net.name, root.pctOf(net));
+    }
+
+    function submitPass(): void {
+        const ssid = root.pendingSsid;
+        const psk = passField.text;
+        if (!ssid.length)
+            return;
+        if (psk.length < 8) {
+            root.statusMsg = "password must be at least 8 characters";
+            return;
+        }
+        root.busy = true;
+        root.lastAttemptSsid = ssid;
+        root.statusMsg = `connecting to ${ssid}…`;
+        actionProc.exec(["nmcli", "device", "wifi", "connect", ssid, "password", psk]);
+    }
+
+    Timer {
+        id: statusClear
+        interval: 2500
+        onTriggered: {
+            if (root.statusMsg === "scanning…")
+                root.statusMsg = root.netCount ? "" : "no networks found";
+        }
+    }
+
+    Process {
+        id: actionProc
+        stdout: StdioCollector {
+            waitForEnd: true
+            onStreamFinished: {
+                root.busy = false;
+                const out = text.trim();
+                if (out.length && /error|fail|secret|password|denied/i.test(out)) {
+                    root.statusMsg = out.split("\n").pop().replace(/^Error:\s*/i, "");
+                    // wrong / missing password → keep asking
+                    if (root.lastAttemptSsid.length)
+                        root.askPass(root.lastAttemptSsid, root.pendingSignal);
+                    return;
+                }
+                if (root.statusMsg.indexOf("connecting") === 0) {
+                    root.statusMsg = "connected";
+                    root.cancelPass();
+                } else if (root.statusMsg.indexOf("disconnect") === 0) {
+                    root.statusMsg = "disconnected";
+                } else if (root.statusMsg === "scanning…") {
+                    root.statusMsg = "";
+                }
+            }
+        }
+        stderr: StdioCollector {
+            waitForEnd: true
+            onStreamFinished: {
+                const err = text.trim();
+                if (!err.length)
+                    return;
+                root.busy = false;
+                const msg = err.split("\n")[0].replace(/^Error:\s*/i, "");
+                root.statusMsg = msg.length ? msg : "connection failed";
+
+                // Secrets / wrong password → show password panel again
+                if (root.lastAttemptSsid.length) {
+                    root.askPass(root.lastAttemptSsid, root.pendingSignal);
+                    if (/secret|password|802-11|denied|fail/i.test(err))
+                        root.statusMsg = "wrong password · try again";
+                }
+            }
+        }
     }
 
     Process {
@@ -121,11 +279,13 @@ Item {
         stdout: StdioCollector {
             waitForEnd: true
             onStreamFinished: {
-                const lines = text.trim().split("\n");
-                if (lines.length < 2)
+                const parts = text.trim().split(/\s+/);
+                if (parts.length < 2)
                     return;
-                const rx = parseInt(lines[0], 10);
-                const tx = parseInt(lines[1], 10);
+                const rx = parseInt(parts[0], 10);
+                const tx = parseInt(parts[1], 10);
+                if (isNaN(rx) || isNaN(tx))
+                    return;
                 const now = Date.now();
                 if (root.lastRx >= 0 && root.lastAt > 0) {
                     const dt = Math.max(0.2, (now - root.lastAt) / 1000);
@@ -144,11 +304,16 @@ Item {
         running: root.iface.length > 0
         repeat: true
         triggeredOnStart: true
-        onTriggered: poll.exec([
-            "cat",
-            `/sys/class/net/${root.iface}/statistics/rx_bytes`,
-            `/sys/class/net/${root.iface}/statistics/tx_bytes`
-        ])
+        onTriggered: {
+            const iface = root.iface;
+            if (!iface.length)
+                return;
+            poll.exec([
+                "bash",
+                "-c",
+                `echo "$(cat /sys/class/net/${iface}/statistics/rx_bytes 2>/dev/null || echo 0) $(cat /sys/class/net/${iface}/statistics/tx_bytes 2>/dev/null || echo 0)"`
+            ]);
+        }
         onRunningChanged: {
             if (!running) {
                 root.lastRx = -1;
@@ -178,7 +343,7 @@ Item {
             if (root.ignoreClick)
                 return;
             if (pop.visible)
-                pop.visible = false;
+                root.closePop();
             else
                 root.openPop();
         }
@@ -189,8 +354,8 @@ Item {
 
         visible: false
         color: "transparent"
-        implicitWidth: 280
-        implicitHeight: 360
+        implicitWidth: 300
+        implicitHeight: 420
         grabFocus: true
 
         anchor {
@@ -208,7 +373,7 @@ Item {
             active: pop.visible
             windows: [pop]
             onCleared: {
-                pop.visible = false;
+                root.closePop();
                 root.ignoreClick = true;
                 Qt.callLater(() => {
                     root.ignoreClick = false;
@@ -218,15 +383,15 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            radius: 16
-            color: Colors.background
+            radius: 18
+            color: Qt.alpha(Colors.background, 0.96)
             border.width: 1
             border.color: Colors.color0
             clip: true
 
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 12
+                anchors.margins: 14
                 spacing: 10
 
                 RowLayout {
@@ -240,6 +405,23 @@ Item {
                         font.pixelSize: 14
                         font.weight: Font.DemiBold
                         Layout.fillWidth: true
+                    }
+
+                    Text {
+                        text: "󰑐"
+                        color: scanHover.containsMouse ? Colors.accent : Colors.color8
+                        font.family: Colors.fontFamily
+                        font.pixelSize: 14
+                        visible: Networking.wifiEnabled
+
+                        MouseArea {
+                            id: scanHover
+                            anchors.fill: parent
+                            anchors.margins: -6
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: root.rescan()
+                        }
                     }
 
                     Rectangle {
@@ -267,7 +449,14 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: Networking.wifiEnabled = !Networking.wifiEnabled
+                            onClicked: {
+                                Networking.wifiEnabled = !Networking.wifiEnabled;
+                                if (Networking.wifiEnabled) {
+                                    if (root.wifiDev)
+                                        root.wifiDev.scannerEnabled = true;
+                                    root.rescan();
+                                }
+                            }
                         }
                     }
                 }
@@ -284,7 +473,7 @@ Item {
 
                 RowLayout {
                     Layout.fillWidth: true
-                    visible: root.iface.length > 0
+                    visible: root.iface.length > 0 && (!!root.wifiNet || !!root.wiredDev)
                     spacing: 12
 
                     Text {
@@ -306,26 +495,223 @@ Item {
                     }
                 }
 
+                Text {
+                    visible: root.statusMsg.length > 0 && !root.askingPass
+                    text: root.statusMsg
+                    color: Colors.color8
+                    font.family: Colors.fontFamily
+                    font.pixelSize: 11
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                }
+
+                // Full password panel for new / other networks
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    visible: root.askingPass
+                    radius: 14
+                    color: Qt.alpha(Colors.color0, 0.35)
+                    border.width: 1
+                    border.color: Qt.alpha(Colors.accent, 0.45)
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        anchors.margins: 14
+                        spacing: 12
+
+                        Text {
+                            text: "connect to network"
+                            color: Colors.color8
+                            font.family: Colors.fontFamily
+                            font.pixelSize: 11
+                        }
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 10
+
+                            Text {
+                                text: root.wifiIcon(root.pendingSignal)
+                                color: Colors.accent
+                                font.family: Colors.fontFamily
+                                font.pixelSize: 22
+                            }
+
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                spacing: 2
+
+                                Text {
+                                    text: root.pendingSsid
+                                    color: Colors.foreground
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 14
+                                    font.weight: Font.DemiBold
+                                    elide: Text.ElideRight
+                                    Layout.fillWidth: true
+                                }
+
+                                Text {
+                                    text: "secured · enter password"
+                                    color: Colors.color8
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 11
+                                }
+                            }
+                        }
+
+                        Text {
+                            visible: root.statusMsg.length > 0
+                            text: root.statusMsg
+                            color: Colors.secondary
+                            font.family: Colors.fontFamily
+                            font.pixelSize: 11
+                            wrapMode: Text.Wrap
+                            Layout.fillWidth: true
+                        }
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            TextField {
+                                id: passField
+                                Layout.fillWidth: true
+                                echoMode: root.showPass ? TextInput.Normal : TextInput.Password
+                                placeholderText: "Wi‑Fi password"
+                                color: Colors.foreground
+                                placeholderTextColor: Colors.color8
+                                font.family: Colors.fontFamily
+                                font.pixelSize: 13
+                                enabled: !root.busy
+                                background: Rectangle {
+                                    radius: 12
+                                    color: Colors.background
+                                    border.width: 1
+                                    border.color: passField.activeFocus ? Colors.accent : Colors.color0
+                                }
+                                leftPadding: 12
+                                rightPadding: 12
+                                topPadding: 10
+                                bottomPadding: 10
+                                onAccepted: root.submitPass()
+                            }
+
+                            Rectangle {
+                                width: 40
+                                height: 40
+                                radius: 12
+                                color: Qt.alpha(Colors.color0, eyeHover.containsMouse ? 0.9 : 0.5)
+                                border.width: 1
+                                border.color: Colors.color0
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: root.showPass ? "󰈉" : "󰈈"
+                                    color: Colors.foreground
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 16
+                                }
+
+                                MouseArea {
+                                    id: eyeHover
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: root.showPass = !root.showPass
+                                }
+                            }
+                        }
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                height: 40
+                                radius: 12
+                                color: Qt.alpha(Colors.color0, cancelHover.containsMouse ? 0.8 : 0.45)
+                                border.width: 1
+                                border.color: Colors.color0
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "cancel"
+                                    color: Colors.foreground
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 13
+                                }
+
+                                MouseArea {
+                                    id: cancelHover
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: {
+                                        root.cancelPass();
+                                        root.statusMsg = "";
+                                    }
+                                }
+                            }
+
+                            Rectangle {
+                                Layout.fillWidth: true
+                                height: 40
+                                radius: 12
+                                opacity: root.busy ? 0.6 : 1
+                                color: Qt.alpha(Colors.accent, connectHover.containsMouse ? 0.55 : 0.28)
+                                border.width: 1
+                                border.color: Qt.alpha(Colors.accent, 0.7)
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: root.busy ? "connecting…" : "connect"
+                                    color: Colors.foreground
+                                    font.family: Colors.fontFamily
+                                    font.pixelSize: 13
+                                    font.weight: Font.DemiBold
+                                }
+
+                                MouseArea {
+                                    id: connectHover
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    cursorShape: Qt.PointingHandCursor
+                                    enabled: !root.busy
+                                    onClicked: root.submitPass()
+                                }
+                            }
+                        }
+                    }
+                }
+
                 ListView {
+                    id: list
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     clip: true
                     spacing: 4
                     boundsBehavior: Flickable.StopAtBounds
-                    visible: Networking.wifiEnabled
-                    model: root.wifiList
+                    visible: Networking.wifiEnabled && !root.askingPass
+                    model: root.wifiDev ? root.wifiDev.networks : null
 
                     delegate: Rectangle {
                         required property var modelData
-                        width: ListView.view.width
-                        height: 42
-                        radius: 10
-                        color: modelData.connected ? Qt.alpha(Colors.accent, 0.22) : (rowHover.containsMouse ? Qt.alpha(Colors.color0, 0.55) : "transparent")
+                        width: ListView.view ? ListView.view.width : 0
+                        height: 44
+                        radius: 12
+                        color: modelData && modelData.connected ? Qt.alpha(Colors.accent, 0.22) : (rowHover.containsMouse ? Qt.alpha(Colors.color0, 0.55) : "transparent")
 
                         RowLayout {
                             anchors.fill: parent
-                            anchors.leftMargin: 8
-                            anchors.rightMargin: 8
+                            anchors.leftMargin: 10
+                            anchors.rightMargin: 10
                             spacing: 8
 
                             Text {
@@ -340,7 +726,7 @@ Item {
                                 spacing: 0
 
                                 Text {
-                                    text: modelData.name
+                                    text: modelData ? modelData.name : ""
                                     color: Colors.foreground
                                     font.family: Colors.fontFamily
                                     font.pixelSize: 12
@@ -349,15 +735,25 @@ Item {
                                 }
 
                                 Text {
-                                    text: modelData.connected ? "connected" : (modelData.known ? "saved" : (root.isOpen(modelData) ? "open" : "secured"))
-                                    color: modelData.connected ? Colors.accent : Colors.color8
+                                    text: {
+                                        if (!modelData)
+                                            return "";
+                                        if (modelData.connected)
+                                            return "connected";
+                                        if (modelData.stateChanging)
+                                            return "working…";
+                                        if (modelData.known)
+                                            return "saved · tap to join";
+                                        return root.isOpen(modelData) ? "open" : "secured · password needed";
+                                    }
+                                    color: modelData && modelData.connected ? Colors.accent : Colors.color8
                                     font.family: Colors.fontFamily
                                     font.pixelSize: 10
                                 }
                             }
 
                             Text {
-                                visible: !root.isOpen(modelData)
+                                visible: modelData && !root.isOpen(modelData)
                                 text: ""
                                 color: Colors.color8
                                 font.family: Colors.fontFamily
@@ -370,19 +766,15 @@ Item {
                             anchors.fill: parent
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: {
-                                if (modelData.connected)
-                                    modelData.disconnect();
-                                else
-                                    modelData.connect();
-                            }
+                            enabled: !root.busy
+                            onClicked: root.tryConnect(modelData)
                         }
                     }
 
                     Text {
                         anchors.centerIn: parent
-                        visible: parent.count === 0
-                        text: "scanning…"
+                        visible: !root.wifiDev || root.netCount === 0
+                        text: !root.wifiDev ? "no wifi device" : (root.statusMsg === "scanning…" ? "scanning…" : "no networks · tap 󰑐")
                         color: Colors.color8
                         font.family: Colors.fontFamily
                         font.pixelSize: 12

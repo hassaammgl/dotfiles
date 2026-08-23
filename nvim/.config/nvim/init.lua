@@ -1,10 +1,11 @@
-require("options")
-require("keymaps")
-require("plugins")
+-- Simple LazyVim-inspired Neovim config
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-local ok, theme = pcall(require, "theme")
-if ok then
-  pcall(theme.setup)
-else
-  vim.notify("theme.lua: " .. tostring(theme), vim.log.levels.WARN)
-end
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.lazy")
+
+-- Theme is applied by catppuccin in plugins/ui.lua
+pcall(require, "theme")

@@ -107,6 +107,15 @@ ALT + G                 Video → GIF picker (Quickshell)
 ALT + T                 Toggle bar
 ALT + SHIFT + T         Cycle bar position
 
+󰟸  Desktop widgets (anime)
+ALT + A                 Toggle all desktop widgets
+ALT + SHIFT + A         Cycle mascot character
+Bar cat icon            Left: toggle · Right: cycle · Middle: reset all
+On cards                Right-click: hide that widget
+On mascot               Left: cycle · Right: hide · Middle: corner
+qs ipc call widgets reset   Restore all widgets
+qs ipc call widgets clock|calendar|stats|media|mascot
+
 󰟸  Utilities
 CTRL + ALT + Escape     QPS process manager
 CTRL + ALT + V          Pavucontrol audio
