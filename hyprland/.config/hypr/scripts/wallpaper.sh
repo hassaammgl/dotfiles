@@ -7,7 +7,7 @@ lock_file="${XDG_RUNTIME_DIR:-/tmp}/wallpaper.apply.lock"
 palette="$HOME/.cache/wallust/quickshell.json"
 quiet="${WALLPAPER_QUIET:-0}"
 
-mkdir -p "$wall_dir"
+mkdir -p "$wall_dir" "$(dirname "$palette")"
 
 # Close inherited lock fds so child processes cannot pin the lock forever.
 spawn() {
@@ -123,13 +123,16 @@ theme_source() {
         printf '%s\n' "$img"
         return 0
     fi
-    if ! command -v magick &>/dev/null; then
-        notify critical "Theme" "imagemagick needed for GIF palettes"
-        return 1
-    fi
     local frame="${XDG_CACHE_HOME:-$HOME/.cache}/wallust/gif-frame.png"
     mkdir -p "$(dirname "$frame")"
-    magick "${img}[0]" "$frame" || return 1
+    if command -v magick &>/dev/null; then
+        magick "${img}[0]" "$frame" || return 1
+    elif command -v ffmpeg &>/dev/null; then
+        ffmpeg -y -hide_banner -loglevel error -i "$img" -frames:v 1 "$frame" || return 1
+    else
+        notify critical "Theme" "ffmpeg or imagemagick needed for GIF palettes"
+        return 1
+    fi
     printf '%s\n' "$frame"
 }
 

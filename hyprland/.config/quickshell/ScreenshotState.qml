@@ -51,7 +51,7 @@ Singleton {
 
     Timer {
         id: delay
-        interval: 180
+        interval: 280
         repeat: false
         onTriggered: {
             Quickshell.execDetached(["mkdir", "-p", `${Quickshell.env("HOME")}/.cache/quickshell`]);

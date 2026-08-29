@@ -24,31 +24,31 @@ Scope {
                 {
                     "id": "lock",
                     "name": "Lock",
-                    "icon": "",
+                    "icon": Theme.icons.lock,
                     "tint": Colors.foreground
                 },
                 {
                     "id": "logout",
                     "name": "Logout",
-                    "icon": "",
+                    "icon": Theme.icons.logout,
                     "tint": Colors.accent
                 },
                 {
                     "id": "sleep",
                     "name": "Sleep",
-                    "icon": "",
+                    "icon": Theme.icons.sleep,
                     "tint": Colors.color6
                 },
                 {
                     "id": "reboot",
                     "name": "Reboot",
-                    "icon": "",
+                    "icon": Theme.icons.reboot,
                     "tint": Colors.color3
                 },
                 {
                     "id": "power",
                     "name": "Power",
-                    "icon": "",
+                    "icon": Theme.icons.power,
                     "tint": Colors.color1
                 }
             ]
@@ -71,7 +71,7 @@ Scope {
                 if (id === "lock")
                     LockState.lock();
                 else if (id === "logout")
-                    Hyprland.dispatch("exit");
+                    Hyprland.dispatch("hl.dsp.exit()");
                 else if (id === "sleep")
                     Quickshell.execDetached(["systemctl", "suspend"]);
                 else if (id === "reboot")

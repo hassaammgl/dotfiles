@@ -3,6 +3,7 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
+import "Components"
 
 Scope {
     IpcHandler {
@@ -51,8 +52,8 @@ Scope {
             WlrLayershell.layer: WlrLayer.Overlay
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
-            implicitWidth: 280
-            implicitHeight: 64
+            implicitWidth: Theme.osd.width
+            implicitHeight: Theme.osd.height
 
             anchors {
                 bottom: true
@@ -60,78 +61,58 @@ Scope {
             }
 
             margins {
-                bottom: 72
-                left: Math.max(0, Math.round((modelData.width - 280) / 2))
+                bottom: Theme.space.xxl
+                left: Theme.osdX(modelData.width)
             }
 
-            Rectangle {
+            Card {
                 anchors.fill: parent
-                radius: 20
-                color: Qt.alpha(Colors.background, 0.92)
-                border.width: 1
-                border.color: Colors.color0
+                radiusSize: Theme.r.lg
                 opacity: OsdState.visible ? 1 : 0
-                scale: OsdState.visible ? 1 : 0.94
 
                 Behavior on opacity {
                     NumberAnimation {
-                        duration: 140
-                        easing.type: Easing.OutCubic
-                    }
-                }
-
-                Behavior on scale {
-                    NumberAnimation {
-                        duration: 160
-                        easing.type: Easing.OutCubic
+                        duration: Theme.motion.fast
+                        easing.type: Theme.motion.enter
                     }
                 }
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.leftMargin: 18
-                    anchors.rightMargin: 18
-                    spacing: 14
+                    anchors.leftMargin: Theme.space.md
+                    anchors.rightMargin: Theme.space.md
+                    spacing: Theme.space.md
 
                     Text {
                         text: OsdState.icon
-                        color: OsdState.dimmed ? Colors.color8 : Colors.accent
-                        font.family: Colors.fontFamily
-                        font.pixelSize: 22
-                        Layout.preferredWidth: 28
+                        color: OsdState.dimmed ? Theme.colors.textMuted : Theme.colors.accent
+                        font.family: Theme.font.icon
+                        font.pixelSize: Theme.type.iconLg
+                        Layout.preferredWidth: 24
                         horizontalAlignment: Text.AlignHCenter
                     }
 
-                    Rectangle {
+                    Slider {
                         Layout.fillWidth: true
-                        height: 8
-                        radius: 4
-                        color: Colors.color0
-
-                        Rectangle {
-                            anchors.left: parent.left
-                            anchors.top: parent.top
-                            anchors.bottom: parent.bottom
-                            width: Math.max(OsdState.dimmed ? 0 : 8, parent.width * Math.max(0, Math.min(1, OsdState.value)))
-                            radius: 4
-                            color: OsdState.dimmed ? Colors.color8 : Colors.accent
-
-                            Behavior on width {
-                                NumberAnimation {
-                                    duration: 90
-                                    easing.type: Easing.OutCubic
-                                }
-                            }
+                        value: OsdState.value
+                        dimmed: OsdState.dimmed
+                        onApplied: next => {
+                            if (OsdState.kind === "brightness")
+                                OsdState.setBri(next, false);
+                            else if (OsdState.kind === "mic")
+                                OsdState.setMic(next, false);
+                            else
+                                OsdState.setVol(next, false);
                         }
                     }
 
                     Text {
                         text: OsdState.dimmed ? "mute" : OsdState.percent
-                        color: Colors.foreground
-                        font.family: Colors.fontFamily
-                        font.pixelSize: 13
+                        color: Theme.colors.text
+                        font.family: Theme.font.mono
+                        font.pixelSize: Theme.type.monoSmall
                         font.weight: Font.DemiBold
-                        Layout.preferredWidth: 48
+                        Layout.preferredWidth: 40
                         horizontalAlignment: Text.AlignRight
                     }
                 }

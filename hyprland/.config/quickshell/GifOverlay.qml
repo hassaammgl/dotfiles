@@ -407,7 +407,7 @@ Scope {
                     Rectangle {
                         anchors.fill: parent
                         radius: 14
-                        color: "#050508"
+                        color: Theme.colors.background
                         border.width: card.selected ? 2 : 1
                         border.color: card.selected ? Colors.accent : Qt.alpha(Colors.foreground, 0.18)
                         clip: true

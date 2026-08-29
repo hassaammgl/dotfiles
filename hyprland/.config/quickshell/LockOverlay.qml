@@ -32,7 +32,7 @@ Scope {
 
             Rectangle {
                 anchors.fill: parent
-                color: Qt.alpha(Colors.background, 0.62)
+                color: Theme.withAlpha(Theme.colors.background, 0.55)
             }
 
             Column {
@@ -47,7 +47,7 @@ Scope {
 
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        text: ""
+                        text: Theme.icons.lock
                         color: Colors.accent
                         font.family: Colors.fontFamily
                         font.pixelSize: 22
@@ -56,9 +56,9 @@ Scope {
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: `${Time.hour}:${Time.minute}`
-                        color: Colors.foreground
-                        font.family: Colors.fontFamily
-                        font.pixelSize: 72
+                        color: Theme.colors.text
+                        font.family: Theme.font.ui
+                        font.pixelSize: Theme.type.display
                         font.weight: Font.DemiBold
                         renderType: Text.NativeRendering
                     }
@@ -98,7 +98,7 @@ Scope {
                         spacing: 10
 
                         Text {
-                            text: ""
+                            text: Theme.icons.lock
                             color: LockState.showFailure ? Colors.color1 : Colors.accent
                             font.family: Colors.fontFamily
                             font.pixelSize: 14

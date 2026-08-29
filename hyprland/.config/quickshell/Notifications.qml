@@ -280,7 +280,7 @@ Scope {
                                 }
 
                                 Text {
-                                    text: "✕"
+                                    text: Theme.icons.close
                                     color: closeHover.containsMouse ? Colors.foreground : Colors.color8
                                     font.family: Colors.fontFamily
                                     font.pixelSize: 13

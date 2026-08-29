@@ -270,7 +270,7 @@ Scope {
                     Rectangle {
                         anchors.fill: parent
                         radius: 14
-                        color: "#050508"
+                        color: Theme.colors.background
                         border.width: card.selected ? 2 : 1
                         border.color: card.selected ? Colors.accent : Qt.alpha(Colors.foreground, 0.18)
                         clip: true
@@ -281,8 +281,8 @@ Scope {
                             fillMode: Image.PreserveAspectCrop
                             asynchronous: true
                             cache: true
-                            sourceSize.width: 960
-                            sourceSize.height: 540
+                            sourceSize.width: 480
+                            sourceSize.height: 270
                         }
 
                         AnimatedImage {

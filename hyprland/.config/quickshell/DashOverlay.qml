@@ -68,12 +68,12 @@ Scope {
             Rectangle {
                 id: panel
                 anchors.centerIn: parent
-                width: Math.min(920, parent.width - 48)
-                height: Math.min(620, parent.height - 48)
-                radius: 16
-                color: Qt.alpha(Colors.background, 0.96)
+                width: Math.min(680, parent.width - 48)
+                height: Math.min(480, parent.height - 48)
+                radius: Theme.r.lg
+                color: Theme.withAlpha(Theme.colors.background, 0.96)
                 border.width: 1
-                border.color: Colors.color0
+                border.color: Theme.colors.border
                 opacity: win.visible ? 1 : 0
                 scale: win.visible ? 1 : 0.97
 

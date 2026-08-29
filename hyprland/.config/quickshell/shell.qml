@@ -18,6 +18,23 @@ Scope {
     OsdOverlay {}
     DashOverlay {}
     DesktopWidgets {}
+    ControlCenter {}
+
+    IpcHandler {
+        target: "control"
+
+        function toggle(): void {
+            OverlayState.toggleControlCenter();
+        }
+
+        function show(): void {
+            OverlayState.showControlCenter();
+        }
+
+        function hide(): void {
+            OverlayState.controlCenter = false;
+        }
+    }
 
     IpcHandler {
         target: "launcher"
@@ -165,6 +182,22 @@ Scope {
 
         function hide(): void {
             OverlayState.media = false;
+        }
+
+        function playPause(): void {
+            MediaState.toggle();
+        }
+
+        function next(): void {
+            MediaState.next();
+        }
+
+        function previous(): void {
+            MediaState.prev();
+        }
+
+        function stop(): void {
+            MediaState.stop();
         }
     }
 

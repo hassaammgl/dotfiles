@@ -9,13 +9,11 @@ import "modules"
 Scope {
     id: root
 
-    property real cpuPct: 0
-    property real memPct: 0
-    property real diskPct: 0
-    property string diskLabel: "—"
-    property string uptimeLabel: "—"
-    property real _lastIdle: 0
-    property real _lastTotal: 0
+    readonly property real cpuPct: Host.cpuPct
+    readonly property real memPct: Host.memPct
+    readonly property real diskPct: Host.diskPct
+    readonly property string diskLabel: Host.diskLabel
+    readonly property string uptimeLabel: Host.uptimeLabel
 
     readonly property var bat: UPower.displayDevice
     readonly property bool batReady: bat && bat.ready && bat.isLaptopBattery
@@ -46,60 +44,6 @@ Scope {
         if (pct >= 70)
             return Colors.color12;
         return Colors.accent;
-    }
-
-    Process {
-        id: statPoll
-        stdout: StdioCollector {
-            waitForEnd: true
-            onStreamFinished: {
-                const lines = text.trim().split("\n");
-                if (lines.length < 1)
-                    return;
-                let i = 0;
-                const cpu = lines[i].trim().split(/\s+/);
-                if (cpu[0] === "cpu") {
-                    let total = 0;
-                    for (let j = 1; j < cpu.length; j++)
-                        total += parseInt(cpu[j], 10) || 0;
-                    const idle = (parseInt(cpu[4], 10) || 0) + (parseInt(cpu[5], 10) || 0);
-                    if (root._lastTotal > 0) {
-                        const dT = total - root._lastTotal;
-                        const dI = idle - root._lastIdle;
-                        if (dT > 0)
-                            root.cpuPct = Math.max(0, Math.min(100, Math.round(100 * (1 - dI / dT))));
-                    }
-                    root._lastTotal = total;
-                    root._lastIdle = idle;
-                    i++;
-                }
-                const mem = {};
-                while (i < lines.length && lines[i].indexOf("Mem") === 0) {
-                    const m = lines[i].match(/^(\w+):\s+(\d+)/);
-                    if (m)
-                        mem[m[1]] = parseInt(m[2], 10);
-                    i++;
-                }
-                if (mem.MemTotal && mem.MemAvailable)
-                    root.memPct = Math.round(100 * (mem.MemTotal - mem.MemAvailable) / mem.MemTotal);
-                if (i < lines.length && lines[i].indexOf("DISK ") === 0) {
-                    const parts = lines[i].slice(5).trim().split(/\s+/);
-                    root.diskPct = parseInt(parts[0], 10) || 0;
-                    root.diskLabel = parts[1] || "—";
-                    i++;
-                }
-                if (i < lines.length && lines[i].indexOf("UP ") === 0)
-                    root.uptimeLabel = lines[i].slice(3).trim();
-            }
-        }
-    }
-
-    Timer {
-        interval: 2500
-        running: WidgetState.enabled && (WidgetState.showStats || WidgetState.showClock)
-        repeat: true
-        triggeredOnStart: true
-        onTriggered: statPoll.exec(["bash", "-c", "head -1 /proc/stat; grep -E '^(MemTotal|MemAvailable):' /proc/meminfo; df -BP / | awk 'NR==2 {gsub(/%/,\"\",$5); print \"DISK\",$5,$4}'; awk '{d=int($1/86400); h=int(($1%86400)/3600); m=int(($1%3600)/60); if(d>0) printf \"UP %dd %dh\",d,h; else if(h>0) printf \"UP %dh %dm\",h,m; else printf \"UP %dm\",m}' /proc/uptime"])
     }
 
     SystemClock {

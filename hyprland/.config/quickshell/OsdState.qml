@@ -48,27 +48,23 @@ Singleton {
 
     readonly property string volumeIcon: {
         if (muted || !ready || vol === 0)
-            return "";
+            return Theme.icons.volumeMute;
         if (vol < 0.35)
-            return "";
-        if (vol < 0.7)
-            return "";
-        return "";
+            return Theme.icons.volumeLow;
+        return Theme.icons.volume;
     }
 
     readonly property string brightnessIcon: {
         if (bri < 0.25)
-            return "󰃞";
-        if (bri < 0.7)
-            return "󰃟";
-        return "󰃠";
+            return Theme.icons.brightnessLow;
+        return Theme.icons.brightness;
     }
 
     readonly property string icon: {
         if (kind === "brightness")
             return brightnessIcon;
         if (kind === "mic")
-            return micMuted ? "󰍭" : "󰍬";
+            return micMuted ? Theme.icons.micOff : Theme.icons.mic;
         return volumeIcon;
     }
 

@@ -9,14 +9,14 @@ hl.bind("SUPER + F6", hl.dsp.exec_cmd("qs ipc call osd brightnessDown"), { locke
 hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("qs ipc call osd brightnessUp"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("qs ipc call osd brightnessDown"), { locked = true, repeating = true })
 
-hl.bind("CTRL + SUPER + Space", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay",        hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPause",       hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("CTRL + SUPER + Equal", hl.dsp.exec_cmd("playerctl next"),      { locked = true })
-hl.bind("XF86AudioNext",        hl.dsp.exec_cmd("playerctl next"),      { locked = true })
-hl.bind("CTRL + SUPER + Minus", hl.dsp.exec_cmd("playerctl previous"),  { locked = true })
-hl.bind("XF86AudioPrev",        hl.dsp.exec_cmd("playerctl previous"),  { locked = true })
-hl.bind("XF86AudioStop",        hl.dsp.exec_cmd("playerctl stop"),      { locked = true })
+hl.bind("CTRL + SUPER + Space", hl.dsp.exec_cmd("qs ipc call media playPause"), { locked = true })
+hl.bind("XF86AudioPlay",        hl.dsp.exec_cmd("qs ipc call media playPause"), { locked = true })
+hl.bind("XF86AudioPause",       hl.dsp.exec_cmd("qs ipc call media playPause"), { locked = true })
+hl.bind("CTRL + SUPER + Equal", hl.dsp.exec_cmd("qs ipc call media next"),      { locked = true })
+hl.bind("XF86AudioNext",        hl.dsp.exec_cmd("qs ipc call media next"),      { locked = true })
+hl.bind("CTRL + SUPER + Minus", hl.dsp.exec_cmd("qs ipc call media previous"),  { locked = true })
+hl.bind("XF86AudioPrev",        hl.dsp.exec_cmd("qs ipc call media previous"),  { locked = true })
+hl.bind("XF86AudioStop",        hl.dsp.exec_cmd("qs ipc call media stop"),      { locked = true })
 
 for i = 1, 10 do
     local key = i % 10

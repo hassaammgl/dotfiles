@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Io
 import QtQuick
-import "modules"
+import "Components"
 
 Scope {
     id: root
@@ -175,9 +175,9 @@ Scope {
             }
 
             Timer {
-                interval: 500
+                interval: 1000
                 repeat: true
-                running: win.visible && MediaState.playing && MediaState.ready && MediaState.player.positionSupported
+                running: win.visible && MediaState.playing && MediaState.ready && MediaState.player && MediaState.player.positionSupported
                 onTriggered: MediaState.player.positionChanged()
             }
 
@@ -248,7 +248,7 @@ Scope {
                     width: 120
                     height: 120
                     radius: 16
-                    color: "#050508"
+                    color: Theme.colors.background
                     border.width: 1
                     border.color: Qt.alpha(Colors.foreground, 0.16)
                     clip: true
@@ -364,7 +364,7 @@ Scope {
                     visible: MediaState.ready && MediaState.length > 0
                     width: 420
 
-                    PopSlider {
+                    Slider {
                         width: parent.width
                         value: MediaState.progress
                         onApplied: next => MediaState.seekRatio(next)

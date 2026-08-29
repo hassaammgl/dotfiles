@@ -58,7 +58,7 @@ Singleton {
 
         JsonAdapter {
             id: adapter
-            property bool enabled: true
+            property bool enabled: false
             property string character: "session.gif"
             property bool showClock: true
             property bool showCalendar: true

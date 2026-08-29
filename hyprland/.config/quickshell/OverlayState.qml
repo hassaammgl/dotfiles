@@ -18,6 +18,7 @@ Singleton {
     property bool media: false
     property bool screenshot: false
     property bool dashboard: false
+    property bool controlCenter: false
 
     function close(): void {
         launcher = false;
@@ -32,6 +33,7 @@ Singleton {
         media = false;
         screenshot = false;
         dashboard = false;
+        controlCenter = false;
     }
 
     function toggleLauncher(): void {
@@ -165,5 +167,17 @@ Singleton {
     function showDashboard(): void {
         close();
         dashboard = true;
+    }
+
+    function toggleControlCenter(): void {
+        if (controlCenter)
+            close();
+        else
+            showControlCenter();
+    }
+
+    function showControlCenter(): void {
+        close();
+        controlCenter = true;
     }
 }

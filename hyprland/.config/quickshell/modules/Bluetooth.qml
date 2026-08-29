@@ -103,10 +103,10 @@ Item {
             edges: BarState.edge === "right" ? Edges.Left : (BarState.edge === "top" ? Edges.Bottom : (BarState.edge === "bottom" ? Edges.Top : Edges.Right))
             gravity: BarState.edge === "right" ? Edges.Left : (BarState.edge === "top" ? Edges.Bottom : (BarState.edge === "bottom" ? Edges.Top : Edges.Right))
             adjustment: PopupAdjustment.Slide
-            margins.left: 10
-            margins.right: 10
-            margins.top: 10
-            margins.bottom: 10
+            margins.left: 4
+            margins.right: 4
+            margins.top: 4
+            margins.bottom: 4
         }
 
         HyprlandFocusGrab {

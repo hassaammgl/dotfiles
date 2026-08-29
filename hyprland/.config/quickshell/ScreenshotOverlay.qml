@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Wayland
 import QtQuick
 
 Scope {
@@ -17,8 +18,12 @@ Scope {
             exclusiveZone: 0
             focusable: true
             aboveWindows: true
+            WlrLayershell.layer: WlrLayer.Overlay
+            WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
             property int current: 0
+            property bool grab: false
+            readonly property int usableShift: Math.round(Theme.barReserve("left") / 2)
             readonly property bool picking: ScreenshotState.phase === "pick"
             readonly property var pickActions: [
                 {
@@ -71,8 +76,21 @@ Scope {
             }
 
             onVisibleChanged: {
-                if (visible)
+                if (visible) {
                     current = 0;
+                    grab = false;
+                    grabDelay.restart();
+                } else {
+                    grab = false;
+                    grabDelay.stop();
+                }
+            }
+
+            Timer {
+                id: grabDelay
+                interval: 80
+                repeat: false
+                onTriggered: win.grab = true
             }
 
             function run(id: string): void {
@@ -87,7 +105,7 @@ Scope {
             }
 
             HyprlandFocusGrab {
-                active: win.visible
+                active: win.visible && win.grab
                 windows: [win]
                 onCleared: OverlayState.close()
             }
@@ -134,7 +152,8 @@ Scope {
 
             Column {
                 anchors.centerIn: parent
-                spacing: 28
+                anchors.horizontalCenterOffset: win.usableShift
+                spacing: modelData.height < 900 ? 18 : 28
                 opacity: win.visible ? 1 : 0
                 scale: win.visible ? 1 : 0.94
 
@@ -155,10 +174,10 @@ Scope {
                 Rectangle {
                     visible: !win.picking
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: Math.min(640, Math.floor(win.width * 0.42))
-                    height: Math.min(360, Math.floor(win.height * 0.38))
+                    width: Math.min(modelData.width < 1600 ? 420 : 640, Math.floor((win.width - Theme.barReserve("left") - 48) * 0.5))
+                    height: Math.min(modelData.height < 900 ? 200 : 360, Math.floor(win.height * 0.28))
                     radius: 16
-                    color: "#050508"
+                    color: Theme.colors.background
                     border.width: 1
                     border.color: Qt.alpha(Colors.foreground, 0.16)
                     clip: true
@@ -205,12 +224,12 @@ Scope {
                         Item {
                             required property var modelData
                             required property int index
-                            width: 88
-                            height: 88
+                            width: 76
+                            height: 76
 
                             Rectangle {
                                 anchors.centerIn: parent
-                                width: win.current === index ? 84 : 72
+                                width: win.current === index ? 72 : 62
                                 height: width
                                 radius: width / 2
                                 color: Qt.alpha(modelData.tint, win.current === index ? 0.42 : 0.16)
