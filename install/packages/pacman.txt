@@ -91,6 +91,7 @@ pavucontrol
 webapp-manager
 gnome-calculator
 gnome-text-editor
+obsidian
 gnome-software
 kdeconnect
 qbittorrent
