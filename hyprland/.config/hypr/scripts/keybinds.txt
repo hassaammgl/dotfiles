@@ -2,7 +2,7 @@
 SUPER + Space           Launcher (Quickshell)
 SUPER + K               Notification history (left sidebar)
 SUPER + Return          Terminal (kitty)
-CTRL + T                Terminal + tmux sessions (kitty)
+CTRL + SHIFT + T         Terminal + tmux sessions (kitty)
 SUPER + B               Browser (brave)
 SUPER + C               Editor (code)
 SUPER + E               File explorer (nautilus)

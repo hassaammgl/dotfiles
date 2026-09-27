@@ -114,7 +114,7 @@ hl.bind(kbCommunication, hl.dsp.workspace.toggle_special("communication"))
 hl.bind(kbTodo, hl.dsp.workspace.toggle_special("todo"))
 
 hl.bind(kbTerminal, hl.dsp.exec_cmd(terminal))
-hl.bind("CTRL + T", hl.dsp.exec_cmd("kitty --title tmux -e ~/.config/hypr/scripts/tmux-session.sh"))
+hl.bind("CTRL + SHIFT + T", hl.dsp.exec_cmd("kitty --title tmux -e ~/.config/hypr/scripts/tmux-session.sh"))
 hl.bind(kbBrowser, hl.dsp.exec_cmd(browser))
 hl.bind(kbHBrowser, hl.dsp.exec_cmd(browser_helium))
 hl.bind(kbEditor, hl.dsp.exec_cmd(editor))
