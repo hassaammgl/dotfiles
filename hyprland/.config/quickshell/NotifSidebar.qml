@@ -26,7 +26,6 @@ Scope {
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
             property bool grab: false
-
             readonly property int pane: Theme.panelWidth(modelData.width)
             readonly property int inset: Theme.space.lg
 
