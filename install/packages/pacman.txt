@@ -62,7 +62,6 @@ swappy
 brightnessctl
 wf-recorder
 ffmpeg
-gifsicle
 cliphist
 ydotool
 wev

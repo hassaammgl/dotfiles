@@ -45,3 +45,7 @@ if status is-interactive
 end
 
 
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/ratx86/.local/bin" $PATH

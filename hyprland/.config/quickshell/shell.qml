@@ -1,5 +1,21 @@
 import Quickshell
 import Quickshell.Io
+import qs.bar
+import qs.overlays.notifications
+import qs.overlays.launcher
+import qs.overlays.power
+import qs.overlays.media
+import qs.overlays.screenshot
+import qs.overlays.wallpaper
+import qs.overlays.keybinds
+import qs.overlays.clipboard
+import qs.overlays.emoji
+import qs.overlays.lock
+import qs.overlays.osd
+import qs.overlays.dashboard
+import qs.overlays.desktopWidgets
+import qs.overlays.controlCenter
+import qs.state
 
 Scope {
     Bar {}
@@ -10,7 +26,6 @@ Scope {
     MediaOverlay {}
     ScreenshotOverlay {}
     WallpaperOverlay {}
-    GifOverlay {}
     KeybindsOverlay {}
     ClipboardOverlay {}
     EmojiOverlay {}
@@ -150,22 +165,6 @@ Scope {
 
         function hide(): void {
             OverlayState.emoji = false;
-        }
-    }
-
-    IpcHandler {
-        target: "gif"
-
-        function toggle(): void {
-            OverlayState.toggleGif();
-        }
-
-        function show(): void {
-            OverlayState.showGif();
-        }
-
-        function hide(): void {
-            OverlayState.gif = false;
         }
     }
 

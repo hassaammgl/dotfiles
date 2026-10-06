@@ -1,0 +1,169 @@
+pragma Singleton
+
+import Quickshell
+import QtQuick
+
+Singleton {
+    id: root
+
+    property bool launcher: false
+    property bool power: false
+    property bool wallpaper: false
+    property bool notifs: false
+    property bool keybinds: false
+    property bool clipboard: false
+    property bool emoji: false
+    property bool clipboardDelete: false
+    property bool media: false
+    property bool screenshot: false
+    property bool dashboard: false
+    property bool controlCenter: false
+
+    function close(): void {
+        launcher = false;
+        power = false;
+        wallpaper = false;
+        notifs = false;
+        keybinds = false;
+        clipboard = false;
+        emoji = false;
+        clipboardDelete = false;
+        media = false;
+        screenshot = false;
+        dashboard = false;
+        controlCenter = false;
+    }
+
+    function toggleLauncher(): void {
+        if (launcher)
+            close();
+        else
+            showLauncher();
+    }
+
+    function showLauncher(): void {
+        close();
+        launcher = true;
+    }
+
+    function togglePower(): void {
+        if (power)
+            close();
+        else
+            showPower();
+    }
+
+    function showPower(): void {
+        close();
+        power = true;
+    }
+
+    function toggleWallpaper(): void {
+        if (wallpaper)
+            close();
+        else
+            showWallpaper();
+    }
+
+    function showWallpaper(): void {
+        close();
+        wallpaper = true;
+    }
+
+    function toggleNotifs(): void {
+        if (notifs)
+            close();
+        else
+            showNotifs();
+    }
+
+    function showNotifs(): void {
+        close();
+        notifs = true;
+    }
+
+    function toggleKeybinds(): void {
+        if (keybinds)
+            close();
+        else
+            showKeybinds();
+    }
+
+    function showKeybinds(): void {
+        close();
+        keybinds = true;
+    }
+
+    function toggleClipboard(del: bool): void {
+        if (clipboard && clipboardDelete === del)
+            close();
+        else
+            showClipboard(del);
+    }
+
+    function showClipboard(del: bool): void {
+        close();
+        clipboardDelete = del;
+        clipboard = true;
+    }
+
+    function toggleEmoji(): void {
+        if (emoji)
+            close();
+        else
+            showEmoji();
+    }
+
+    function showEmoji(): void {
+        close();
+        emoji = true;
+    }
+
+    function toggleMedia(): void {
+        if (media)
+            close();
+        else
+            showMedia();
+    }
+
+    function showMedia(): void {
+        close();
+        media = true;
+    }
+
+    function toggleScreenshot(): void {
+        if (screenshot)
+            close();
+        else
+            showScreenshot();
+    }
+
+    function showScreenshot(): void {
+        close();
+        screenshot = true;
+    }
+
+    function toggleDashboard(): void {
+        if (dashboard)
+            close();
+        else
+            showDashboard();
+    }
+
+    function showDashboard(): void {
+        close();
+        dashboard = true;
+    }
+
+    function toggleControlCenter(): void {
+        if (controlCenter)
+            close();
+        else
+            showControlCenter();
+    }
+
+    function showControlCenter(): void {
+        close();
+        controlCenter = true;
+    }
+}

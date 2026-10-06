@@ -134,7 +134,6 @@ hl.bind("SUPER + SHIFT + ALT + R", hl.dsp.exec_cmd('wf-recorder -g "$(slurp)" -f
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind("ALT + W", hl.dsp.exec_cmd("qs ipc call wallpaper toggle"))
 hl.bind("ALT + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper.sh next"))
-hl.bind("ALT + G", hl.dsp.exec_cmd("qs ipc call gif toggle"))
 hl.bind("SUPER + ALT + M", hl.dsp.exec_cmd("qs ipc call media toggle"))
 
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("qs ipc call osd micMute"), { locked = true })
