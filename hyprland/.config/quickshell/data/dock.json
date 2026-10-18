@@ -8,9 +8,9 @@
         "com.microsoft.VSCode",
         "cursor",
         "com.github.unrud.VideoDownloader",
-        "sonora",
         "localsend",
         "obsidian",
-        "org.gnome.Software"
+        "org.gnome.Software",
+        "sonora"
     ]
 }

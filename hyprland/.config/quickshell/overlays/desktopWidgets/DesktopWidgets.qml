@@ -97,15 +97,27 @@ Scope {
                 id: card
                 default property alias content: body.data
                 property bool catchClicks: true
+                property color cardColor: Qt.alpha(Colors.background, 0.86)
+                property color accentColor: "transparent"
                 signal hideRequested
                 signal activated
 
                 width: win.cardW
                 radius: 16
-                color: Qt.alpha(Colors.background, 0.86)
+                color: cardColor
                 border.width: 1
                 border.color: Colors.color0
                 implicitHeight: body.implicitHeight + 22
+
+                Rectangle {
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    height: 2
+                    color: card.accentColor
+                    radius: 1
+                    visible: card.accentColor !== "transparent"
+                }
 
                 Column {
                     id: body
@@ -200,6 +212,8 @@ Scope {
                         SoftCard {
                             visible: WidgetState.showClock
                             onHideRequested: WidgetState.showClock = false
+                            cardColor: Qt.alpha(Colors.background, 0.94)
+                            accentColor: Colors.accent
 
                             Text {
                                 visible: WidgetState.showGreeting
@@ -207,21 +221,26 @@ Scope {
                                 color: Colors.accent
                                 font.family: Colors.fontFamily
                                 font.pixelSize: Math.round(11 * win.s)
+                                font.weight: Font.DemiBold
+                                letterSpacing: 0.6
                             }
 
                             Text {
                                 text: Qt.formatDateTime(liveClock.date, "h:mm AP")
                                 color: Colors.foreground
                                 font.family: Colors.fontFamily
-                                font.pixelSize: Math.round(42 * win.s)
+                                font.pixelSize: Math.round(46 * win.s)
                                 font.weight: Font.Bold
+                                letterSpacing: -1.2
                             }
 
                             Text {
                                 text: Qt.formatDateTime(liveClock.date, "dddd · d MMM yyyy")
                                 color: Colors.color8
                                 font.family: Colors.fontFamily
-                                font.pixelSize: Math.round(12 * win.s)
+                                font.pixelSize: Math.round(13 * win.s)
+                                font.weight: Font.Medium
+                                letterSpacing: 0.4
                             }
 
                             Text {
