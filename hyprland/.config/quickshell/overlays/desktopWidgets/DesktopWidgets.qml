@@ -222,7 +222,6 @@ Scope {
                                 font.family: Colors.fontFamily
                                 font.pixelSize: Math.round(11 * win.s)
                                 font.weight: Font.DemiBold
-                                letterSpacing: 0.6
                             }
 
                             Text {
@@ -231,7 +230,6 @@ Scope {
                                 font.family: Colors.fontFamily
                                 font.pixelSize: Math.round(46 * win.s)
                                 font.weight: Font.Bold
-                                letterSpacing: -1.2
                             }
 
                             Text {
@@ -240,7 +238,6 @@ Scope {
                                 font.family: Colors.fontFamily
                                 font.pixelSize: Math.round(13 * win.s)
                                 font.weight: Font.Medium
-                                letterSpacing: 0.4
                             }
 
                             Text {
