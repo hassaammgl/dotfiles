@@ -127,8 +127,6 @@ blender
 gifsicle
 
 # Games
-cataclysm-dda
-cataclysm-dda-tiles
 openttd
 ttyper
 
