@@ -2,10 +2,16 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Active colorscheme (see lua/theme.lua). Switch at runtime with :Theme <name>.
+-- onedark_dark | onedark | onedark_vivid | onelight | vaporwave | catppuccin-mocha
+vim.g.theme = "onedark_dark"
+
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
-require("config.lazy")
+require("config.pack")
+require("config.build")
+require("config.dev")
 
--- Theme is applied by catppuccin in plugins/ui.lua
-pcall(require, "theme")
+-- Applies vim.g.theme once the plugins (colorschemes) are loaded.
+require("theme").setup()

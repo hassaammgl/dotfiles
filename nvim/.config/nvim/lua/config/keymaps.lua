@@ -24,10 +24,13 @@ map("t", "<C-k>", [[<C-\><C-n><C-w>k]], opts)
 map("t", "<C-l>", [[<C-\><C-n><C-w>l]], opts)
 map("t", "<Esc>", [[<C-\><C-n>]], opts)
 
-map("n", "<A-Up>", ":resize +2<CR>", opts)
-map("n", "<A-Down>", ":resize -2<CR>", opts)
 map("n", "<A-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+-- Height resize cannot use <A-Up>/<A-Down>: those are taken by the line-move
+-- mappings below (they used to be silently overwritten). Terminals that send
+-- <C-S-Up>/<C-S-Down> get it here; otherwise use :resize.
+map("n", "<C-S-Up>", ":resize +2<CR>", opts)
+map("n", "<C-S-Down>", ":resize -2<CR>", opts)
 
 -- Buffers
 map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Next buffer" })

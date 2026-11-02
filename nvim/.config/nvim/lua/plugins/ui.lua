@@ -1,10 +1,28 @@
 return {
-  -- Catppuccin Mocha — soft, polished dark theme
+  -- One Dark Pro — active theme (variant chosen by vim.g.theme in init.lua)
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000,
+    opts = {
+      options = {
+        cursorline = true,
+        transparency = false,
+        terminal_colors = true,
+        highlight_inactive_windows = false,
+      },
+      styles = {
+        comments = "italic",
+        keywords = "italic",
+        conditionals = "italic",
+      },
+    },
+  },
+
+  -- Catppuccin Mocha — still installed; switch with :Theme catppuccin-mocha
   {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    lazy = false,
     opts = {
       flavour = "mocha",
       transparent_background = false,
@@ -55,7 +73,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
+      -- the colorscheme is applied by lua/theme.lua (vim.g.theme)
     end,
   },
 
@@ -89,7 +107,7 @@ return {
         dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
       }
 
-      dashboard.section.footer.val = "catppuccin · mocha"
+      dashboard.section.footer.val = ((vim.g.theme or "onedark_dark"):gsub("_", " ")) .. " · nvim"
       dashboard.section.header.opts.hl = "AlphaHeader"
       dashboard.section.buttons.opts.hl = "AlphaButtons"
       dashboard.section.footer.opts.hl = "AlphaFooter"
@@ -123,57 +141,19 @@ return {
         { "<leader>m", group = "macros" },
         { "<leader>c", group = "code" },
         { "<leader>s", group = "session" },
+        { "<leader>p", group = "project" },
       },
     },
   },
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "onedarkpro.nvim" },
     event = "VeryLazy",
     config = function()
-      local ok, palettes = pcall(require, "catppuccin.palettes")
-      local c = ok and palettes.get_palette("mocha") or nil
-
-      local theme = "auto"
-      if c then
-        theme = {
-          normal = {
-            a = { fg = c.base, bg = c.blue, gui = "bold" },
-            b = { fg = c.text, bg = c.surface0 },
-            c = { fg = c.text, bg = c.mantle },
-          },
-          insert = {
-            a = { fg = c.base, bg = c.green, gui = "bold" },
-            b = { fg = c.text, bg = c.surface0 },
-            c = { fg = c.text, bg = c.mantle },
-          },
-          visual = {
-            a = { fg = c.base, bg = c.mauve, gui = "bold" },
-            b = { fg = c.text, bg = c.surface0 },
-            c = { fg = c.text, bg = c.mantle },
-          },
-          replace = {
-            a = { fg = c.base, bg = c.red, gui = "bold" },
-            b = { fg = c.text, bg = c.surface0 },
-            c = { fg = c.text, bg = c.mantle },
-          },
-          command = {
-            a = { fg = c.base, bg = c.peach, gui = "bold" },
-            b = { fg = c.text, bg = c.surface0 },
-            c = { fg = c.text, bg = c.mantle },
-          },
-          inactive = {
-            a = { fg = c.overlay0, bg = c.mantle },
-            b = { fg = c.overlay0, bg = c.mantle },
-            c = { fg = c.overlay0, bg = c.mantle },
-          },
-        }
-      end
-
-      require("lualine").setup({
+      local opts = {
         options = {
-          theme = theme,
+          theme = require("theme").lualine(),
           globalstatus = true,
           icons_enabled = true,
           component_separators = { left = "", right = "" },
@@ -220,8 +200,11 @@ return {
           lualine_y = {},
           lualine_z = {},
         },
-        extensions = { "neo-tree", "lazy", "toggleterm", "trouble" },
-      })
+        extensions = { "neo-tree", "toggleterm", "trouble" },
+      }
+
+      require("lualine").setup(opts)
+      require("theme").register_lualine(opts)
     end,
   },
 
@@ -276,6 +259,10 @@ return {
       { "<leader>th", "<cmd>ToggleTerm size=15 direction=horizontal<CR>", desc = "Horizontal terminal" },
       { "<leader>tv", "<cmd>ToggleTerm size=60 direction=vertical<CR>", desc = "Vertical terminal" },
       { "<C-`>", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal", mode = { "n", "t" } },
+      -- Ctrl+/ (terminals usually send <C-_> for it); both are mapped so it
+      -- works regardless of what the terminal emits.
+      { "<C-/>", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal", mode = { "n", "t" } },
+      { "<C-_>", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal", mode = { "n", "t" } },
     },
     opts = {
       open_mapping = false,

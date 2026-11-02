@@ -63,34 +63,15 @@ return {
         end,
       })
 
-      vim.lsp.config("clangd", {
-        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-      })
+      -- Server filetypes, project root markers, project-aware activation and
+      -- automatic stop-on-last-buffer live in lua/config/lsp.lua.
+      --   :LspStatus  running servers + attached buffers
+      --   :LspStop    stop this buffer's server (:LspStop! = all)
+      require("config.lsp").setup()
 
-      local function enable_if(bins, server)
-        for _, bin in ipairs(bins) do
-          if vim.fn.executable(bin) == 1 then
-            vim.lsp.enable(server)
-            return
-          end
-        end
-      end
-
-      enable_if({ "clangd" }, "clangd")
-      if vim.fn.executable("basedpyright") == 1 then
-        vim.lsp.enable("basedpyright")
-      else
-        enable_if({ "pyright", "pyright-langserver" }, "pyright")
-      end
-      enable_if({ "typescript-language-server" }, "ts_ls")
-      enable_if({ "jdtls" }, "jdtls")
-      enable_if({ "lua-language-server" }, "lua_ls")
-      enable_if({ "rust-analyzer" }, "rust_analyzer")
-      enable_if({ "gopls" }, "gopls")
-      -- Quickshell / Qt QML
-      enable_if({ "qmlls" }, "qmlls")
-
-      -- Show what's active: :LspInfo  /  check binaries: :checkhealth lsp
+      -- Completion stays on blink.cmp (already installed) instead of
+      -- vim.lsp.completion.enable(), so the existing completion UX is kept.
+      -- Diagnostics above are the native ones (vim.diagnostic.config).
     end,
   },
 
