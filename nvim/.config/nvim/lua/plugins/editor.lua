@@ -85,6 +85,19 @@ return {
         border = "rounded",
         preview = { border = "rounded" },
       },
+      -- Keep heavy dependency/build dirs out of the file picker even when the
+      -- project is not a git repo (fd/rg only honor .gitignore inside one).
+      -- To narrow this down, just drop the unwanted `--exclude`/`-g` entries.
+      files = {
+        fd_opts = "--color=never --type f --type l --exclude .git --exclude .jj"
+          .. " --exclude node_modules --exclude __pycache__ --exclude .venv --exclude venv"
+          .. " --exclude env --exclude .tox --exclude dist --exclude build --exclude target"
+          .. " --exclude .gradle --exclude .idea --exclude .next --exclude vendor",
+        rg_opts = "--color=never --files -g '!.git' -g '!.jj' -g '!node_modules'"
+          .. " -g '!__pycache__' -g '!.venv' -g '!venv' -g '!env' -g '!.tox'"
+          .. " -g '!dist' -g '!build' -g '!target' -g '!.gradle' -g '!.idea'"
+          .. " -g '!.next' -g '!vendor'",
+      },
     },
     keys = {
       { "<leader><Space>", "<cmd>FzfLua files<CR>", desc = "Find files" },
