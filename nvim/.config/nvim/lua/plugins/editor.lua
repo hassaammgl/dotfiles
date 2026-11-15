@@ -1,3 +1,56 @@
+-- tldr cheatsheets (shell `tf` equivalent) -----------------------------------
+-- `tldr --list` is a bit slow, so the list is read once and cached; a page is
+-- shown in a scratch floating buffer rendered as markdown (treesitter is set
+-- up for markdown already, so it gets highlighted).
+local tldr_cache ---@type string[]?
+
+local function tldr_list()
+  if tldr_cache then
+    return tldr_cache
+  end
+  tldr_cache = vim.fn.systemlist({ "tldr", "--list" })
+  if vim.v.shell_error ~= 0 or vim.tbl_isempty(tldr_cache) then
+    tldr_cache = nil
+    vim.notify(
+      "tldr: cache is empty or tldr is missing — run `tldr -u` once",
+      vim.log.levels.WARN
+    )
+    return {}
+  end
+  return tldr_cache
+end
+
+---@param cmd string
+local function tldr_float(cmd)
+  local lines = vim.fn.systemlist({ "tldr", "--markdown", cmd })
+  if vim.v.shell_error ~= 0 or vim.tbl_isempty(lines) then
+    vim.notify(("tldr: no page for %q"):format(cmd), vim.log.levels.WARN)
+    return
+  end
+  require("config.float").open("tldr " .. cmd, lines, "markdown")
+end
+
+local function tldr_pick()
+  local cmds = tldr_list()
+  if vim.tbl_isempty(cmds) then
+    return
+  end
+  require("fzf-lua").fzf_exec(cmds, {
+    prompt = "tldr> ",
+    -- --color: tldr strips colors whenever its output is a pipe (fzf preview)
+    preview = "tldr --color {} 2>&1",
+    preview_window = "right:60%:wrap",
+    winopts = { height = 0.85, width = 0.85 },
+    actions = {
+      default = function(selected)
+        if selected and selected[1] then
+          tldr_float(selected[1])
+        end
+      end,
+    },
+  })
+end
+
 return {
   {
     "numToStr/Comment.nvim",
@@ -107,6 +160,7 @@ return {
       { "<leader>fb", "<cmd>FzfLua buffers<CR>", desc = "Buffers" },
       { "<leader>fr", "<cmd>FzfLua oldfiles<CR>", desc = "Recent files" },
       { "<leader>fh", "<cmd>FzfLua help_tags<CR>", desc = "Help" },
+      { "<leader>ft", tldr_pick, desc = "tldr cheatsheets" },
       { "<leader>fc", "<cmd>FzfLua command_history<CR>", desc = "Command history" },
       { "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>", desc = "Definitions" },
       { "<leader>lr", "<cmd>FzfLua lsp_references<CR>", desc = "References" },
@@ -117,6 +171,16 @@ return {
       { "<leader>gc", "<cmd>FzfLua git_commits<CR>", desc = "Git commits" },
       { "<leader>gb", "<cmd>FzfLua git_branches<CR>", desc = "Git branches" },
     },
+    config = function(_, opts)
+      require("fzf-lua").setup(opts)
+      vim.api.nvim_create_user_command("Tldr", function(args)
+        if args.args ~= "" then
+          tldr_float(args.args)
+        else
+          tldr_pick()
+        end
+      end, { nargs = "?", desc = "tldr page or fuzzy picker" })
+    end,
   },
 
   {

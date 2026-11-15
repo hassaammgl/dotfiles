@@ -22,6 +22,35 @@ alias f='fzf'
 alias ff='fzf --preview "bat --color=always {}"'
 
 ###########
+# FZF + TLDR (fuzzy cheatsheets)
+###########
+
+# tf            -> pick a command, preview its tldr page, Enter prints it
+# tldr (no arg) -> same as tf; tldr <cmd> still works as usual
+tf() {
+    local cmd
+    cmd=$(tldr --list 2>/dev/null | fzf \
+        --prompt='tldr> ' \
+        --height=90% \
+        --layout=reverse \
+        --border \
+        --preview='tldr --color {} 2>&1' \
+        --preview-window='right:65%:wrap' \
+        --bind='ctrl-/:toggle-preview' \
+        --bind='ctrl-y:execute-silent(printf "%s" {} | wl-copy 2>/dev/null)+accept') \
+        || return 0
+    [ -n "$cmd" ] && tldr "$cmd"
+}
+
+tldr() {
+    if [ "$#" -eq 0 ]; then
+        tf
+    else
+        command tldr "$@"
+    fi
+}
+
+###########
 # TMUX
 ###########
 

@@ -10,6 +10,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 require("config.pack")
+require("config.docs").setup()
 require("config.build")
 require("config.dev")
 
