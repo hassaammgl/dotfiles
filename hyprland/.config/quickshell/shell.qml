@@ -15,12 +15,10 @@ import qs.overlays.osd
 import qs.overlays.dashboard
 import qs.overlays.desktopWidgets
 import qs.overlays.controlCenter
-import qs.overlays.dock
 import qs.state
 
 Scope {
     Bar {}
-    Dock {}
     Notifications {}
     NotifSidebar {}
     LauncherOverlay {}

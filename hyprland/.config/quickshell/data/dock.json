@@ -10,7 +10,6 @@
         "com.github.unrud.VideoDownloader",
         "localsend",
         "obsidian",
-        "org.gnome.Software",
-        "sonora"
+        "org.gnome.Software"
     ]
 }

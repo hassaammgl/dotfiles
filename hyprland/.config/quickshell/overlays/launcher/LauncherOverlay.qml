@@ -54,22 +54,11 @@ Scope {
             property var menuApp: null
             property real menuX: 0
             property real menuY: 0
-            readonly property bool menuPinned: menuApp ? DockState.contains(DockState.entryId(menuApp)) : false
             readonly property var menuActions: [
                 {
                     "label": "Open",
                     "action": "open",
                     "on": true
-                },
-                {
-                    "label": "Pin to dock",
-                    "action": "pin",
-                    "on": !menuPinned
-                },
-                {
-                    "label": "Unpin from dock",
-                    "action": "unpin",
-                    "on": menuPinned
                 }
             ]
 
@@ -103,22 +92,6 @@ Scope {
                 const pos = tileItem.mapToItem(layer, tileItem.width / 2, tileItem.height + 6);
                 menuX = pos.x;
                 menuY = pos.y;
-            }
-
-            function pinMenu(): void {
-                if (!menuApp)
-                    return;
-                const id = DockState.entryId(menuApp);
-                if (id && !DockState.contains(id))
-                    DockState.toggle(id);
-            }
-
-            function unpinMenu(): void {
-                if (!menuApp)
-                    return;
-                const id = DockState.entryId(menuApp);
-                if (id && DockState.contains(id))
-                    DockState.toggle(id);
             }
 
             function launchCurrent(): void {
@@ -350,17 +323,6 @@ Scope {
                                 }
                             }
 
-                            Rectangle {
-                                visible: DockState.contains(DockState.entryId(modelData))
-                                anchors.right: parent.right
-                                anchors.top: parent.top
-                                anchors.margins: 8
-                                width: 7
-                                height: 7
-                                radius: 4
-                                color: Colors.accent
-                            }
-
                             Column {
                                 anchors.centerIn: parent
                                 spacing: 8
@@ -465,14 +427,7 @@ Scope {
                                     enabled: modelData.on
                                     hoverEnabled: true
                                     cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
-                                    onClicked: {
-                                        if (modelData.action === "open")
-                                            win.launch(win.menuApp);
-                                        else if (modelData.action === "pin")
-                                            win.pinMenu();
-                                        else
-                                            win.unpinMenu();
-                                    }
+                                    onClicked: win.launch(win.menuApp)
                                 }
                             }
                         }

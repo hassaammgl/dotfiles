@@ -37,7 +37,7 @@ if [ ! -f "$HOME/searxng/settings.yml" ]; then
   cat >"$HOME/searxng/settings.yml" <<EOF
 use_default_settings: true
 server:
-    port: 8080
+    port: 9080
     bind_address: "0.0.0.0"
     secret_key: "$(openssl rand -hex 32)"
 EOF
@@ -48,7 +48,8 @@ if ! sudo docker ps -a --format '{{.Names}}' | grep -q '^searxng$'; then
   sudo docker run -d \
     --name searxng \
     --restart always \
-    -p 8080:8080 \
+    -p 9080:9080 \
+    -e SEARXNG_PORT=9080 \
     -v "$HOME/searxng:/etc/searxng" \
     searxng/searxng:latest || echo "   SKIP SearXNG container"
 fi

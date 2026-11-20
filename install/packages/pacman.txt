@@ -2,7 +2,6 @@
 kitty
 wezterm
 tmux
-fish
 starship
 yazi
 
@@ -39,16 +38,13 @@ stow
 hyprland
 hyprlock
 hyprpicker
-hyprpaper
 quickshell
-uwsm
 awww
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 xorg-xwayland
 polkit-gnome
-polkit-kde-agent
 qt5-wayland
 qt6-wayland
 qt5ct
@@ -69,8 +65,6 @@ trash-cli
 libnotify
 wl-clipboard
 upower
-dunst
-wofi
 
 # Theming
 adwaita-icon-theme
@@ -96,7 +90,6 @@ zeal
 
 # Network / Bluetooth
 networkmanager
-network-manager-applet
 bluez
 bluez-utils
 wpa_supplicant
@@ -179,7 +172,6 @@ tree-sitter-javascript
 tree-sitter-python
 tree-sitter-rust
 typescript-language-server
-electron42
 
 # Fonts
 ttf-victor-mono-nerd
@@ -213,8 +205,3 @@ intel-media-driver
 libva-intel-driver
 sof-firmware
 vulkan-intel
-vulkan-radeon
-vulkan-nouveau
-xf86-video-amdgpu
-xf86-video-ati
-xf86-video-nouveau

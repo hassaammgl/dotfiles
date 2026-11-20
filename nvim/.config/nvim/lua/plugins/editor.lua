@@ -245,4 +245,59 @@ return {
     ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
     opts = {},
   },
+
+  -- Folding: treesitter/LSP folds with a VS Code-like preview (zK peeks a
+  -- folded block without opening it). `promise-async` is a hard dependency.
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    config = function()
+      vim.o.foldcolumn = "1"
+      vim.o.foldlevel = 99 -- start with everything open, like VS Code
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      require("ufo").setup({
+        provider_selector = function()
+          return { "treesitter", "indent" }
+        end,
+        -- Show the hidden line count on the fold line instead of raw text.
+        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+          local suffix = ("  %d "):format(endLnum - lnum)
+          local targetWidth = width - vim.fn.strdisplaywidth(suffix)
+          local curWidth, chunks = 0, {}
+          for _, chunk in ipairs(virtText) do
+            local text, hl = chunk[1], chunk[2]
+            local chunkWidth = vim.fn.strdisplaywidth(text)
+            if targetWidth > curWidth + chunkWidth then
+              chunks[#chunks + 1] = { text, hl }
+              curWidth = curWidth + chunkWidth
+            else
+              text = truncate(text, targetWidth - curWidth)
+              chunks[#chunks + 1] = { text, hl }
+              chunkWidth = vim.fn.strdisplaywidth(text)
+              if curWidth + chunkWidth < targetWidth then
+                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
+              end
+              break
+            end
+          end
+          chunks[#chunks + 1] = { suffix, "MoreMsg" }
+          return chunks
+        end,
+      })
+
+      local map = vim.keymap.set
+      map("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds" })
+      map("n", "zM", require("ufo").closeAllFolds, { desc = "Close all folds" })
+      map("n", "zr", require("ufo").openFoldsExceptKinds, { desc = "Open folds except kinds" })
+      map("n", "zm", require("ufo").closeFoldsWith, { desc = "Close folds with level" })
+      map("n", "zK", function()
+        local winid = require("ufo").peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end, { desc = "Peek fold / hover" })
+    end,
+  },
 }

@@ -34,7 +34,7 @@ opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.laststatus = 3
 opt.showmode = false
-opt.fillchars = { eob = " ", fold = " ", foldopen = "▾", foldclose = "▸" }
+opt.fillchars = { eob = " ", fold = " ", foldopen = "▾", foldclose = "▸", foldsep = " " }
 pcall(function()
   opt.smoothscroll = true
 end)
