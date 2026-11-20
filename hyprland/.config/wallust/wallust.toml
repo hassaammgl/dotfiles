@@ -5,7 +5,6 @@ palette = "dark16"
 check_contrast = true
 
 [templates]
-hyprlock = { src = 'hyprlock.conf',    dst = '~/.config/hypr/hyprlock.conf',  pywal = false }
 kitty   = { src = 'kitty-colors.conf', dst = '~/.config/kitty/colors.conf',   pywal = true }
 nvim    = { src = 'nvim.lua',          dst = '~/.cache/wallust/nvim.lua',     pywal = false }
 quickshell = { src = 'quickshell.json', dst = '~/.cache/wallust/quickshell.json', pywal = false }

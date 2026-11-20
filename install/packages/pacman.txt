@@ -11,7 +11,6 @@ vim
 nano
 fastfetch
 btop
-htop
 eza
 fzf
 zoxide
@@ -26,7 +25,6 @@ chafa
 tldr
 tree
 man-db
-viu
 cmatrix
 wget
 reflector
@@ -36,7 +34,6 @@ stow
 
 # Hyprland & Wayland
 hyprland
-hyprlock
 hyprpicker
 quickshell
 awww
@@ -82,7 +79,6 @@ gnome-text-editor
 gnome-calendar
 obsidian
 gnome-software
-kdeconnect
 qbittorrent
 libreoffice-fresh
 planify
@@ -117,7 +113,6 @@ gimp
 kdenlive
 obs-studio
 blender
-gifsicle
 
 # Games
 openttd
