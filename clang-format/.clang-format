@@ -1,0 +1,34 @@
+---
+# Prettier-like C/C++ style: 4-space indent, attached braces, no line wrapping.
+# Installed at ~/.clang-format, so it is the fallback for every project; a
+# nearer .clang-format (e.g. in a project root) takes precedence.
+BasedOnStyle: LLVM
+Language: Cpp
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Like JS/prettier with no print width: never re-wrap code or comments.
+ColumnLimit: 0
+ReflowComments: false
+BreakStringLiterals: false
+
+# Attached braces, but function bodies stay expanded (prettier behaviour).
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Empty
+ConstructorInitializerIndentWidth: 4
+
+# `int* p` / `const T& x`
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Prettier does not reorder imports, so leave includes alone.
+SortIncludes: Never
+IncludeBlocks: Preserve
+
+IndentCaseLabels: true
+SpaceBeforeParens: ControlStatements

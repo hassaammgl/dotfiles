@@ -8,7 +8,7 @@ fi
 
 cd "$DOTFILES_DIR" || return 1
 
-packages=(kitty wezterm tmux nvim hyprland btop fastfetch starship.toml cava lazygit lazydocker imv)
+packages=(kitty wezterm tmux nvim hyprland btop fastfetch starship.toml cava lazygit lazydocker imv clang-format)
 for pkg in "${packages[@]}"; do
   if [ ! -d "$DOTFILES_DIR/$pkg" ]; then
     echo "   Skipping $pkg (no package directory)"

@@ -118,8 +118,8 @@ return {
         lsp_fallback = true,
       },
       formatters_by_ft = {
-        c = { "clang_format" },
-        cpp = { "clang_format" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
         java = { "google-java-format" },
         python = { "ruff_format", "black", stop_after_first = true },
         javascript = { "prettierd", "prettier", stop_after_first = true },

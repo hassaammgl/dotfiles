@@ -92,6 +92,53 @@ alias gb='git branch'
 alias gsw='git switch'
 
 ###########
+# C / C++ FORMATTING (clang-format)
+###########
+
+# cppstyle [preset]  -> create .clang-format from a clang preset (default: LLVM)
+# cppstyle-global     -> copy ~/.clang-format (dotfiles style) into this project
+# clangfmt            -> format every C/C++ file in the project
+# clangfmt-check      -> dry-run, lists files that are not formatted
+cppstyle() {
+    local preset="${1:-LLVM}"
+    if [ -e .clang-format ]; then
+        echo ".clang-format already exists here ($(pwd))"
+        return 1
+    fi
+    clang-format --style="$preset" --dump-config > .clang-format || return 1
+    echo "created .clang-format (style: $preset)"
+}
+
+cppstyle-global() {
+    if [ ! -f "$HOME/.clang-format" ]; then
+        echo "no $HOME/.clang-format (stow the clang-format package in ~/dotfiles)"
+        return 1
+    fi
+    if [ -e .clang-format ]; then
+        echo ".clang-format already exists here ($(pwd))"
+        return 1
+    fi
+    cp "$HOME/.clang-format" .clang-format
+    echo "created .clang-format from $HOME/.clang-format"
+}
+
+# `command find`: the `find` alias (fd) with these arguments.
+_clang_sources() {
+    command find . \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.cxx' \
+        -o -name '*.h' -o -name '*.hh' -o -name '*.hpp' -o -name '*.hxx' \
+        -o -name '*.ixx' -o -name '*.cppm' -o -name '*.mpp' \) \
+        -not -path './build/*' -not -path './.git/*' -not -path './.cache/*' -print0
+}
+
+clangfmt() {
+    _clang_sources | xargs -0 -r clang-format -i
+}
+
+clangfmt-check() {
+    _clang_sources | xargs -0 -r clang-format --dry-run --Werror
+}
+
+###########
 # DOCKER SHORTCUTS
 ###########
 
